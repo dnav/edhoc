@@ -1348,13 +1348,16 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                 <p id="section-toc.1-1.14.2.1.1"><a href="#appendix-D.1" class="xref">D.1</a>.  <a href="#name-validating-the-authenticati" class="xref">Validating the Authentication Credential</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
-                <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-D.2" class="xref">D.2</a>.  <a href="#name-certification-path-and-trus" class="xref">Certification Path and Trust Anchors</a></p>
+                <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-D.2" class="xref">D.2</a>.  <a href="#name-identities" class="xref">Identities</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.3">
-                <p id="section-toc.1-1.14.2.3.1"><a href="#appendix-D.3" class="xref">D.3</a>.  <a href="#name-trust-on-first-use" class="xref">Trust-on-first-use</a></p>
+                <p id="section-toc.1-1.14.2.3.1"><a href="#appendix-D.3" class="xref">D.3</a>.  <a href="#name-certification-path-and-trus" class="xref">Certification Path and Trust Anchors</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.4">
-                <p id="section-toc.1-1.14.2.4.1"><a href="#appendix-D.4" class="xref">D.4</a>.  <a href="#name-revocation" class="xref">Revocation</a></p>
+                <p id="section-toc.1-1.14.2.4.1"><a href="#appendix-D.4" class="xref">D.4</a>.  <a href="#name-revocation-status" class="xref">Revocation Status</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.5">
+                <p id="section-toc.1-1.14.2.5.1"><a href="#appendix-D.5" class="xref">D.5</a>.  <a href="#name-trust-on-first-use" class="xref">Trust-on-first-use</a></p>
 </li>
             </ul>
 </li>
@@ -1853,7 +1856,7 @@ ead = 1* (
 </li>
           <li id="section-3.9-3.5">Use and type of external authorization data (EAD_1, EAD_2, EAD_3, EAD_4; see <a href="#AD" class="xref">Section 3.8</a>).<a href="#section-3.9-3.5" class="pilcrow">¶</a>
 </li>
-          <li id="section-3.9-3.6">Identifier used as the identity of the endpoint; see <a href="#identities" class="xref">Appendix D.1.6</a>.<a href="#section-3.9-3.6" class="pilcrow">¶</a>
+          <li id="section-3.9-3.6">Identifier used as the identity of the endpoint; see <a href="#identities" class="xref">Appendix D.2</a>.<a href="#section-3.9-3.6" class="pilcrow">¶</a>
 </li>
           <li id="section-3.9-3.7">If message_4 shall be sent/expected, and if not, how to ensure a protected application message is sent from the Responder to the Initiator; see <a href="#m4" class="xref">Section 5.5</a>.<a href="#section-3.9-3.7" class="pilcrow">¶</a>
 </li>
@@ -2744,7 +2747,7 @@ authenticated encryption. Hence the message authenticating functionality of the 
 <p id="section-8.7-2">An attacker can also send faked message_2, message_3, message_4, or error in an attempt to trick the receiving party to send an error message and discontinue the session. EDHOC implementations MAY evaluate if a received message is likely to have been forged by an attacker and ignore it without sending an error message or discontinuing the session.<a href="#section-8.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="implementation-considerations">
+<div id="impl-cons">
 <section id="section-8.8">
         <h3 id="name-implementation-consideratio">
 <a href="#section-8.8" class="section-number selfRef">8.8. </a><a href="#name-implementation-consideratio" class="section-name selfRef">Implementation Considerations</a>
@@ -3731,101 +3734,68 @@ where protected, external_aad and payload are specified in <a href="#m2" class="
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-authentication-related-veri" class="section-name selfRef">Authentication Related Verifications</a>
       </h2>
 <p id="appendix-D-1">EDHOC performs certain authentication related operations, see <a href="#auth-key-id" class="xref">Section 3.5</a>, but in general it is necessary to make additional verifications beyond EDHOC message processing. What verifications are needed depend on the deployment, in particular the trust model and the security policies, but most commonly it can be expressed in terms of verifications of credential content.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">EDHOC assumes the existence of mechanisms (certification authority or other trusted third party, pre-provisioning, etc.) for generating and distributing authentication credentials and other credentials, as well as the existence of trust anchors (CA certificates, trusted public keys, etc.). For example, a public key certificate or CWT may rely on a trusted third party whose public key is pre-provisioned, whereas a CCS or a self-signed certificate/CWT may be used when trust in the public key can be achieved by other means, or in the case of trust-on-first-use, see <a href="#tofu" class="xref">Appendix D.3</a>.<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">EDHOC assumes the existence of mechanisms (certification authority or other trusted third party, pre-provisioning, etc.) for generating and distributing authentication credentials and other credentials, as well as the existence of trust anchors (CA certificates, trusted public keys, etc.). For example, a public key certificate or CWT may rely on a trusted third party whose public key is pre-provisioned, whereas a CCS or a self-signed certificate/CWT may be used when trust in the public key can be achieved by other means, or in the case of trust-on-first-use, see <a href="#tofu" class="xref">Appendix D.5</a>.<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <p id="appendix-D-3">In this section we provide some examples of such verifications. These verifications are the responsibility of the application but may be implemented as part of an EDHOC library.<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <div id="validating-auth-credential">
 <section id="appendix-D.1">
         <h3 id="name-validating-the-authenticati">
 <a href="#appendix-D.1" class="section-number selfRef">D.1. </a><a href="#name-validating-the-authenticati" class="section-name selfRef">Validating the Authentication Credential</a>
         </h3>
-<p id="appendix-D.1-1">The authentication credential may contain, in addition to the authentication key, other parameters that needs to be verified as is examplified in this section.<a href="#appendix-D.1-1" class="pilcrow">¶</a></p>
-<div id="algorithm">
-<section id="appendix-D.1.1">
-          <h4 id="name-algorithm">
-<a href="#appendix-D.1.1" class="section-number selfRef">D.1.1. </a><a href="#name-algorithm" class="section-name selfRef">Algorithm</a>
-          </h4>
-<p id="appendix-D.1.1-1">The algorithm to use with the public key as specified in the authentication credential needs to match the algorithm of the cipher suite. The authentication key needs to be a valid key for use with this algorithm.<a href="#appendix-D.1.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="key-usage">
-<section id="appendix-D.1.2">
-          <h4 id="name-key-usage">
-<a href="#appendix-D.1.2" class="section-number selfRef">D.1.2. </a><a href="#name-key-usage" class="section-name selfRef">Key Usage</a>
-          </h4>
-<p id="appendix-D.1.2-1">The usage of the authentication key as specified in the authentication credential needs to match the method. In X.509 and C509 certificates, signature keys typically have key usage "digitalSignature" and Diffie-Hellman public keys typically have key usage "keyAgreement" <span>[<a href="#RFC3279" class="xref">RFC3279</a>]</span><span>[<a href="#RFC8410" class="xref">RFC8410</a>]</span>.<a href="#appendix-D.1.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="time-validation">
-<section id="appendix-D.1.3">
-          <h4 id="name-time-validation">
-<a href="#appendix-D.1.3" class="section-number selfRef">D.1.3. </a><a href="#name-time-validation" class="section-name selfRef">Time Validation</a>
-          </h4>
-<p id="appendix-D.1.3-1">The authentication credential needs to be valid for the period of time when the authentication is relevant. The validation needs to be made using clocks synchronized with the issuer of the credential. In X.509 and C509 certificates validity is expressed using Not After and Not Before. In CWT and CCS, the "exp" and "nbf" claims have similar meanings.<a href="#appendix-D.1.3-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="issuer">
-<section id="appendix-D.1.4">
-          <h4 id="name-issuer">
-<a href="#appendix-D.1.4" class="section-number selfRef">D.1.4. </a><a href="#name-issuer" class="section-name selfRef">Issuer</a>
-          </h4>
-<p id="appendix-D.1.4-1">The issuer of the authentication credential needs to be trusted with issuing the credential. X.509 and C509 certificates includes the "Issuer" field. In CWT and CCS, the "iss" claim has a similar meaning.<a href="#appendix-D.1.4-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="signature">
-<section id="appendix-D.1.5">
-          <h4 id="name-signature">
-<a href="#appendix-D.1.5" class="section-number selfRef">D.1.5. </a><a href="#name-signature" class="section-name selfRef">Signature</a>
-          </h4>
-<p id="appendix-D.1.5-1">The signature of the authentication credential needs to be verified with the public key of the issuer. The public key is either a trust anchor or the public key in another valid and trusted credential in a certification path from trust anchor to authentication credential.<a href="#appendix-D.1.5-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.1-1">The authentication credential may contain, in addition to the authentication key, other parameters that needs to be verified. For example:<a href="#appendix-D.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D.1-2.1">In X.509 and C509 certificates, signature keys typically have key usage "digitalSignature" and Diffie-Hellman public keys typically have key usage "keyAgreement" <span>[<a href="#RFC3279" class="xref">RFC3279</a>]</span><span>[<a href="#RFC8410" class="xref">RFC8410</a>]</span>.<a href="#appendix-D.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-D.1-2.2">In X.509 and C509 certificates validity is expressed using Not After and Not Before. In CWT and CCS, the "exp" and "nbf" claims have similar meanings.<a href="#appendix-D.1-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
 </section>
 </div>
 <div id="identities">
-<section id="appendix-D.1.6">
-          <h4 id="name-subject">
-<a href="#appendix-D.1.6" class="section-number selfRef">D.1.6. </a><a href="#name-subject" class="section-name selfRef">Subject</a>
-          </h4>
-<p id="appendix-D.1.6-1">Policies for what connections to allow are typically set based on the identity of the other endpoint, and endpoints typically only allow connections from a specific identity or a small restricted set of identities. For example, in the case of a device connecting to a network, the network may only allow connections from devices which authenticate with certificates having a particular range of serial numbers and signed by a particular CA. Conversely, a device may only be allowed to connect to a network which authenticates with a particular public key.<a href="#appendix-D.1.6-1" class="pilcrow">¶</a></p>
-<p id="appendix-D.1.6-2">The application must decide on allowing a connection or not depending on the intended endpoint, and in particular whether it is a specific identity or a set of identities. By allowing the application access to the authentication credential, EDHOC passes information about identity to the application for decision, and EDHOC need to receive information back about the result of the decision.<a href="#appendix-D.1.6-2" class="pilcrow">¶</a></p>
+<section id="appendix-D.2">
+        <h3 id="name-identities">
+<a href="#appendix-D.2" class="section-number selfRef">D.2. </a><a href="#name-identities" class="section-name selfRef">Identities</a>
+        </h3>
+<p id="appendix-D.2-1">Policies for what connections to allow are typically set based on the identity of the other endpoint, and endpoints typically only allow connections from a specific identity or a small restricted set of identities. For example, in the case of a device connecting to a network, the network may only allow connections from devices which authenticate with certificates having a particular range of serial numbers and signed by a particular CA. Conversely, a device may only be allowed to connect to a network which authenticates with a particular public key.<a href="#appendix-D.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.2-2">The application must decide on allowing a connection or not depending on the intended endpoint, and in particular whether it is a specific identity or a set of identities.<a href="#appendix-D.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-D.1.6-3.1">When a Public Key Infrastructure (PKI) is used with certificates, the identity is the subject whose unique name, e.g., a domain name, a Network Access Identifier (NAI), or an Extended Unique Identifier (EUI), is included in the endpoint's certificate. In order to run EDHOC each endpoint needs a specific identity or set of identities it is allowed to communicate with, as specified by the application. Only validated public-key certificates with an allowed subject name as identity, are to be accepted.<a href="#appendix-D.1.6-3.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D.2-3.1">When a Public Key Infrastructure (PKI) is used with certificates, the identity is the subject whose unique name, e.g., a domain name, a Network Access Identifier (NAI), or an Extended Unique Identifier (EUI), is included in the endpoint's certificate.<a href="#appendix-D.2-3.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-D.1.6-3.2">Similarly, when a PKI is used with CWTs, each endpoint needs a specific identity or set of identities it is allowed to communicate with to match against the relevant claim, such as 'sub' (subject).<a href="#appendix-D.1.6-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-D.2-3.2">Similarly, when a PKI is used with CWTs, each endpoint needs a specific identity or set of identities it is allowed to communicate with to match against the relevant claim, such as 'sub' (subject).<a href="#appendix-D.2-3.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-D.1.6-3.3">When PKI is not used (CCS, self-signed certificate/CWT) the identity is typically directly associated to the authentication key of the other party. For example, the name of the subject may be a canonical representation of the public key. Alternatively, if identities can be expressed in the form of unique subject names assigned to public keys, then a binding to identity is achieved by including both public key and associated subject name in the authentication credential: CRED_I or CRED_R may be a self-signed certificate/CWT or CCS containing the authentication key and the subject name, see <a href="#auth-cred" class="xref">Section 3.5.2</a>. In order to run EDHOC, each endpoint needs a specific authentication key/unique associated subject name, or a set of public authentication keys/unique associated subject names, which it is allowed to communicate with.<a href="#appendix-D.1.6-3.3" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-D.2-3.3">When PKI is not used (CCS, self-signed certificate/CWT) the identity is typically directly associated to the authentication key of the other party. For example, the name of the subject may be a canonical representation of the public key. Alternatively, if identities can be expressed in the form of unique subject names assigned to public keys, then a binding to identity is achieved by including both public key and associated subject name in the authentication credential: CRED_I or CRED_R may be a self-signed certificate/CWT or CCS containing the authentication key and the subject name, see <a href="#auth-cred" class="xref">Section 3.5.2</a>. Each endpoint thus needs to know the specific authentication key/unique associated subject name, or set of public authentication keys/unique associated subject names, which it is allowed to communicate with.<a href="#appendix-D.2-3.3" class="pilcrow">¶</a>
 </li>
-          </ul>
-<p id="appendix-D.1.6-4">In either case, EDHOC verifies that the other party possesses the private authentication key corresponding to the public authentication key.<a href="#appendix-D.1.6-4" class="pilcrow">¶</a></p>
-<p id="appendix-D.1.6-5">To prevent misbinding attacks in systems where an attacker can register public keys without proving knowledge of the private key, SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> enforces a MAC to be calculated over the "identity". EDHOC follows SIGMA by calculating a MAC over the whole authentication credential, which in case of an X.509 or C509 certificate includes the "subject" and "subjectAltName" fields, and in the case of CWT or CCS includes the "sub" claim.<a href="#appendix-D.1.6-5" class="pilcrow">¶</a></p>
-<p id="appendix-D.1.6-6">(While the SIGMA paper only focuses on the identity, the same principle is true for other information such as policies associated to the public key.)<a href="#appendix-D.1.6-6" class="pilcrow">¶</a></p>
-</section>
-</div>
+        </ul>
+<p id="appendix-D.2-4">To prevent misbinding attacks in systems where an attacker can register public keys without proving knowledge of the private key, SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> enforces a MAC to be calculated over the "identity". EDHOC follows SIGMA by calculating a MAC over the whole authentication credential, which in case of an X.509 or C509 certificate includes the "subject" and "subjectAltName" fields, and in the case of CWT or CCS includes the "sub" claim.<a href="#appendix-D.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-D.2-5">(While the SIGMA paper only focuses on the identity, the same principle is true for other information such as policies associated to the public key.)<a href="#appendix-D.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cert-path">
-<section id="appendix-D.2">
-        <h3 id="name-certification-path-and-trus">
-<a href="#appendix-D.2" class="section-number selfRef">D.2. </a><a href="#name-certification-path-and-trus" class="section-name selfRef">Certification Path and Trust Anchors</a>
-        </h3>
-<p id="appendix-D.2-1">Similar verifications as made with the authentication credential (see <a href="#validating-auth-credential" class="xref">Appendix D.1</a>) is also needed for the other credentials in the certification path.<a href="#appendix-D.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-D.2-2">When a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate. In order to run EDHOC each party needs at least one CA public key certificate, or just the CA public key. The certification path contains proof that the subject of the certificate owns the public key in the certificate. Only validated public-key certificates are to be accepted.<a href="#appendix-D.2-2" class="pilcrow">¶</a></p>
-<p id="appendix-D.2-3">Similarly, when a PKI is used with CWTs, each party needs to have at least one trusted third party public key as trust anchor to verify the end-entity CWTs. The trusted third party public key can, e.g., be stored in a self-signed CWT or in a CCS.<a href="#appendix-D.2-3" class="pilcrow">¶</a></p>
-<p id="appendix-D.2-4">When PKI is not used (CCS, self-signed certificate/CWT), the trust anchor is the authentication key of the other party, in which case there is no  certification path.<a href="#appendix-D.2-4" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="tofu">
 <section id="appendix-D.3">
-        <h3 id="name-trust-on-first-use">
-<a href="#appendix-D.3" class="section-number selfRef">D.3. </a><a href="#name-trust-on-first-use" class="section-name selfRef">Trust-on-first-use</a>
+        <h3 id="name-certification-path-and-trus">
+<a href="#appendix-D.3" class="section-number selfRef">D.3. </a><a href="#name-certification-path-and-trus" class="section-name selfRef">Certification Path and Trust Anchors</a>
         </h3>
-<p id="appendix-D.3-1">TBD<a href="#appendix-D.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-1">When a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate. Each party needs at least one CA public key certificate, or just the CA public key. The certification path contains proof that the subject of the certificate owns the public key in the certificate. Only validated public-key certificates are to be accepted.<a href="#appendix-D.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-2">Similarly, when a PKI is used with CWTs, each party needs to have at least one trusted third party public key as trust anchor to verify the end-entity CWTs. The trusted third party public key can, e.g., be stored in a self-signed CWT or in a CCS.<a href="#appendix-D.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-3">The issuer of the authentication credential needs to be trusted with issuing the credential. X.509 and C509 certificates includes the "Issuer" field. In CWT and CCS, the "iss" claim has a similar meaning.<a href="#appendix-D.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-4">The signature of the authentication credential needs to be verified with the public key of the issuer. The public key is either a trust anchor or the public key in another valid and trusted credential in a certification path from trust anchor to authentication credential.<a href="#appendix-D.3-4" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-5">Similar verifications as made with the authentication credential (see <a href="#validating-auth-credential" class="xref">Appendix D.1</a>) are also needed for the other credentials in the certification path.<a href="#appendix-D.3-5" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-6">When PKI is not used (CCS, self-signed certificate/CWT), the trust anchor is the authentication key of the other party, in which case there is no  certification path.<a href="#appendix-D.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="revocation">
 <section id="appendix-D.4">
-        <h3 id="name-revocation">
-<a href="#appendix-D.4" class="section-number selfRef">D.4. </a><a href="#name-revocation" class="section-name selfRef">Revocation</a>
+        <h3 id="name-revocation-status">
+<a href="#appendix-D.4" class="section-number selfRef">D.4. </a><a href="#name-revocation-status" class="section-name selfRef">Revocation Status</a>
         </h3>
-<p id="appendix-D.4-1">It may be necessary to verify that the credentials are not revoked. Revocation may be replaced by only issuing short valid certificates. Revocation information may be transported as External Authentication Data (EAD), see <a href="#ead-appendix" class="xref">Appendix E</a>.<a href="#appendix-D.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.4-1">The application may need to verify that the credentials are not revoked, see <a href="#impl-cons" class="xref">Section 8.8</a>. Some use cases may be served by short-lived credentials, for example, where the validity of the credential is on par with with the interval between revocation checks. But, in general, credential life time and revokation checking are complementary measures to control credential status. Revocation information may be transported as External Authentication Data (EAD), see <a href="#ead-appendix" class="xref">Appendix E</a>.<a href="#appendix-D.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="tofu">
+<section id="appendix-D.5">
+        <h3 id="name-trust-on-first-use">
+<a href="#appendix-D.5" class="section-number selfRef">D.5. </a><a href="#name-trust-on-first-use" class="section-name selfRef">Trust-on-first-use</a>
+        </h3>
+<p id="appendix-D.5-1">TBD<a href="#appendix-D.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

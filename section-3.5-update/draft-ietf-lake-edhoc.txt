@@ -138,9 +138,10 @@ Table of Contents
      C.3.  COSE
    Appendix D.  Authentication Related Verifications
      D.1.  Validating the Authentication Credential
-     D.2.  Certification Path and Trust Anchors
-     D.3.  Trust-on-first-use
-     D.4.  Revocation
+     D.2.  Identities
+     D.3.  Certification Path and Trust Anchors
+     D.4.  Revocation Status
+     D.5.  Trust-on-first-use
    Appendix E.  Use of External Authorization Data
    Appendix F.  Applicability Template Example
    Appendix G.  EDHOC Message Deduplication
@@ -904,7 +905,7 @@ Table of Contents
        EAD_4; see Section 3.8).
 
    6.  Identifier used as the identity of the endpoint; see
-       Appendix D.1.6.
+       Appendix D.2.
 
    7.  If message_4 shall be sent/expected, and if not, how to ensure a
        protected application message is sent from the Responder to the
@@ -3429,7 +3430,7 @@ Appendix D.  Authentication Related Verifications
    rely on a trusted third party whose public key is pre-provisioned,
    whereas a CCS or a self-signed certificate/CWT may be used when trust
    in the public key can be achieved by other means, or in the case of
-   trust-on-first-use, see Appendix D.3.
+   trust-on-first-use, see Appendix D.5.
 
    In this section we provide some examples of such verifications.
    These verifications are the responsibility of the application but may
@@ -3438,48 +3439,18 @@ Appendix D.  Authentication Related Verifications
 D.1.  Validating the Authentication Credential
 
    The authentication credential may contain, in addition to the
-   authentication key, other parameters that needs to be verified as is
-   examplified in this section.
+   authentication key, other parameters that needs to be verified.  For
+   example:
 
-D.1.1.  Algorithm
+   *  In X.509 and C509 certificates, signature keys typically have key
+      usage "digitalSignature" and Diffie-Hellman public keys typically
+      have key usage "keyAgreement" [RFC3279][RFC8410].
 
-   The algorithm to use with the public key as specified in the
-   authentication credential needs to match the algorithm of the cipher
-   suite.  The authentication key needs to be a valid key for use with
-   this algorithm.
+   *  In X.509 and C509 certificates validity is expressed using Not
+      After and Not Before.  In CWT and CCS, the "exp" and "nbf" claims
+      have similar meanings.
 
-D.1.2.  Key Usage
-
-   The usage of the authentication key as specified in the
-   authentication credential needs to match the method.  In X.509 and
-   C509 certificates, signature keys typically have key usage
-   "digitalSignature" and Diffie-Hellman public keys typically have key
-   usage "keyAgreement" [RFC3279][RFC8410].
-
-D.1.3.  Time Validation
-
-   The authentication credential needs to be valid for the period of
-   time when the authentication is relevant.  The validation needs to be
-   made using clocks synchronized with the issuer of the credential.  In
-   X.509 and C509 certificates validity is expressed using Not After and
-   Not Before.  In CWT and CCS, the "exp" and "nbf" claims have similar
-   meanings.
-
-D.1.4.  Issuer
-
-   The issuer of the authentication credential needs to be trusted with
-   issuing the credential.  X.509 and C509 certificates includes the
-   "Issuer" field.  In CWT and CCS, the "iss" claim has a similar
-   meaning.
-
-D.1.5.  Signature
-
-   The signature of the authentication credential needs to be verified
-   with the public key of the issuer.  The public key is either a trust
-   anchor or the public key in another valid and trusted credential in a
-   certification path from trust anchor to authentication credential.
-
-D.1.6.  Subject
+D.2.  Identities
 
    Policies for what connections to allow are typically set based on the
    identity of the other endpoint, and endpoints typically only allow
@@ -3493,19 +3464,12 @@ D.1.6.  Subject
 
    The application must decide on allowing a connection or not depending
    on the intended endpoint, and in particular whether it is a specific
-   identity or a set of identities.  By allowing the application access
-   to the authentication credential, EDHOC passes information about
-   identity to the application for decision, and EDHOC need to receive
-   information back about the result of the decision.
+   identity or a set of identities.
 
    *  When a Public Key Infrastructure (PKI) is used with certificates,
       the identity is the subject whose unique name, e.g., a domain
       name, a Network Access Identifier (NAI), or an Extended Unique
-      Identifier (EUI), is included in the endpoint's certificate.  In
-      order to run EDHOC each endpoint needs a specific identity or set
-      of identities it is allowed to communicate with, as specified by
-      the application.  Only validated public-key certificates with an
-      allowed subject name as identity, are to be accepted.
+      Identifier (EUI), is included in the endpoint's certificate.
 
    *  Similarly, when a PKI is used with CWTs, each endpoint needs a
       specific identity or set of identities it is allowed to
@@ -3521,14 +3485,10 @@ D.1.6.  Subject
       including both public key and associated subject name in the
       authentication credential: CRED_I or CRED_R may be a self-signed
       certificate/CWT or CCS containing the authentication key and the
-      subject name, see Section 3.5.2.  In order to run EDHOC, each
-      endpoint needs a specific authentication key/unique associated
-      subject name, or a set of public authentication keys/unique
-      associated subject names, which it is allowed to communicate with.
-
-   In either case, EDHOC verifies that the other party possesses the
-   private authentication key corresponding to the public authentication
-   key.
+      subject name, see Section 3.5.2.  Each endpoint thus needs to know
+      the specific authentication key/unique associated subject name, or
+      set of public authentication keys/unique associated subject names,
+      which it is allowed to communicate with.
 
    To prevent misbinding attacks in systems where an attacker can
    register public keys without proving knowledge of the private key,
@@ -3542,39 +3502,52 @@ D.1.6.  Subject
    principle is true for other information such as policies associated
    to the public key.)
 
-D.2.  Certification Path and Trust Anchors
-
-   Similar verifications as made with the authentication credential (see
-   Appendix D.1) is also needed for the other credentials in the
-   certification path.
+D.3.  Certification Path and Trust Anchors
 
    When a Public Key Infrastructure (PKI) is used with certificates, the
-   trust anchor is a Certification Authority (CA) certificate.  In order
-   to run EDHOC each party needs at least one CA public key certificate,
-   or just the CA public key.  The certification path contains proof
-   that the subject of the certificate owns the public key in the
-   certificate.  Only validated public-key certificates are to be
-   accepted.
+   trust anchor is a Certification Authority (CA) certificate.  Each
+   party needs at least one CA public key certificate, or just the CA
+   public key.  The certification path contains proof that the subject
+   of the certificate owns the public key in the certificate.  Only
+   validated public-key certificates are to be accepted.
 
    Similarly, when a PKI is used with CWTs, each party needs to have at
    least one trusted third party public key as trust anchor to verify
    the end-entity CWTs.  The trusted third party public key can, e.g.,
    be stored in a self-signed CWT or in a CCS.
 
+   The issuer of the authentication credential needs to be trusted with
+   issuing the credential.  X.509 and C509 certificates includes the
+   "Issuer" field.  In CWT and CCS, the "iss" claim has a similar
+   meaning.
+
+   The signature of the authentication credential needs to be verified
+   with the public key of the issuer.  The public key is either a trust
+   anchor or the public key in another valid and trusted credential in a
+   certification path from trust anchor to authentication credential.
+
+   Similar verifications as made with the authentication credential (see
+   Appendix D.1) are also needed for the other credentials in the
+   certification path.
+
    When PKI is not used (CCS, self-signed certificate/CWT), the trust
    anchor is the authentication key of the other party, in which case
    there is no certification path.
 
-D.3.  Trust-on-first-use
+D.4.  Revocation Status
+
+   The application may need to verify that the credentials are not
+   revoked, see Section 8.8.  Some use cases may be served by short-
+   lived credentials, for example, where the validity of the credential
+   is on par with with the interval between revocation checks.  But, in
+   general, credential life time and revokation checking are
+   complementary measures to control credential status.  Revocation
+   information may be transported as External Authentication Data (EAD),
+   see Appendix E.
+
+D.5.  Trust-on-first-use
 
    TBD
-
-D.4.  Revocation
-
-   It may be necessary to verify that the credentials are not revoked.
-   Revocation may be replaced by only issuing short valid certificates.
-   Revocation information may be transported as External Authentication
-   Data (EAD), see Appendix E.
 
 Appendix E.  Use of External Authorization Data
 
