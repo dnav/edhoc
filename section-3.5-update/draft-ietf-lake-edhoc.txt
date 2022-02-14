@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 15 August 2022                                         Ericsson
-                                                        11 February 2022
+Expires: 18 August 2022                                         Ericsson
+                                                        14 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2022.
+   This Internet-Draft will expire on 18 August 2022.
 
 Copyright Notice
 
@@ -854,7 +854,7 @@ Table of Contents
       returned in EAD_2, see [I-D.selander-ace-ake-authz].
 
    *  Another example is remote attestation requested in EAD_2, and an
-      Entity Attestation Token (EAT, [I-D.ietf-rats-eat]) returned i
+      Entity Attestation Token (EAT, [I-D.ietf-rats-eat]) returned in
       EAD_3.
 
    *  A third example is certificate enrolment where a Certificate
@@ -867,7 +867,7 @@ Table of Contents
    EDHOC, and the protection of EAD is the responsibility of the
    security application (third party authorization, remote attestation,
    certificate enrolment, etc.).  The security properties of the EAD
-   fields are discussed in Section 8.1.
+   fields (after EDHOC processing) are discussed in Section 8.1.
 
    To support use cases where the EAD field is used in the EDHOC
    processing of the message in which they are contained, the EAD fields
@@ -883,11 +883,13 @@ Table of Contents
    verified message_3.
 
    The security application may reuse EDHOC protocol fields which
-   therefore needs to be available to the application.  For example, the
+   therefore need to be available to the application.  For example, the
    security application may use the same crypto algorithms as in the
    EDHOC session and therefore needs access to the selected cipher suite
    (or the whole SUITES_I).  The application may use the ephemeral
-   public keys G_X and G_Y, as ephemeral keys or as nonces.
+   public keys G_X and G_Y, as ephemeral keys or as nonces.  How the
+   security application gets access to these message fields is out of
+   scope for this specification.
 
    The EAD fields of EDHOC must not be used for generic application
    data.  Since data carried in EAD may not be protected, or be
@@ -1336,10 +1338,6 @@ Table of Contents
    *  Choose a connection identifier C_I and store it for the length of
       the protocol.
 
-   *  Obtain EAD_1 from the application.  Additional protocol data, such
-      as G_X or SUITES_I, may be needed to compute EAD_1, see
-      Section 3.8.
-
    *  Encode message_1 as a sequence of CBOR encoded data items as
       specified in Section 5.2.1
 
@@ -1395,12 +1393,6 @@ Table of Contents
    *  Choose a connection identifier C_R and store it for the length of
       the protocol.
 
-   *  Obtain EAD_2 from the application.  Additional protocol data, such
-      as G_X or G_Y, may be needed to compute EAD_2, see Section 3.8.
-
-      -  EAD_2 - unprotected external authorization data, see
-         Section 3.8.
-
    *  Compute the transcript hash TH_2 = H( H(message_1), G_Y, C_R )
       where H() is the EDHOC hash algorithm of the selected cipher
       suite.  The transcript hash TH_2 is a CBOR encoded bstr and the
@@ -1422,6 +1414,9 @@ Table of Contents
 
       -  CRED_R - CBOR item containing the authentication credential of
          the Responder, see Section 3.5.2
+
+      -  EAD_2 - unprotected external authorization data, see
+         Section 3.8
 
    *  If the Responder authenticates with a static Diffie-Hellman key
       (method equals 1 or 3), then Signature_or_MAC_2 is MAC_2.  If the
@@ -1476,9 +1471,7 @@ Table of Contents
       present.
 
    *  Make ID_CRED_R and EAD_2 (if present) available to the application
-      for authentication- and EAD processing.  Additional protocol data,
-      such as G_X or G_Y, may be needed for EAD processing, see
-      Section 3.8.
+      for authentication- and EAD processing.
 
    *  Obtain the authentication credential (CRED_R) and the
       authentication key of R from the application (or by other means).
@@ -1509,11 +1502,6 @@ Table of Contents
 
    The Initiator SHALL compose message_3 as follows:
 
-   *  Obtain EAD_3 from the application.  Additional protocol data, such
-      as G_Y, may be needed to compute EAD_3, see Section 3.8.
-
-      -  EAD_3 - protected external authorization data, see Section 3.8.
-
    *  Compute the transcript hash TH_3 = H(TH_2, CIPHERTEXT_2) where H()
       is the EDHOC hash algorithm of the selected cipher suite.  The
       transcript hash TH_3 is a CBOR encoded bstr and the input to the
@@ -1534,6 +1522,8 @@ Table of Contents
 
       -  CRED_I - CBOR item containing the authentication credential of
          the Initiator, see Section 3.5.2
+
+      -  EAD_3 - protected external authorization data, see Section 3.8
 
    *  If the Initiator authenticates with a static Diffie-Hellman key
       (method equals 2 or 3), then Signature_or_MAC_3 is MAC_3.  If the
@@ -1622,9 +1612,8 @@ Table of Contents
       algorithm in the selected cipher suite, and the parameters defined
       in Section 5.4.2.  Discard padding, if present.
 
-   *  Make ID_CRED_I and EAD_3 (if present) available to application for
-      authentication- and EAD processing.  Additional protocol data,
-      such as G_Y, may be needed for EAD processing, see Section 3.8.
+   *  Make ID_CRED_I and EAD_3 (if present) available to the application
+      for authentication- and EAD processing.
 
    *  Obtain the authentication credential (CRED_I) and the
       authentication key of I from the application (or by other means).
@@ -1683,11 +1672,6 @@ Table of Contents
 
    The Responder SHALL compose message_4 as follows:
 
-   *  Obtain EAD_4 from the application.  Additional protocol data may
-      be needed to compute EAD_4, see Section 3.8.
-
-      -  EAD_4 - protected external authorization data, see Section 3.8.
-
    *  Compute a COSE_Encrypt0 as defined in Sections 5.2 and 5.3 of
       [I-D.ietf-cose-rfc8152bis-struct], with the EDHOC AEAD algorithm
       of the selected cipher suite, using the encryption key K_4, the
@@ -1715,6 +1699,9 @@ Table of Contents
          o  PAD = 1*true is padding that may be used to hide the length
             of the unpadded plaintext.
 
+         o  EAD_4 - protected external authorization data, see
+            Section 3.8.
+
       CIPHERTEXT_4 is the 'ciphertext' of COSE_Encrypt0.
 
    *  Encode message_4 as a CBOR data item as specified in
@@ -1735,9 +1722,8 @@ Table of Contents
       algorithm in the selected cipher suite, and the parameters defined
       in Section 5.5.2.  Discard padding, if present.
 
-   *  Make EAD_4 (if present) available to application for EAD
-      processing.  Additional protocol data may be needed for EAD
-      processing, see Section 3.8.
+   *  Make EAD_4 (if present) available to the application for EAD
+      processing.
 
    If any processing step fails, the Responder SHOULD send an EDHOC
    error message back, formatted as defined in Section 6.  Sending error
