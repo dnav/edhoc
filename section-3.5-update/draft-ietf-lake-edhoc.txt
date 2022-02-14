@@ -1254,7 +1254,7 @@ Table of Contents
 
    *  C_I - variable length connection identifier
 
-   *  EAD_1 - unprotected external authorization data, see Section 3.8.
+   *  EAD_1 - external authorization data, see Section 3.8.
 
 5.2.2.  Initiator Processing of Message 1
 
@@ -1368,8 +1368,7 @@ Table of Contents
       -  CRED_R - CBOR item containing the authentication credential of
          the Responder, see Section 3.5.2
 
-      -  EAD_2 - unprotected external authorization data, see
-         Section 3.8
+      -  EAD_2 - external authorization data, see Section 3.8
 
    *  If the Responder authenticates with a static Diffie-Hellman key
       (method equals 1 or 3), then Signature_or_MAC_2 is MAC_2.  If the
@@ -1476,7 +1475,7 @@ Table of Contents
       -  CRED_I - CBOR item containing the authentication credential of
          the Initiator, see Section 3.5.2
 
-      -  EAD_3 - protected external authorization data, see Section 3.8
+      -  EAD_3 - external authorization data, see Section 3.8
 
    *  If the Initiator authenticates with a static Diffie-Hellman key
       (method equals 2 or 3), then Signature_or_MAC_3 is MAC_3.  If the
@@ -1652,8 +1651,7 @@ Table of Contents
          o  PAD = 1*true is padding that may be used to hide the length
             of the unpadded plaintext.
 
-         o  EAD_4 - protected external authorization data, see
-            Section 3.8.
+         o  EAD_4 - external authorization data, see Section 3.8.
 
       CIPHERTEXT_4 is the 'ciphertext' of COSE_Encrypt0.
 
