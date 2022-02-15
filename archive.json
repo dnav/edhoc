@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-13T01:13:18.276199+00:00",
+  "timestamp": "2022-02-15T01:17:00.263748+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -8734,7 +8734,7 @@
       "labels": [],
       "body": "\r\nProxying question from Stefan: \r\n\r\n> Is there a strong reason to define the encoding as bstr/int. Is it not enough to have just int? From my perspective to allow one of both bstr or int depending on the user makes not only the the implementation more complex but as well the EDHOC API more user unfriendly. \r\n\r\nThis would reduce the number of identifiers of a given size. Perhaps this could be a constraint in the applicability template.",
       "createdAt": "2022-02-10T13:32:35Z",
-      "updatedAt": "2022-02-11T08:08:00Z",
+      "updatedAt": "2022-02-13T22:53:45Z",
       "closedAt": null,
       "comments": [
         {
@@ -8743,6 +8743,13 @@
           "body": "I think the number of identifiers of a given size are as follows\r\n```\r\nbytes        bstr        int\r\n1               1         48\r\n2             256        464\r\n```\r\nOnly int would likely be acceptable.\r\n\r\n",
           "createdAt": "2022-02-11T08:08:00Z",
           "updatedAt": "2022-02-11T08:08:00Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The above holds for the EDHOC identifiers, which are exchanged on the wire only during an EDHOC execution.\r\n\r\nThings are different if we think of what that means in terms of OSCORE identifiers, which are supposed to be exchanged on the wire several times later on when using OSCORE.\r\n\r\nIf we consider:\r\n\r\n* The EDHOC==>OSCORE conversion rules from -lake-edhoc at [1]; and\r\n\r\n* The OSCORE==>EDHOC conversion rules from -core-oscore-edhoc at [2], to deterministically and optimally select one specific EDHOC identifier among the two equivalent ones for the same OSCORE identifier;\r\n\r\nThen we have the following number of available OSCORE identifiers, as shown in the second and third column.\r\n\r\n```\r\nSize N in bytes    When EDHOC ID is a bstr     When EDHOC ID is an int\r\n of OSCORE ID      on the wire (N+1 bytes)     on the wire (N bytes)\r\n     0                          1                          0\r\n     1                        208                         48\r\n     2                      65072                        464\r\n    ...                       ...                         ...\r\n```\r\n\r\nThinking of an EDHOC endpoint when **offering its own** EDHOC identifier C_X as bstr or int, it can be admittedly non-trivial (I would not say difficult) for an implementation to optimally check if it is possible to offer first any available EDHOC identifier that yield an available 1-byte OSCORE identifier, before moving on to considering the next pool of EDHOC identifiers yielding 2-byte OSCORE identifiers.\r\n\r\nHowever, the optimal selection above does not have to necessarily be performed. Regardless, in order to avoid any possible complication and keep the offering of EDHOC identifiers very simple, an EDHOC endpoint may simply choose to offer only numeric identifiers, which is already possible to do today.\r\n\r\nAt the same time, I think it is good to continue expecting that an EDHOC endpoint is at least able to correctly receive and process a byte-string valued EDHOC identifier when offered by the other peer. This preserves a large number of short OSCORE identifiers that remain possible to select and use later on with OSCORE.\r\n\r\n\r\n[1] https://datatracker.ietf.org/doc/html/draft-ietf-lake-edhoc-12#appendix-A.1\r\n\r\n[2] https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-edhoc-02#section-4.1",
+          "createdAt": "2022-02-13T22:53:45Z",
+          "updatedAt": "2022-02-13T22:53:45Z"
         }
       ]
     },
@@ -11579,7 +11586,7 @@
     {
       "number": 239,
       "id": "PR_kwDOEItXAM4xxrdX",
-      "title": "When does the Compliance requirements apply #238",
+      "title": "Compliance requirements update #238",
       "url": "https://github.com/lake-wg/edhoc/pull/239",
       "state": "OPEN",
       "author": "emanjon",
@@ -11588,13 +11595,13 @@
       "labels": [],
       "body": "When does the Compliance requirements apply #238",
       "createdAt": "2022-01-29T11:24:15Z",
-      "updatedAt": "2022-01-29T11:24:16Z",
+      "updatedAt": "2022-02-14T15:44:25Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "0682135bd778164c86ae170d1cfb9947802573a7",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "When-does-the-Compliance-requirements-apply-#238",
-      "headRefOid": "2cfbec29c2c664418c75e9b8a2298f37ca5f447b",
+      "headRefOid": "406029ed274b11c5c4d4a07fb14502e576b0c642",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -11614,13 +11621,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2022-01-30T14:23:41Z",
-      "updatedAt": "2022-02-11T15:58:28Z",
+      "updatedAt": "2022-02-14T18:26:33Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "0682135bd778164c86ae170d1cfb9947802573a7",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "section-3.5-update",
-      "headRefOid": "d0ba5183d88e2f45afd671bd11402cc1610a81c7",
+      "headRefOid": "450f7c9855e50da006156d8c779f41d6d5be15eb",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -11639,6 +11646,13 @@
           "body": "A lot of changes are good and needed. Comments\r\n\r\nHard to get an overview of this PR. Especially which of the deleted text that has been removed and what has just been moved around.\r\n\r\n>EDHOC MUST allow the application to read the authentication credential.\r\nShould this be \"information about authentication credentials\", i.e. ID_CRED_x?\r\n\r\n>EDHOC MUST have access to the authentication key of the authentication credential.\r\nEDHOC also need the authentication credentials, i.e. CRED_x?\r\n\r\n- Not sure all the EAD text belongs in the body.\r\n  - Lot of duplication in processing.\r\n  - A lot of the text is talking about unfinished drafts.\r\n\r\n- The new text is Authentication Related Verifications {#auth-validation} has several issues.\r\n\r\n- \"match the algorithm\"\r\n- \"The validation needs to be made\"\r\n- \"The issuer of the authentication credential needs to be trusted with issuing the credential.\"\r\n- \"the trust anchor is a Certification Authority (CA) certificate\"\r\n- \"at least one CA public key certificate\"\r\n- \"subject of the certificate owns the public key\"\r\n\r\nI am also not sure it should be added. The comment was to shorten down 3.5. This seems to expand things. \r\n",
           "createdAt": "2022-02-10T07:10:45Z",
           "updatedAt": "2022-02-10T07:10:45Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I've made an attempt at all comments by @emanjon, have a look.",
+          "createdAt": "2022-02-14T18:26:33Z",
+          "updatedAt": "2022-02-14T18:26:33Z"
         }
       ],
       "reviews": []
