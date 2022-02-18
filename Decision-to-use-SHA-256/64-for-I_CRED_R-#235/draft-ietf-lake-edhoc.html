@@ -11,10 +11,10 @@
 <meta content="
        This document specifies Ephemeral Diffie-Hellman Over COSE (EDHOC), a very compact and lightweight authenticated Diffie-Hellman key exchange with ephemeral keys. EDHOC provides mutual authentication, forward secrecy, and identity protection. EDHOC is intended for usage in constrained scenarios and a main use case is to establish an OSCORE security context. By reusing COSE for cryptography, CBOR for encoding, and CoAP for transport, the additional code size can be kept very low. 
     " name="description">
-<meta content="xml2rfc 3.12.0" name="generator">
+<meta content="xml2rfc 3.12.2" name="generator">
 <meta content="draft-ietf-lake-edhoc" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.0
+  xml2rfc 3.12.2
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1013,11 +1013,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">EDHOC</td>
-<td class="right">January 2022</td>
+<td class="right">February 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Selander, et al.</td>
-<td class="center">Expires 29 July 2022</td>
+<td class="center">Expires 22 August 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1030,12 +1030,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-lake-edhoc</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-01-25" class="published">25 January 2022</time>
+<time datetime="2022-02-18" class="published">18 February 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-07-29">29 July 2022</time></dd>
+<dd class="expires"><time datetime="2022-08-22">22 August 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1088,7 +1088,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 July 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 August 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2691,7 +2691,7 @@ authenticated encryption. Hence the message authenticating functionality of the 
 <a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-cipher-suites-and-cryptogra" class="section-name selfRef">Cipher Suites and Cryptographic Algorithms</a>
         </h3>
 <p id="section-8.3-1">When using private cipher suite or registering new cipher suites, the choice of key length used in the different algorithms needs to be harmonized, so that a sufficient security level is maintained for certificates, EDHOC, and the protection of application data. The Initiator and the Responder should enforce a minimum security level.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
-<p id="section-8.3-2">The output size of the EDHOC hash algorithm MUST be at least 256-bits, i.e., the hash algorithms SHA-1 and SHA-256/64 (SHA-256 truncated to 64-bits) SHALL NOT be supported for use in EDHOC except for certificate identification with x5t and c5t. For security considerations of SHA-1, see <span>[<a href="#RFC6194" class="xref">RFC6194</a>]</span>. As EDHOC integrity protects the whole authentication credential, the choice of hash algorithm in x5t and c5t does not affect security. The EDHOC MAC length MUST be at least 8 bytes and the tag length of the EDHOC AEAD algorithm MUST be at least 64-bits. Note that secp256k1 is only defined for use with ECDSA and not for ECDH. Note that some COSE algorithms are marked as not recommended in the COSE IANA registry.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
+<p id="section-8.3-2">The output size of the EDHOC hash algorithm MUST be at least 256-bits, i.e., the hash algorithms SHA-1 and SHA-256/64 (SHA-256 truncated to 64-bits) SHALL NOT be supported for use in EDHOC except for certificate identification with x5t and c5t. For security considerations of SHA-1, see <span>[<a href="#RFC6194" class="xref">RFC6194</a>]</span>. As EDHOC integrity protects the whole authentication credential, the choice of hash algorithm in x5t and c5t does not affect security and it is RECOMMENDED to use the same hash algorithm as in the cipher suite but with as much truncation as possible, i.e, when the EDHOC hash algorithm is SHA-256 it is RECOMMENDED to use SHA-256/64 in x5t and c5t. The EDHOC MAC length MUST be at least 8 bytes and the tag length of the EDHOC AEAD algorithm MUST be at least 64-bits. Note that secp256k1 is only defined for use with ECDSA and not for ECDH. Note that some COSE algorithms are marked as not recommended in the COSE IANA registry.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="pqc">
@@ -3274,7 +3274,7 @@ Reference: [[this document]]
 <dd class="break"></dd>
 <dt id="CNSA">[CNSA]</dt>
         <dd>
-<span class="refAuthor">(Placeholder), .</span>, <span class="refTitle">"Commercial National Security Algorithm Suite"</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm">https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm</a>&gt;</span>. </dd>
+<span class="refAuthor">(Placeholder)</span>, <span class="refTitle">"Commercial National Security Algorithm Suite"</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm">https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.arkko-arch-internet-threat-model-guidance">[I-D.arkko-arch-internet-threat-model-guidance]</dt>
         <dd>
@@ -3318,7 +3318,7 @@ Reference: [[this document]]
 <dd class="break"></dd>
 <dt id="I-D.mattsson-cfrg-det-sigs-with-noise">[I-D.mattsson-cfrg-det-sigs-with-noise]</dt>
         <dd>
-<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Thormarker, E.</span>, and <span class="refAuthor">S. Ruohomaa</span>, <span class="refTitle">"Deterministic ECDSA and EdDSA Signatures with Additional Randomness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-cfrg-det-sigs-with-noise-02</span>, <time datetime="2020-03-11" class="refDate">11 March 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-02.txt">https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-02.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Thormarker, E.</span>, and <span class="refAuthor">S. Ruohomaa</span>, <span class="refTitle">"Deterministic ECDSA and EdDSA Signatures with Additional Randomness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-cfrg-det-sigs-with-noise-04</span>, <time datetime="2022-02-15" class="refDate">15 February 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-04.txt">https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-04.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.selander-ace-ake-authz">[I-D.selander-ace-ake-authz]</dt>
         <dd>
