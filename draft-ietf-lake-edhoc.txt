@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 14 August 2022                                         Ericsson
-                                                        10 February 2022
+Expires: 22 August 2022                                         Ericsson
+                                                        18 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 August 2022.
+   This Internet-Draft will expire on 22 August 2022.
 
 Copyright Notice
 
@@ -2284,6 +2284,19 @@ Table of Contents
    RECOMMENDED to not trust a single source of randomness and to not put
    unaugmented random numbers on the wire.
 
+   Implementations might consider deriving secret and non-secret
+   randomness from different PNRG/PRF/KDF instances to limit the damage
+   if the PNRG/PRF/KDF turns out to be fundamentally broken.  NIST
+   generally forbids deriving secret and non-secret randomness from the
+   same KDF instance, but this decision has been criticized by Krawczyk
+   [HKDFpaper] and doing so is common practice.  In addition to IVs,
+   other examples are the challenge in EAP-TTLS, the RAND in 3GPP AKAs,
+   and the Session-Id in EAP-TLS 1.3.  Note that part of KEYSTREAM_2 is
+   also non-secret randomness as it is known or predictable to an
+   attacker.  As explained by Krawczyk, if any attack is mitigated by
+   the NIST requirement it would mean that the KDF is fully broken and
+   would have to be replaced anyway.
+
    If ECDSA is supported, "deterministic ECDSA" as specified in
    [RFC6979] MAY be used.  Pure deterministic elliptic-curve signatures
    such as deterministic ECDSA and EdDSA have gained popularity over
@@ -2850,10 +2863,15 @@ Table of Contents
    [CborMe]   Bormann, C., "CBOR Playground", May 2018,
               <http://cbor.me/>.
 
-   [CNSA]     (Placeholder), ., "Commercial National Security Algorithm
+   [CNSA]     (Placeholder), "Commercial National Security Algorithm
               Suite", August 2015,
               <https://apps.nsa.gov/iaarchive/programs/iad-initiatives/
               cnsa-suite.cfm>.
+
+   [HKDFpaper]
+              Krawczyk, H., "Cryptographic Extraction and Key
+              Derivation: The HKDF Scheme", May 2010,
+              <https://eprint.iacr.org/2010/264.pdf>.
 
    [I-D.arkko-arch-internet-threat-model-guidance]
               Arkko, J. and S. Farrell, "Internet Threat Model
@@ -2931,9 +2949,9 @@ Table of Contents
               Mattsson, J. P., Thormarker, E., and S. Ruohomaa,
               "Deterministic ECDSA and EdDSA Signatures with Additional
               Randomness", Work in Progress, Internet-Draft, draft-
-              mattsson-cfrg-det-sigs-with-noise-03, 3 February 2022,
+              mattsson-cfrg-det-sigs-with-noise-04, 15 February 2022,
               <https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-
-              sigs-with-noise-03.txt>.
+              sigs-with-noise-04.txt>.
 
    [I-D.selander-ace-ake-authz]
               Selander, G., Mattsson, J. P., Vučinić, M., Richardson,
@@ -3831,7 +3849,6 @@ Authors' Addresses
    Ericsson AB
    SE-164 80 Stockholm
    Sweden
-
    Email: goran.selander@ericsson.com
 
 
@@ -3839,7 +3856,6 @@ Authors' Addresses
    Ericsson AB
    SE-164 80 Stockholm
    Sweden
-
    Email: john.mattsson@ericsson.com
 
 
@@ -3847,5 +3863,4 @@ Authors' Addresses
    Ericsson AB
    SE-164 80 Stockholm
    Sweden
-
    Email: francesca.palombini@ericsson.com
