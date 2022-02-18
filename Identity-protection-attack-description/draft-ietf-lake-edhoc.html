@@ -11,10 +11,10 @@
 <meta content="
        This document specifies Ephemeral Diffie-Hellman Over COSE (EDHOC), a very compact and lightweight authenticated Diffie-Hellman key exchange with ephemeral keys. EDHOC provides mutual authentication, forward secrecy, and identity protection. EDHOC is intended for usage in constrained scenarios and a main use case is to establish an OSCORE security context. By reusing COSE for cryptography, CBOR for encoding, and CoAP for transport, the additional code size can be kept very low. 
     " name="description">
-<meta content="xml2rfc 3.12.1" name="generator">
+<meta content="xml2rfc 3.12.2" name="generator">
 <meta content="draft-ietf-lake-edhoc" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.1
+  xml2rfc 3.12.2
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1017,7 +1017,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Selander, et al.</td>
-<td class="center">Expires 14 August 2022</td>
+<td class="center">Expires 22 August 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1030,12 +1030,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-lake-edhoc</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-02-10" class="published">10 February 2022</time>
+<time datetime="2022-02-18" class="published">18 February 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-08-14">14 August 2022</time></dd>
+<dd class="expires"><time datetime="2022-08-22">22 August 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1088,7 +1088,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 August 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 August 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2659,7 +2659,7 @@ Initiator                                                   Responder
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-security-properties" class="section-name selfRef">Security Properties</a>
         </h3>
 <p id="section-8.1-1">EDHOC inherits its security properties from the theoretical SIGMA-I protocol <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>. Using the terminology from <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>, EDHOC provides forward secrecy, mutual authentication with aliveness, consistency, and peer awareness. As described in <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>, peer awareness is provided to the Responder, but not to the Initiator.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">As described in <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>, different levels of identity protection are provided to the Initiator and the Responder. EDHOC protects the credential identifier of the Initiator against active attacks and the credential identifier of the Responder against passive attacks. Unless the lower layers are encrypted in some way, an active attacker can eavesdrop on the destination address used for transporting message_1 and send its own message_1 to the same address. The roles should be assigned to protect the most sensitive identity/identifier, typically that which is not possible to infer from routing information in the lower layers.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">As described in <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>, different levels of identity protection are provided to the Initiator and the Responder. EDHOC protects the credential identifier of the Initiator against active attacks and the credential identifier of the Responder against passive attacks. An active attacker can get the credential identifier of the Responder by eavesdropping on the destination address used for transporting message_1 and send its own message_1 to the same address. The roles should be assigned to protect the most sensitive identity/identifier, typically that which is not possible to infer from routing information in the lower layers.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <p id="section-8.1-3">Compared to <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span>, EDHOC adds an explicit method type and expands the message authentication coverage to additional elements such as algorithms, external authorization data, and previous messages. This protects against an attacker replaying messages or injecting messages from another session.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
 <p id="section-8.1-4">EDHOC also adds selection of connection identifiers and downgrade protected negotiation of cryptographic parameters, i.e., an attacker cannot affect the negotiated parameters. A single session of EDHOC does not include negotiation of cipher suites, but it enables the Responder to verify that the selected cipher suite is the most preferred cipher suite by the Initiator which is supported by both the Initiator and the Responder.<a href="#section-8.1-4" class="pilcrow">¶</a></p>
 <p id="section-8.1-5">As required by <span>[<a href="#RFC7258" class="xref">RFC7258</a>]</span>, IETF protocols need to mitigate pervasive monitoring when possible. EDHOC therefore only supports methods with ephemeral Diffie-Hellman and provides a KeyUpdate function for lightweight application protocol rekeying with forward secrecy, in the sense that compromise of the private authentication keys does not compromise past session keys, and compromise of a session key does not compromise past session keys.<a href="#section-8.1-5" class="pilcrow">¶</a></p>
@@ -3275,7 +3275,7 @@ Reference: [[this document]]
 <dd class="break"></dd>
 <dt id="CNSA">[CNSA]</dt>
         <dd>
-<span class="refAuthor">(Placeholder), .</span>, <span class="refTitle">"Commercial National Security Algorithm Suite"</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm">https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm</a>&gt;</span>. </dd>
+<span class="refAuthor">(Placeholder)</span>, <span class="refTitle">"Commercial National Security Algorithm Suite"</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm">https://apps.nsa.gov/iaarchive/programs/iad-initiatives/cnsa-suite.cfm</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.arkko-arch-internet-threat-model-guidance">[I-D.arkko-arch-internet-threat-model-guidance]</dt>
         <dd>
@@ -3319,7 +3319,7 @@ Reference: [[this document]]
 <dd class="break"></dd>
 <dt id="I-D.mattsson-cfrg-det-sigs-with-noise">[I-D.mattsson-cfrg-det-sigs-with-noise]</dt>
         <dd>
-<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Thormarker, E.</span>, and <span class="refAuthor">S. Ruohomaa</span>, <span class="refTitle">"Deterministic ECDSA and EdDSA Signatures with Additional Randomness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-cfrg-det-sigs-with-noise-03</span>, <time datetime="2022-02-03" class="refDate">3 February 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-03.txt">https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-03.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Thormarker, E.</span>, and <span class="refAuthor">S. Ruohomaa</span>, <span class="refTitle">"Deterministic ECDSA and EdDSA Signatures with Additional Randomness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mattsson-cfrg-det-sigs-with-noise-04</span>, <time datetime="2022-02-15" class="refDate">15 February 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-04.txt">https://www.ietf.org/archive/id/draft-mattsson-cfrg-det-sigs-with-noise-04.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.selander-ace-ake-authz">[I-D.selander-ace-ake-authz]</dt>
         <dd>
