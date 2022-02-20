@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-15T01:17:00.263748+00:00",
+  "timestamp": "2022-02-20T01:16:27.863601+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -97,6 +97,11 @@
       "name": "Clarification in specification needed",
       "description": "",
       "color": "d4c5f9"
+    },
+    {
+      "name": "Ready to merge",
+      "description": "",
+      "color": "e99695"
     }
   ],
   "issues": [
@@ -5720,7 +5725,7 @@
       ],
       "body": "```\r\nead = (\r\n  type : int,\r\n  1* ext_authz_data : any,\r\n)\r\n```\r\n\r\nWhat is type? Is that the the external security application or the content, i.e., the sequence of ext_authz_data?\r\n\r\nIf type is the external security application, is the same type supposed to be used in message_1, 2, 3, and 4?\r\n\r\nIf type referes to the ext_authz_data, would it be better with:\r\n\r\n`\r\nead = + ( type : int, ext_authz_data : any )\r\n`",
       "createdAt": "2021-08-05T07:08:40Z",
-      "updatedAt": "2022-01-22T17:12:14Z",
+      "updatedAt": "2022-02-18T10:14:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -5757,6 +5762,13 @@
           "body": "Lets keep it as is.",
           "createdAt": "2021-08-21T15:18:50Z",
           "updatedAt": "2021-08-21T15:18:50Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR #240 updates the EAD text \r\n\r\n* Section 3.8 is shortened\r\n* Updates on EAD processing in section 5\r\n* New Appendix E with more details and clarifications\r\n\r\nPlease review",
+          "createdAt": "2022-02-18T10:14:28Z",
+          "updatedAt": "2022-02-18T10:14:28Z"
         }
       ]
     },
@@ -7862,12 +7874,11 @@
         "emanjon"
       ],
       "labels": [
-        "PR exists",
-        "Interim 25 Jan 2022"
+        "PR exists"
       ],
       "body": "From Marco's review:\r\n\r\n[Section 5.2.3]\r\n\r\n* \"If an error message is sent, the session MUST be discontinued.\"\r\n\r\n    Is this sentence actually required? Regardless sending an error \r\nmessage or not, the session is discontinued if any processing step \r\nfails, which is the reason for possibly sending an error message. Or are \r\nthere situations where an error message is sent even if no processing \r\nstep fails?\r\n\r\n",
       "createdAt": "2021-12-03T16:56:56Z",
-      "updatedAt": "2022-02-10T12:33:27Z",
+      "updatedAt": "2022-02-18T16:10:39Z",
       "closedAt": null,
       "comments": [
         {
@@ -7946,6 +7957,27 @@
           "body": "I can't even understand the sentence.\r\n\r\n> If the processing fails for some reason then, typically, an error message is sent, the protocol is discontinued, and the protocol state erased. Further details are provided in the following subsections and in [Section 6](http://127.0.0.1:7997/#error)[](http://127.0.0.1:7997/#section-5.1-5).\r\n\r\nThese are passive constructions, so I don't know who is acting on the fact that \"an error message was sent\" (and how that is detected), and I don't know who is acting when performing the mandate \"the protocol is discontinued\".  (I hope that doesn't mean that we need a new standard because the old EDHOC was discontinued.  Is this about the protocol *run*?)\r\n\r\nSorry to be pedantic, but I really don't know what this all means. \r\n",
           "createdAt": "2022-02-10T12:33:27Z",
           "updatedAt": "2022-02-10T12:33:27Z"
+        },
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The current plan is to merge the current PR which addresses Marco's and Sean's review comments.\r\n\r\nAdditional things has be discussed more and handles with other PRs\r\n- More EDHOC errors (client, server) or (retry, do not retry) or (unsuported X)\r\n- Use of CoAP error codes, current recommendation is to use 4.00 and 5.00 and always use diagnistic payload. Seemed during the design meeting that implementatins do other stuff, should discuss and maybe update specification.\r\n\r\nAny new error with negotiation should probably not be done. To do that in a safe way would require significant changes. An implementation could assign ciphersuite1+application profile1  and ciphersuite+application profile2 to the private ciphersuite numbers to get secure negotiation of application profiles. Maybe that should be discussed.",
+          "createdAt": "2022-02-18T07:35:22Z",
+          "updatedAt": "2022-02-18T07:35:22Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Apart from the error code / progress hints as mentioned in the previous comment, we have now resolved the remaining comments from Marco and Sean of this issue in PR #234 (which is now merged).\r\n\r\n@marco-tiloca-sics @seanturner - let us know if you disagree with the resolution.",
+          "createdAt": "2022-02-18T15:14:02Z",
+          "updatedAt": "2022-02-18T15:14:02Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Looks good to me.",
+          "createdAt": "2022-02-18T16:10:38Z",
+          "updatedAt": "2022-02-18T16:10:38Z"
         }
       ]
     },
@@ -7961,12 +7993,11 @@
       "labels": [
         "Close?",
         "Merged to master",
-        "Interim 25 Jan 2022",
         "Cipher Suite cluster"
       ],
       "body": "Separate issue from Stefan's review #194:\r\n\r\n\"Constrained endpoints SHOULD implement cipher suite 0 or cipher suite 2.\"\r\n\r\nThe difference between 0 and 1 and between 2 and 3 is only the size of the tag, i.e. the used algorithms are the same. -> I will suggest changing to \"...suite 0/1 or cipher suite 2/3\" or similar.   \r\n",
       "createdAt": "2021-12-07T09:42:10Z",
-      "updatedAt": "2022-01-22T17:11:59Z",
+      "updatedAt": "2022-02-18T05:42:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -8029,7 +8060,7 @@
       ],
       "body": "Provide examples to simplify understanding of intended use",
       "createdAt": "2021-12-07T11:40:15Z",
-      "updatedAt": "2022-01-22T17:12:14Z",
+      "updatedAt": "2022-02-18T10:10:36Z",
       "closedAt": null,
       "comments": [
         {
@@ -8045,6 +8076,13 @@
           "body": "Related to Stephen's comment in #202:\r\n\r\n> 5.3.3: is it ok to pass EAD_2 to the application before\r\n   checking authentication?\r\n\r\nIf EAD_2 indeed contains external authorization data (e.g. information about identity of intended endpoint), then EAD_2 needs to be processed before you can verify the identity of the other endpoint and the integrity of the message. But if we look at EAD_3, the same things apply, but we also claim that EAD_3 is protected between Initiator and Responder, which with the current order of things isn't verified at the time when EAD processed. \r\n",
           "createdAt": "2021-12-10T16:39:56Z",
           "updatedAt": "2021-12-10T16:39:56Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR #240 addresses this issue. \r\n\r\n* Rewrite of section 3.8 and added appendix with more details\r\n* Application should consider EAD unprotected by EDHOC.\r\n* Details of how EAD protection is moved to security considerations (8.1)\r\n",
+          "createdAt": "2022-02-18T10:10:36Z",
+          "updatedAt": "2022-02-18T10:10:36Z"
         }
       ]
     },
@@ -8064,7 +8102,7 @@
       ],
       "body": "This issue is extracted from Stephen's review #202:\r\n\r\n3.5.1, 3.5.2 and 3.5.3: this might be some text to\r\n   shorten a lot - how much is it really needed? Could it be\r\ncut down to the stuff with 2119 terms and a bit more? (I'd\r\nkeep the examples though.)\r\n",
       "createdAt": "2021-12-08T13:00:32Z",
-      "updatedAt": "2022-01-22T10:21:40Z",
+      "updatedAt": "2022-02-18T10:16:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -8073,6 +8111,13 @@
           "body": "Agree with Stephen that this is a candidate for shortening.\r\n\r\nRelated to #142. Do we need a new issue?",
           "createdAt": "2021-12-10T08:56:01Z",
           "updatedAt": "2021-12-10T08:56:01Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Section 3.5 is shortened with PR #240. Role of EDHOC clarified and non-EDHOC protocol things moved to new appendix D.\r\n",
+          "createdAt": "2022-02-18T10:16:52Z",
+          "updatedAt": "2022-02-18T10:16:52Z"
         }
       ]
     },
@@ -8110,19 +8155,20 @@
       "id": "I_kwDOEItXAM5ALFaQ",
       "title": "Security considerations on gererating secret material and public material such as connection IDs.",
       "url": "https://github.com/lake-wg/edhoc/issues/214",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
         "emanjon"
       ],
       "labels": [
+        "Close?",
         "PR exists"
       ],
       "body": "Based on Stephens review",
       "createdAt": "2021-12-10T09:47:27Z",
-      "updatedAt": "2022-01-25T11:24:40Z",
-      "closedAt": null,
+      "updatedAt": "2022-02-18T10:50:51Z",
+      "closedAt": "2022-02-18T10:50:51Z",
       "comments": [
         {
           "author": "gselander",
@@ -8151,6 +8197,13 @@
           "body": "I made a commit to correct spelling and grammar.\r\n\r\n- I don't think we can give applications more guidance here. How to gererate e.g. private key in certificates are way outside of EDHOC, and it would anyway be hard to say something general as deployments might look very different.\r\n\r\n- I did not want to say anything about randomly generated conenction ID as that is not how connection IDs is meant to be generated. They are intended to be as short as possible. An implentation is allowed to use long random bytestrings but is not recommended in general. ",
           "createdAt": "2022-01-25T11:24:40Z",
           "updatedAt": "2022-01-25T11:24:40Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR merged",
+          "createdAt": "2022-02-18T10:50:51Z",
+          "updatedAt": "2022-02-18T10:50:51Z"
         }
       ]
     },
@@ -8170,7 +8223,7 @@
       ],
       "body": "From John's comment to changes following Marco's review:\r\n\r\n\"identities to verify the 'sub' (subject) claim of the CWT.\"\r\n\r\n Should use the same text for X509 and CWT.\r\n\r\nMoreover,  \"sub\" claim is just an example. CWT might add e.g. AltSub in the future.\r\n",
       "createdAt": "2021-12-11T13:57:31Z",
-      "updatedAt": "2022-01-22T10:21:40Z",
+      "updatedAt": "2022-02-18T10:24:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -8179,6 +8232,13 @@
           "body": "If we change one of them we should change both. I think this issue is strongly related to #212 and could be fixed together.",
           "createdAt": "2021-12-16T14:01:51Z",
           "updatedAt": "2021-12-16T14:01:51Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "With PR #240, it is now clear that verification of identity is the responsibility of the application. Therefore Appendix D just gives examples, where this text now reads: \r\n\r\n> When a Public Key Infrastructure (PKI) is used with certificates, the identity is the subject whose unique name, e.g., a domain name, a Network Access Identifier (NAI), or an Extended Unique Identifier (EUI), is included in the endpoint's certificate. Similarly, when a PKI is used with CWTs, each endpoint needs a specific identity or set of identities it is allowed to communicate with to match against the relevant claim, such as 'sub' (subject).\r\n\r\nIs this good enough?\r\n\r\n",
+          "createdAt": "2022-02-18T10:24:32Z",
+          "updatedAt": "2022-02-18T10:24:32Z"
         }
       ]
     },
@@ -8512,18 +8572,19 @@
       "id": "I_kwDOEItXAM5CY6eV",
       "title": "Decision to use SHA-256/64 for I_CRED_R in draft-selander-lake-traces-02",
       "url": "https://github.com/lake-wg/edhoc/issues/235",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mrdeep1",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
+        "Close?",
         "traces and test vectors",
-        "Clarification in specification needed"
+        "PR exists"
       ],
       "body": "[lake-traces 2.  Setup](https://www.ietf.org/archive/id/draft-selander-lake-traces-02.html#section-2) states\r\n````\r\nBoth I and R are assumed to support cipher suite 0, which determines the algorithms:\r\n\r\nEDHOC AEAD algorithm = AES-CCM-16-64-128\r\nEDHOC hash algorithm = SHA-256\r\nEDHOC MAC length in bytes (Static DH) = 8\r\nEDHOC key exchange algorithm (ECDH curve) = X25519\r\nEDHOC signature algorithm = EdDSA\r\nApplication AEAD algorithm = AES-CCM-16-64-128\r\nApplication hash algorithm = SHA-256\r\n````\r\nThen [lake-traces 4.2.  message_2](https://www.ietf.org/archive/id/draft-selander-lake-traces-02.html#section-4.2) has\r\n````\r\nCRED_R is identified by a 64-bit hash:\r\n\r\nID_CRED_R =\r\n{\r\n  34 : [-15, h'60780E9451BDC43C']\r\n}\r\nwhere the COSE header value 34 ('x5t') indicates a hash of an X.509 certficate, and the COSE algorithm -15 indicates\r\nthe hash algorithm SHA-256 truncated to 64 bits.\r\n````\r\nwhich is using -15 (SHA-256/64), not -16 (SHA-256) for the hash.\r\n\r\nHow was this decision arrived at?",
       "createdAt": "2022-01-25T12:25:56Z",
-      "updatedAt": "2022-01-28T09:24:37Z",
-      "closedAt": null,
+      "updatedAt": "2022-02-18T11:10:17Z",
+      "closedAt": "2022-02-18T11:10:16Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8545,6 +8606,20 @@
           "body": "Yes, please do. Using SHA-256 in x5t is just a waste of 24 bytes in message_2 and message_3.\r\n\r\nWe should maybe give some recommendations in the draft regarding this, but I think it is hard to give normative requirements as x5t is just one example and future COSE header parameters and EAD might use cryptographic algorithms. The algortithms in X.509 in another example on algorithms not controlled by the cipher suite, Somebody might use a cert with a P-521 authentication key where the CA used RSA-PSS to sign the certificate together with cipher suite 2/3.\r\n\r\nMaybe the draft should recommend the use of algorithms from the ciphersuite also in cose headers, EAD, X.509, CWT, etc. In the case of x5t the recommendation could be to use the same hash function but with as much truncation as possible.",
           "createdAt": "2022-01-28T09:24:37Z",
           "updatedAt": "2022-01-28T09:24:37Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Can we close this now?",
+          "createdAt": "2022-02-18T11:06:55Z",
+          "updatedAt": "2022-02-18T11:06:55Z"
+        },
+        {
+          "author": "mrdeep1",
+          "authorAssociation": "NONE",
+          "body": "Works for me - thanks.",
+          "createdAt": "2022-02-18T11:10:16Z",
+          "updatedAt": "2022-02-18T11:10:16Z"
         }
       ]
     },
@@ -8557,10 +8632,13 @@
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Close?",
+        "PR exists"
+      ],
       "body": "Compliance requirements has some positive effects but also many negative.\r\n- Constrained devices might be required to support things (takes up storage) they never use.\r\n- Weaknesses might be found in cryptographic algorithms. Implementation then have to chose between being compliant or insecure.\r\n\r\nTLS 1.3 has softened the compliance requirements compared to TLS 1.2 (COSE does not have any at all). TLS 1.3 (RFC8446) use the following sentence\r\n\r\n\"  In the absence of an application profile standard specifying\r\n   otherwise:\r\n\"\r\n\r\nThis might (likely?) be a good sentence for EDHOC as well.\r\n ",
       "createdAt": "2022-01-29T11:15:26Z",
-      "updatedAt": "2022-02-07T17:52:26Z",
+      "updatedAt": "2022-02-18T05:44:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -8580,11 +8658,16 @@
       "state": "OPEN",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "emanjon"
+      ],
+      "labels": [
+        "Close?",
+        "PR exists"
+      ],
       "body": "Current draft says:\r\n\"EDHOC protects the credential identifier of the Initiator against active attacks and the credential identifier of the Responder against passive attacks.\"\r\n\r\nShould probably point out that active attack would be a new message_1 to the lower layer address as the other message_1.\r\n\r\n",
       "createdAt": "2022-01-31T08:07:22Z",
-      "updatedAt": "2022-01-31T08:07:22Z",
+      "updatedAt": "2022-02-18T05:44:10Z",
       "closedAt": null,
       "comments": []
     },
@@ -8596,15 +8679,25 @@
       "state": "OPEN",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "gselander"
+      ],
       "labels": [
         "EAD cluster"
       ],
       "body": "From follow up of Sean's review:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/lake/rC3OwLdD0fO6EEx8Lnh3k1zXUV8/\r\n\r\n> > s3.8 (comment): Wow .. so you can send in the CSR in EAD, if it works then you can use the cert in the later messages (e.g., kind of like EAP)? Sure hope there\u2019s no kind of CSR-related error. And, you know that the CA gets to decide the name right. Sorry just trying to digest it all.\r\n> > \r\n> > [GS: We discussed this in the LAKE interim where you participated, but just for the record: Yes, the intent is to be able to send CSR in EAD. This is expected to be detailed in an accompanying specification. One example would be the enrolment of an \"operational\" certificate as an add-on to initial authentication, the authentication of which could be performed using a manufacturer certificate included in the device from factory.\r\n> > ]\r\n>\r\n> Yeah I remember I was there. As long as your consider what to do when you get an enrollment error this will be fine to do.\r\n \r\nHow to handle errors in EAD processing should be included in the new EAD appendix.",
       "createdAt": "2022-02-01T07:07:44Z",
-      "updatedAt": "2022-02-01T07:08:18Z",
+      "updatedAt": "2022-02-18T09:30:33Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I propose that errors in EAD processing are left out of scope for EDHOC. If a security application processing EAD reaches an unexpected state it may discontinue the EDHOC processing, or it may continue EDHOC processing potentially with an EAD being sent back. The specification defining the EAD for this security application should describe this. I add this to PR #240.",
+          "createdAt": "2022-02-18T09:30:32Z",
+          "updatedAt": "2022-02-18T09:30:32Z"
+        }
+      ]
     },
     {
       "number": 243,
@@ -8614,11 +8707,15 @@
       "state": "OPEN",
       "author": "marco-tiloca-sics",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "emanjon"
+      ],
+      "labels": [
+        "PR exists"
+      ],
       "body": "In the Editor's copy, the second bullet point at [1] says:\r\n\r\n> Verify that G_X is not equal to G_X in a simultanous EDHOC message exchange initiated by the Responder.\r\n\r\nCould you clarify the exact meaning of \"simultaneous EDHOC message exchange\" and which of the existing EDHOC sessions should be checked?\r\n\r\nIn particular, is this limited to checking the sessions that the Responder has started but are still not completed, while simply skipping all the other ones? If so, can a session be considered completed when TH_4 has been computed and stored, or even earlier than that?\r\n\r\n\r\n[1] https://lake-wg.github.io/edhoc/draft-ietf-lake-edhoc.html#section-5.2.3",
       "createdAt": "2022-02-03T22:15:10Z",
-      "updatedAt": "2022-02-11T08:03:29Z",
+      "updatedAt": "2022-02-18T10:44:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -8648,6 +8745,13 @@
           "body": "I agree. The G_X is a leftover from the time when we had a PSK mode, It was left as it theoretically is a nice way to stop selfie-attacks for future methods. Given the practical problems and that this is not needed for any of the current methods with mutual authentication I think it should be removed from processing and moved back to security considerations.\r\n- For method 0-3 with mutual authentication, selfie-attacks are not a problem, I will authenticate R.\r\n- For method 0-3 with TOFU, selfie-attacks are a problem, but can then be solved by the looking at CRED_R and making sure CRED_R was not previously sent by I. This is easier to do then checking active G_X.\r\n- For a hypothetical future EDHOC PSK mode, selfie-attack can be mitigated by doing the G_X check, assign strict roles (I or R) to each PSK, or adding some identifier string to e.g. EAD (\"42-50-31-FF-EF-37-32-39\").\r\n ",
           "createdAt": "2022-02-11T08:03:29Z",
           "updatedAt": "2022-02-11T08:03:29Z"
+        },
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I made a PR which should address all the aspects of this issue.\r\n\r\n- Deleted all G_X checking text\r\n- Separated reflection attack checking from simultanous sessions.\r\n\r\nAdded the following text\r\n\r\n`To mititgate reflection attacks, the Initiator MUST verify that the the Responder's identity is not equal to Initiator's, e.g., by checking that ID_CRED_R was not previosly created by the Intiator. Any future EHDOC methods using e.g., pre-shared keys might need to mitigate this in other ways.\r\n`\r\n\r\nShould it be mentioned in message_2 processing? Should it be MUST? Should it take specifically about TOFU? \r\n",
+          "createdAt": "2022-02-18T09:14:04Z",
+          "updatedAt": "2022-02-18T10:44:56Z"
         }
       ]
     },
@@ -8730,11 +8834,13 @@
       "state": "OPEN",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "gselander"
+      ],
       "labels": [],
       "body": "\r\nProxying question from Stefan: \r\n\r\n> Is there a strong reason to define the encoding as bstr/int. Is it not enough to have just int? From my perspective to allow one of both bstr or int depending on the user makes not only the the implementation more complex but as well the EDHOC API more user unfriendly. \r\n\r\nThis would reduce the number of identifiers of a given size. Perhaps this could be a constraint in the applicability template.",
       "createdAt": "2022-02-10T13:32:35Z",
-      "updatedAt": "2022-02-13T22:53:45Z",
+      "updatedAt": "2022-02-18T13:31:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -11482,25 +11588,44 @@
       "id": "PR_kwDOEItXAM4xcn4z",
       "title": "Security considerations on gererating secret material and public material such as connection IDs. #214 ",
       "url": "https://github.com/lake-wg/edhoc/pull/233",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "#214",
       "createdAt": "2022-01-22T19:15:15Z",
-      "updatedAt": "2022-01-25T11:20:54Z",
+      "updatedAt": "2022-02-18T10:50:23Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "fbfa8acda261363e4def600f6cc3a29d0c341699",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "Security-considerations-on-gererating-secret-material-and-public-material-such-as-connection-IDs.-#214",
-      "headRefOid": "7f2439cc6fe8704c7e159866d9c0e535b025b275",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "42ac300514d5dc52514043af133322e0e0bece52",
+      "closedAt": "2022-02-18T10:50:23Z",
+      "mergedAt": "2022-02-18T10:50:23Z",
+      "mergedBy": "gselander",
+      "mergeCommit": {
+        "oid": "4d48d3b433a791ed3226d08364d1daf863af75d6"
+      },
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think this can be merged.",
+          "createdAt": "2022-02-18T05:38:03Z",
+          "updatedAt": "2022-02-18T05:38:03Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed the problem with ':' in refs. Now merging.",
+          "createdAt": "2022-02-18T10:50:15Z",
+          "updatedAt": "2022-02-18T10:50:15Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -11508,25 +11633,37 @@
       "id": "PR_kwDOEItXAM4xdHBF",
       "title": " Error message => Discontinue #208",
       "url": "https://github.com/lake-wg/edhoc/pull/234",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "#208",
       "createdAt": "2022-01-23T10:04:02Z",
-      "updatedAt": "2022-01-23T10:04:03Z",
+      "updatedAt": "2022-02-18T15:13:48Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "fbfa8acda261363e4def600f6cc3a29d0c341699",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "Error-message-=>-Discontinue-#208",
       "headRefOid": "dad9b4cf2394e96807e029de7a95dabff3f0fe9d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2022-02-18T15:13:47Z",
+      "mergedAt": "2022-02-18T15:13:47Z",
+      "mergedBy": "gselander",
+      "mergeCommit": {
+        "oid": "510d6772871dc82af0e90f37e0554c3902c44647"
+      },
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think this is ready to merge. This addresses Marcos and Seans comments. Remaining discussions should be handled by separate PRs.",
+          "createdAt": "2022-02-18T07:25:51Z",
+          "updatedAt": "2022-02-18T07:25:51Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -11534,25 +11671,44 @@
       "id": "PR_kwDOEItXAM4xkQC5",
       "title": " Decision to use SHA-256/64 for I_CRED_R #235",
       "url": "https://github.com/lake-wg/edhoc/pull/236",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "#235",
       "createdAt": "2022-01-25T15:32:29Z",
-      "updatedAt": "2022-01-25T15:32:30Z",
+      "updatedAt": "2022-02-18T11:03:10Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "0682135bd778164c86ae170d1cfb9947802573a7",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "Decision-to-use-SHA-256/64-for-I_CRED_R-#235",
-      "headRefOid": "55c803f0e6427a688276c2cd65d137f486b92b69",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "81e3a4b57dc75f7d4e12bdba60fcc1e92552d60d",
+      "closedAt": "2022-02-18T11:03:03Z",
+      "mergedAt": "2022-02-18T11:03:03Z",
+      "mergedBy": "gselander",
+      "mergeCommit": {
+        "oid": "55bb9eae9b969bf5ee401fee08e48ddae57dac68"
+      },
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I added a recommendation as well. I think this can be merged.",
+          "createdAt": "2022-02-18T05:38:41Z",
+          "updatedAt": "2022-02-18T05:38:41Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks fine to me, merging",
+          "createdAt": "2022-02-18T11:02:57Z",
+          "updatedAt": "2022-02-18T11:02:57Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -11592,10 +11748,12 @@
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "When does the Compliance requirements apply #238",
       "createdAt": "2022-01-29T11:24:15Z",
-      "updatedAt": "2022-02-14T15:44:25Z",
+      "updatedAt": "2022-02-18T05:39:54Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "0682135bd778164c86ae170d1cfb9947802573a7",
@@ -11618,16 +11776,18 @@
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "",
       "createdAt": "2022-01-30T14:23:41Z",
-      "updatedAt": "2022-02-14T18:26:33Z",
+      "updatedAt": "2022-02-18T16:14:14Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "0682135bd778164c86ae170d1cfb9947802573a7",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "section-3.5-update",
-      "headRefOid": "450f7c9855e50da006156d8c779f41d6d5be15eb",
+      "headRefOid": "793144a47c9aaf86456b7d01c69f020f95026018",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -11653,9 +11813,37 @@
           "body": "I've made an attempt at all comments by @emanjon, have a look.",
           "createdAt": "2022-02-14T18:26:33Z",
           "updatedAt": "2022-02-14T18:26:33Z"
+        },
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This looks quite good now. I just checked the greed part of the diff (I have not checked the parts, i.e., if something important was removed).\r\n\r\nComments (but most of them minor)\r\n\r\n\r\n- \"When the identified credential is a chain or a bag, the authentication credential CRED_x is just the end-entity X.509 or C509 certificate / CWT.\"\r\n\r\nThat is always true.\r\n\r\n\r\n\r\n- \"Since CRED_x is used in the integrity verification, see {{asym-msg2-proc}} and {{asym-msg3-proc}}, it needs to be specified such that it is identical when used by Initiator or Responder.\"\r\n\r\nI don't understand why this was added.\r\n\r\n\r\n\r\n\r\n- \"When the authentication credential is an (end-entity) X.509\"\r\n\r\nIf \"end-entity\" should be added it is better to not have the parathesis\r\n\r\nCan we make the end-entity text more general. Applies to CWT as well even\r\nif you cannot transfer more then one.\r\n\r\n\r\n\"If EAD_1 is present, make message_1 content available to the application for EAD processing.\"\r\n\r\nDo we want to force that everything is available. Maybe goood. As it is simple.\r\n\r\n\r\n- \"Make ID_CRED_R and EAD_2 (if present) available to the application for authentication- and EAD processing.\"\r\n\r\nAre you sure G_Y, C_R is not needed? This seems different from message_1 where the whole message is made available.\r\n\r\n\r\n\r\n- \"Message is 1,2,3 or 4,\"\r\n\r\n?\r\n\r\n\r\n\"* Similarly, when a PKI is used with CWTs, each endpoint needs a specific identity or set of identities it is allowed to communicate with\"\r\n\r\nThis is not PKI specific\r\n\r\n\r\n\r\n\"When PKI is not used (CCS, self-signed certificate/CWT)\"\r\n\r\nIs it \"self-signed\" or is pre-configured?\r\n\r\n\r\n\r\n\"For example, the name of the subject may be a canonical representation of the public key.\"\r\n\r\nWhat should the reader do with this. Might be confusing.\r\n\r\n\r\n\r\n\"To prevent misbinding attacks in systems where an attacker can\"\r\n\r\nShould this come a bit earlier?\r\n\r\n\r\n\r\nOLD\r\nWhen a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate. Each party needs at least one CA public key certificate, or just the CA public key.\r\n\r\nNEW\r\nWhen a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate, or just the CA public key.\r\n\r\n\r\n- \"The issuer of the authentication credential needs to be trusted with issuing the credential. X.509 and C509 certificates includes the \u201cIssuer\u201d field. In CWT and CCS, the \u201ciss\u201d claim has a similar meaning.\"\r\n\r\nNot sure this is needed.\r\n\r\n\r\n\r\n- TOFU is misssing that is ok for now\r\n- How ead_label is not defined.\r\n\r\n",
+          "createdAt": "2022-02-18T12:08:48Z",
+          "updatedAt": "2022-02-18T12:08:48Z"
+        },
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The section are now using different terms for CRED_x and ID_CRED_x than other parts of the document. The intro defines them as `credentials` and `credential identifiers`. `credential identifiers` is also used in the security considerations.\r\n\r\n   *  CRED_I and CRED_R are the `credentials` containing the public\r\n      authentication keys of I and R, respectively.\r\n\r\n   *  ID_CRED_I and ID_CRED_R are `credential identifiers` enabling the\r\n      recipient party to retrieve the credential of I and R,\r\n      respectively.\r\n\r\n\r\n",
+          "createdAt": "2022-02-18T15:53:51Z",
+          "updatedAt": "2022-02-18T15:53:51Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOEItXAM405ekj",
+          "commit": {
+            "abbreviatedOid": "793144a"
+          },
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-02-18T16:14:14Z",
+          "updatedAt": "2022-02-18T16:14:14Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 245,
@@ -11694,22 +11882,108 @@
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready to merge"
+      ],
       "body": "#241\r\n\r\nGood to describe that the known attack on Sigma is that the attacker create a new message_1, no attack is known where an active attacker modifies the ongoing connection (even if the lack of such attacks is likely not proven).",
       "createdAt": "2022-02-10T07:37:09Z",
-      "updatedAt": "2022-02-10T07:37:09Z",
+      "updatedAt": "2022-02-18T14:05:24Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "4a8b62968a266dd4b9ce93e2851b6af08249f893",
       "headRepository": "lake-wg/edhoc",
       "headRefName": "Identity-protection-attack-description",
-      "headRefOid": "725b554377fadfbd34777cb1b1fe798dda04184d",
+      "headRefOid": "eafafd495aff3c7387167b2a6def7a277e7f5b07",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This seems ready to merge",
+          "createdAt": "2022-02-18T05:45:55Z",
+          "updatedAt": "2022-02-18T05:45:55Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 251,
+      "id": "PR_kwDOEItXAM4zECeZ",
+      "title": "Checking G_X in EDHOC Message 1 #243",
+      "url": "https://github.com/lake-wg/edhoc/pull/251",
+      "state": "OPEN",
+      "author": "emanjon",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Removed the G_X checking that is heavy for implementations. That was a left over from the PSK mehtod.",
+      "createdAt": "2022-02-18T09:12:35Z",
+      "updatedAt": "2022-02-18T15:49:28Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "4a8b62968a266dd4b9ce93e2851b6af08249f893",
+      "headRepository": "lake-wg/edhoc",
+      "headRefName": "Checking-G_X-in-EDHOC-Message-1-#243",
+      "headRefOid": "f107fdc1ed59cdeb6a11c1d8d783c1044091708f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Based on Marco's comment. Maybe we should not have details....\r\n\r\n- Remoded details on ID_CRED\r\n- Reforormulated in split into tofu and non tofu\r\n- Renamed to selfie attack. (reflection attack was used earlier for the same thing but can also be other types of attacks)\r\n\r\n\r\n`So-called selfie attacks are mitigated as long as the Initiator does not have its own identity in the set of Responder identities it is allowed to communicate with. In trust on first use (TOFU) use cases the Initiator should verify that the the Responder's identity is not equal to its own. Any future EHDOC methods using e.g., pre-shared keys might need to mitigate this in other ways.\r\n`",
+          "createdAt": "2022-02-18T15:49:28Z",
+          "updatedAt": "2022-02-18T15:49:28Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 252,
+      "id": "PR_kwDOEItXAM4zFjK2",
+      "title": "Limited crypto support",
+      "url": "https://github.com/lake-wg/edhoc/pull/252",
+      "state": "OPEN",
+      "author": "gselander",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "Ready to merge"
+      ],
+      "body": "In PR #239 statements about expected limitations in crypto support was lost. Now moved to security considerations.",
+      "createdAt": "2022-02-18T14:04:43Z",
+      "updatedAt": "2022-02-18T15:14:57Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "55bb9eae9b969bf5ee401fee08e48ddae57dac68",
+      "headRepository": "lake-wg/edhoc",
+      "headRefName": "limited-crypto-support",
+      "headRefOid": "057e1e863baf113f44516bb3d7b9456b25af4baf",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOEItXAM4042nN",
+          "commit": {
+            "abbreviatedOid": "057e1e8"
+          },
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-02-18T14:06:24Z",
+          "updatedAt": "2022-02-18T14:06:24Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
