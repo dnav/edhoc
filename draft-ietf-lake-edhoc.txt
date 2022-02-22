@@ -445,16 +445,16 @@ Table of Contents
    The Initiator and the Responder need to have agreed on a single
    method to be used for EDHOC, see Section 3.9.
 
-   +--------+------------------+------------------+-------------------+
-   | Method | Initiator        | Responder        | Reference         |
-   |   Type | Authentication   | Authentication   |                   |
-   |  Value | Key              | Key              |                   |
-   +--------+------------------+------------------+-------------------+
-   |      0 | Signature Key    | Signature Key    | [[this document]] |
-   |      1 | Signature Key    | Static DH Key    | [[this document]] |
-   |      2 | Static DH Key    | Signature Key    | [[this document]] |
-   |      3 | Static DH Key    | Static DH Key    | [[this document]] |
-   +--------+------------------+------------------+-------------------+
+             +--------+------------------+------------------+
+             | Method | Initiator        | Responder        |
+             |   Type | Authentication   | Authentication   |
+             |  Value | Key              | Key              |
+             +--------+------------------+------------------+
+             |      0 | Signature Key    | Signature Key    |
+             |      1 | Signature Key    | Static DH Key    |
+             |      2 | Static DH Key    | Signature Key    |
+             |      3 | Static DH Key    | Static DH Key    |
+             +--------+------------------+------------------+
 
                Figure 4: Authentication Keys for Method Types
 
@@ -2480,11 +2480,11 @@ Table of Contents
    Value Type is bstr / int.  The Value Registry for this item is empty
    and omitted from the table below.
 
-   +------+-------+------------+----------------+-------------------+
-   | Name | Label | Value Type | Description    | Reference         |
-   +------+-------+------------+----------------+-------------------+
-   | kid  |   4   | bstr / int | Key identifier | [[This document]] |
-   +------+-------+------------+----------------+-------------------+
+   +------+-------+------------+----------------+
+   | Name | Label | Value Type | Description    |
+   +------+-------+------------+----------------+
+   | kid  |   4   | bstr / int | Key identifier |
+   +------+-------+------------+----------------+
 
 9.8.  COSE Key Common Parameters Registry
 
@@ -2494,14 +2494,14 @@ Table of Contents
    Value Type is bstr / int.  The Value Registry for this item is empty
    and omitted from the table below.
 
-   +------+-------+------------+----------------+-------------------+
-   | Name | Label | Value Type | Description    | Reference         |
-   +------+-------+------------+----------------+-------------------+
-   | kid  |   2   | bstr / int | Key identifi-  | [[This document]] |
-   |      |       |            | cation value - |                   |
-   |      |       |            | match to kid   |                   |
-   |      |       |            | in message     |                   |
-   +------+-------+------------+----------------+-------------------+
+   +------+-------+------------+----------------+
+   | Name | Label | Value Type | Description    |
+   +------+-------+------------+----------------+
+   | kid  |   2   | bstr / int | Key identifi-  |
+   |      |       |            | cation value - |
+   |      |       |            | match to kid   |
+   |      |       |            | in message     |
+   +------+-------+------------+----------------+
 
 9.9.  CWT Confirmation Methods Registry
 

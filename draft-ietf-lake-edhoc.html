@@ -1568,16 +1568,16 @@ Initiator                                                   Responder
 <figure id="figure-4">
           <div class="alignCenter art-text artwork" id="section-3.2-3.1">
 <pre>
-+--------+------------------+------------------+-------------------+
-| Method | Initiator        | Responder        | Reference         |
-|   Type | Authentication   | Authentication   |                   |
-|  Value | Key              | Key              |                   |
-+--------+------------------+------------------+-------------------+
-|      0 | Signature Key    | Signature Key    | [[this document]] |
-|      1 | Signature Key    | Static DH Key    | [[this document]] |
-|      2 | Static DH Key    | Signature Key    | [[this document]] |
-|      3 | Static DH Key    | Static DH Key    | [[this document]] |
-+--------+------------------+------------------+-------------------+
++--------+------------------+------------------+
+| Method | Initiator        | Responder        |
+|   Type | Authentication   | Authentication   |
+|  Value | Key              | Key              |
++--------+------------------+------------------+
+|      0 | Signature Key    | Signature Key    |
+|      1 | Signature Key    | Static DH Key    |
+|      2 | Static DH Key    | Signature Key    |
+|      3 | Static DH Key    | Static DH Key    |
++--------+------------------+------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
@@ -2982,11 +2982,11 @@ Reference: [[this document]]
 <p id="section-9.7-1">IANA has extended the Value Type of 'kid' in the "COSE Header Parameters" registry under the group name "CBOR Object Signing and Encryption (COSE)" to also allow the Value Type int. The resulting Value Type is bstr / int. The Value Registry for this item is empty and omitted from the table below.<a href="#section-9.7-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-9.7-2">
 <pre>
-+------+-------+------------+----------------+-------------------+
-| Name | Label | Value Type | Description    | Reference         |
-+------+-------+------------+----------------+-------------------+
-| kid  |   4   | bstr / int | Key identifier | [[This document]] |
-+------+-------+------------+----------------+-------------------+
++------+-------+------------+----------------+
+| Name | Label | Value Type | Description    |
++------+-------+------------+----------------+
+| kid  |   4   | bstr / int | Key identifier |
++------+-------+------------+----------------+
 </pre><a href="#section-9.7-2" class="pilcrow">¶</a>
 </div>
 </section>
@@ -2999,14 +2999,14 @@ Reference: [[this document]]
 <p id="section-9.8-1">IANA has extended the Value Type of 'kid' in the "COSE Key Common Parameters" registry under the group name "CBOR Object Signing and Encryption (COSE)" to also allow the Value Type int. The resulting Value Type is bstr / int. The Value Registry for this item is empty and omitted from the table below.<a href="#section-9.8-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-9.8-2">
 <pre>
-+------+-------+------------+----------------+-------------------+
-| Name | Label | Value Type | Description    | Reference         |
-+------+-------+------------+----------------+-------------------+
-| kid  |   2   | bstr / int | Key identifi-  | [[This document]] |
-|      |       |            | cation value - |                   |
-|      |       |            | match to kid   |                   |
-|      |       |            | in message     |                   |
-+------+-------+------------+----------------+-------------------+
++------+-------+------------+----------------+
+| Name | Label | Value Type | Description    |
++------+-------+------------+----------------+
+| kid  |   2   | bstr / int | Key identifi-  |
+|      |       |            | cation value - |
+|      |       |            | match to kid   |
+|      |       |            | in message     |
++------+-------+------------+----------------+
 </pre><a href="#section-9.8-2" class="pilcrow">¶</a>
 </div>
 </section>
