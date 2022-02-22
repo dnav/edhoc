@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 22 August 2022                                         Ericsson
-                                                        18 February 2022
+Expires: 26 August 2022                                         Ericsson
+                                                        22 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2022.
+   This Internet-Draft will expire on 26 August 2022.
 
 Copyright Notice
 
@@ -1946,15 +1946,17 @@ Table of Contents
 
 7.  Compliance Requirements
 
-   An implementation may support only Initiator or only Responder.
+   In the absence of an application profile specifying otherwise:
 
-   An implementation may support only a single method.  None of the
+   An implementation MAY support only Initiator or only Responder.
+
+   An implementation MAY support only a single method.  None of the
    methods are mandatory-to-implement.
 
    Implementations MUST support 'kid' parameters of type int.  None of
    the other COSE header parameters are mandatory-to-implement.
 
-   An implementation may support only a single credential type (CCS,
+   An implementation MAY support only a single credential type (CCS,
    CWT, X.509, C509).  None of the credential types are mandatory-to-
    implement.
 
@@ -1970,20 +1972,13 @@ Table of Contents
    messages.  Implementations MUST support padding of plaintext when
    receiving messages, i.e. MUST be able to parse padded messages.
 
-   For many constrained IoT devices it is problematic to support several
-   crypto primitives.  Existing devices can be expected to support
-   either ECDSA or EdDSA.  Cipher suites 0 (AES-CCM-16-64-128, SHA-256,
-   8, X25519, EdDSA, AES-CCM-16-64-128, SHA-256) and 1 (AES-CCM-
-   16-128-128, SHA-256, 16, X25519, EdDSA, AES-CCM-16-64-128, SHA-256)
-   only differ in size of the MAC length, so supporting one or both of
-   these is no essential difference.  Similarly for cipher suites 2
+   Implementations MUST support cipher suite 2 and 3.  Cipher suites 2
    (AES-CCM-16-64-128, SHA-256, 8, P-256, ES256, AES-CCM-16-64-128, SHA-
    256) and 3 (AES-CCM-16-128-128, SHA-256, 16, P-256, ES256, AES-CCM-
-   16-64-128, SHA-256).  To enable as much interoperability as possible,
-   less constrained devices SHOULD implement all four cipher suites 0-3.
-   Constrained endpoints SHOULD implement cipher suites 0 and 1, or
-   cipher suites 2 and 3.  Implementations only need to implement the
-   algorithms needed for their supported methods.
+   16-64-128, SHA-256) only differ in size of the MAC length, so
+   supporting one or both of these is no essential difference.
+   Implementations only need to implement the algorithms needed for
+   their supported methods.
 
 8.  Security Considerations
 
