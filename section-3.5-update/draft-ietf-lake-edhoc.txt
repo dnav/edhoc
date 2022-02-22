@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 22 August 2022                                         Ericsson
-                                                        18 February 2022
+Expires: 26 August 2022                                         Ericsson
+                                                        22 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2022.
+   This Internet-Draft will expire on 26 August 2022.
 
 Copyright Notice
 
@@ -752,9 +752,11 @@ Table of Contents
    uses peculiar names such as ES256 for ECDSA with SHA-256, A128 for
    AES-128, and Ed25519 for the curve edwards25519.  Algorithms need to
    be specified with enough parameters to make them completely
-   determined.  The MAC length MUST be at least 8 bytes.  EDHOC is
-   currently only specified for use with key exchange algorithms of type
-   ECDH curves, but any Key Encapsulation Method (KEM), including Post-
+   determined.  The MAC length MUST be at least 8 bytes.  Any
+   cryptographic algorithm used in the COSE header parameters in ID_CRED
+   is selected independently of the cipher suite.  EDHOC is currently
+   only specified for use with key exchange algorithms of type ECDH
+   curves, but any Key Encapsulation Method (KEM), including Post-
    Quantum Cryptography (PQC) KEMs, can be used in method 0, see
    Section 8.4.  Use of other types of key exchange algorithms to
    replace static DH authentication (method 1,2,3) would likely require
@@ -1299,21 +1301,15 @@ Table of Contents
 
    *  Decode message_1 (see Appendix C.1).
 
-   *  Verify that G_X is not equal to G_X in a simultanous EDHOC message
-      exchange initiated by the Responder.
-
    *  Verify that the selected cipher suite is supported and that no
       prior cipher suite in SUITES_I is supported.
 
    *  If EAD_1 is present then make it available to the application for
       EAD processing.
 
-   If any processing step fails, the Responder SHOULD send an EDHOC
-   error message back, formatted as defined in Section 6, and the
-   session MUST be discontinued.  Sending error messages is essential
-   for debugging but MAY be skipped due to, for example, denial-of-
-   service reasons, see Section 8.7.  If an error message is sent, the
-   session MUST be discontinued.
+   If any processing step fails, the Responder MUST send an EDHOC error
+   message back, formatted as defined in Section 6, and the session MUST
+   be discontinued.
 
 5.3.  EDHOC Message 2
 
@@ -1431,12 +1427,9 @@ Table of Contents
       cipher suite.  The verification process depends on the method, see
       Section 5.3.2.
 
-   If any processing step fails, the Initiator SHOULD send an EDHOC
-   error message back, formatted as defined in Section 6.  Sending error
-   messages is essential for debugging but MAY be skipped if, for
-   example, a session cannot be found or due to denial-of-service
-   reasons, see Section 8.7.  If an error message is sent, the session
-   MUST be discontinued.
+   If any processing step fails, the Responder MUST send an EDHOC error
+   message back, formatted as defined in Section 6, and the session MUST
+   be discontinued.
 
 5.4.  EDHOC Message 3
 
@@ -1578,12 +1571,9 @@ Table of Contents
       application.  The application can now derive application keys
       using the EDHOC-Exporter interface, see Section 4.3.
 
-   If any processing step fails, the Responder SHOULD send an EDHOC
-   error message back, formatted as defined in Section 6.  Sending error
-   messages is essential for debugging but MAY be skipped if, for
-   example, a session cannot be found or due to denial-of-service
-   reasons, see Section 8.7.  If an error message is sent, the session
-   MUST be discontinued.
+   If any processing step fails, the Responder MUST send an EDHOC error
+   message back, formatted as defined in Section 6, and the session MUST
+   be discontinued.
 
    After verifying message_3, the Responder is assured that the
    Initiator has calculated the key PRK_4x3m (explicit key confirmation)
@@ -1675,12 +1665,9 @@ Table of Contents
    *  Make EAD_4 (if present) available to the application for EAD
       processing.
 
-   If any processing step fails, the Responder SHOULD send an EDHOC
-   error message back, formatted as defined in Section 6.  Sending error
-   messages is essential for debugging but MAY be skipped if, for
-   example, a session cannot be found or due to denial-of-service
-   reasons, see Section 8.7.  If an error message is sent, the session
-   MUST be discontinued.
+   If any processing step fails, the Responder MUST send an EDHOC error
+   message back, formatted as defined in Section 6, and the session MUST
+   be discontinued.
 
 6.  Error Handling
 
@@ -1688,18 +1675,25 @@ Table of Contents
    processing associated to the currently defined error codes.
    Additional error codes may be registered, see Section 9.4.
 
+   There are many kinds of errors that can occur during EDHOC
+   processing.  As in CoAP, an error can be triggered by errors in the
+   received message or internal errors in the recieving endpoint.
+   Except for processing and formatting errors, it is up to the
+   implementation when to send an error message.  Sending error messages
+   is essential for debugging but MAY be skipped if, for example, a
+   session cannot be found or due to denial-of-service reasons, see
+   Section 8.7.  Errors messages in EDHOC are always fatal.  After
+   sending an error message, the sender MUST discontinue the protocol.
+   The receiver SHOULD treat an error message as an indication that the
+   other party likely has discontinued the protocol.  But as the error
+   message is not authenticated, a received error message might also
+   have been sent by an attacker and the receiver MAY therefore try to
+   continue the protocol.
+
    An EDHOC error message can be sent by either endpoint as a reply to
    any non-error EDHOC message.  How errors at the EDHOC layer are
    transported depends on lower layers, which need to enable error
    messages to be sent and processed as intended.
-
-   Errors in EDHOC are fatal.  After sending an error message, the
-   sender MUST discontinue the protocol.  The receiver SHOULD treat an
-   error message as an indication that the other party likely has
-   discontinued the protocol.  But as the error message is not
-   authenticated, a received error message might also have been sent by
-   an attacker and the receiver MAY therefore try to continue the
-   protocol.
 
    error SHALL be a CBOR Sequence (see Appendix C.1) as defined below
 
@@ -1879,15 +1873,17 @@ Table of Contents
 
 7.  Compliance Requirements
 
-   An implementation may support only Initiator or only Responder.
+   In the absence of an application profile specifying otherwise:
 
-   An implementation may support only a single method.  None of the
+   An implementation MAY support only Initiator or only Responder.
+
+   An implementation MAY support only a single method.  None of the
    methods are mandatory-to-implement.
 
    Implementations MUST support 'kid' parameters of type int.  None of
    the other COSE header parameters are mandatory-to-implement.
 
-   An implementation may support only a single credential type (CCS,
+   An implementation MAY support only a single credential type (CCS,
    CWT, X.509, C509).  None of the credential types are mandatory-to-
    implement.
 
@@ -1903,20 +1899,13 @@ Table of Contents
    messages.  Implementations MUST support padding of plaintext when
    receiving messages, i.e. MUST be able to parse padded messages.
 
-   For many constrained IoT devices it is problematic to support several
-   crypto primitives.  Existing devices can be expected to support
-   either ECDSA or EdDSA.  Cipher suites 0 (AES-CCM-16-64-128, SHA-256,
-   8, X25519, EdDSA, AES-CCM-16-64-128, SHA-256) and 1 (AES-CCM-
-   16-128-128, SHA-256, 16, X25519, EdDSA, AES-CCM-16-64-128, SHA-256)
-   only differ in size of the MAC length, so supporting one or both of
-   these is no essential difference.  Similarly for cipher suites 2
+   Implementations MUST support cipher suite 2 and 3.  Cipher suites 2
    (AES-CCM-16-64-128, SHA-256, 8, P-256, ES256, AES-CCM-16-64-128, SHA-
    256) and 3 (AES-CCM-16-128-128, SHA-256, 16, P-256, ES256, AES-CCM-
-   16-64-128, SHA-256).  To enable as much interoperability as possible,
-   less constrained devices SHOULD implement all four cipher suites 0-3.
-   Constrained endpoints SHOULD implement cipher suites 0 and 1, or
-   cipher suites 2 and 3.  Implementations only need to implement the
-   algorithms needed for their supported methods.
+   16-64-128, SHA-256) only differ in size of the MAC length, so
+   supporting one or both of these is no essential difference.
+   Implementations only need to implement the algorithms needed for
+   their supported methods.
 
 8.  Security Considerations
 
@@ -1931,10 +1920,13 @@ Table of Contents
    As described in [SIGMA], different levels of identity protection are
    provided to the Initiator and the Responder.  EDHOC protects the
    credential identifier of the Initiator against active attacks and the
-   credential identifier of the Responder against passive attacks.  The
-   roles should be assigned to protect the most sensitive identity/
-   identifier, typically that which is not possible to infer from
-   routing information in the lower layers.
+   credential identifier of the Responder against passive attacks.  An
+   active attacker can get the credential identifier of the Responder by
+   eavesdropping on the destination address used for transporting
+   message_1 and send its own message_1 to the same address.  The roles
+   should be assigned to protect the most sensitive identity/identifier,
+   typically that which is not possible to infer from routing
+   information in the lower layers.
 
    Compared to [SIGMA], EDHOC adds an explicit method type and expands
    the message authentication coverage to additional elements such as
@@ -2089,6 +2081,13 @@ Table of Contents
    of [SP-800-56A].  For secp256r1, secp384r1, and secp521r1, at least
    partial public-key validation MUST be done.
 
+   So-called selfie attacks are mitigated as long as the Initiator does
+   not have its own identity in the set of Responder identities it is
+   allowed to communicate with.  In trust on first use (TOFU) use cases
+   the Initiator should verify that the the Responder's identity is not
+   equal to its own.  Any future EHDOC methods using e.g., pre-shared
+   keys might need to mitigate this in other ways.
+
 8.3.  Cipher Suites and Cryptographic Algorithms
 
    When using private cipher suite or registering new cipher suites, the
@@ -2101,13 +2100,16 @@ Table of Contents
    256-bits, i.e., the hash algorithms SHA-1 and SHA-256/64 (SHA-256
    truncated to 64-bits) SHALL NOT be supported for use in EDHOC except
    for certificate identification with x5t and c5t.  For security
-   considerations of SHA-1, see [RFC6194].
-
-   The EDHOC MAC length MUST be at least 8 bytes and the tag length of
-   the EDHOC AEAD algorithm MUST be at least 64-bits.  Note that
-   secp256k1 is only defined for use with ECDSA and not for ECDH.  Note
-   that some COSE algorithms are marked as not recommended in the COSE
-   IANA registry.
+   considerations of SHA-1, see [RFC6194].  As EDHOC integrity protects
+   the whole authentication credential, the choice of hash algorithm in
+   x5t and c5t does not affect security and it is RECOMMENDED to use the
+   same hash algorithm as in the cipher suite but with as much
+   truncation as possible, i.e, when the EDHOC hash algorithm is SHA-256
+   it is RECOMMENDED to use SHA-256/64 in x5t and c5t.  The EDHOC MAC
+   length MUST be at least 8 bytes and the tag length of the EDHOC AEAD
+   algorithm MUST be at least 64-bits.  Note that secp256k1 is only
+   defined for use with ECDSA and not for ECDH.  Note that some COSE
+   algorithms are marked as not recommended in the COSE IANA registry.
 
 8.4.  Post-Quantum Considerations
 
@@ -2222,13 +2224,28 @@ Table of Contents
    RECOMMENDED to not trust a single source of randomness and to not put
    unaugmented random numbers on the wire.
 
-   If ECDSA is supported, "deterministic ECDSA" as specified in
-   [RFC6979] MAY be used.  Pure deterministic elliptic-curve signatures
-   such as deterministic ECDSA and EdDSA have gained popularity over
-   randomized ECDSA as their security do not depend on a source of high-
-   quality randomness.  Recent research has however found that
-   implementations of these signature algorithms may be vulnerable to
-   certain side-channel and fault injection attacks due to their
+   Implementations might consider deriving secret and non-secret
+   randomness from different PNRG/PRF/KDF instances to limit the damage
+   if the PNRG/PRF/KDF turns out to be fundamentally broken.  NIST
+   generally forbids deriving secret and non-secret randomness from the
+   same KDF instance, but this decision has been criticized by Krawczyk
+   [HKDFpaper] and doing so is common practice.  In addition to IVs,
+   other examples are the challenge in EAP-TTLS, the RAND in 3GPP AKAs,
+   and the Session-Id in EAP-TLS 1.3.  Note that part of KEYSTREAM_2 is
+   also non-secret randomness as it is known or predictable to an
+   attacker.  As explained by Krawczyk, if any attack is mitigated by
+   the NIST requirement it would mean that the KDF is fully broken and
+   would have to be replaced anyway.
+
+   For many constrained IoT devices it is problematic to support several
+   crypto primitives.  Existing devices can be expected to support
+   either ECDSA or EdDSA.  If ECDSA is supported, "deterministic ECDSA"
+   as specified in [RFC6979] MAY be used.  Pure deterministic elliptic-
+   curve signatures such as deterministic ECDSA and EdDSA have gained
+   popularity over randomized ECDSA as their security do not depend on a
+   source of high-quality randomness.  Recent research has however found
+   that implementations of these signature algorithms may be vulnerable
+   to certain side-channel and fault injection attacks due to their
    determinism.  See e.g., Section 1 of
    [I-D.mattsson-cfrg-det-sigs-with-noise] for a list of attack papers.
    As suggested in Section 6.1.2 of [I-D.ietf-cose-rfc8152bis-algs] this
@@ -2273,15 +2290,10 @@ Table of Contents
    If two nodes unintentionally initiate two simultaneous EDHOC message
    exchanges with each other even if they only want to complete a single
    EDHOC message exchange, they MAY terminate the exchange with the
-   lexicographically smallest G_X.  If the two G_X values are equal, the
-   received message_1 MUST be discarded to mitigate reflection attacks.
-   Reflection attacks are not possible when the other endpoint's
-   identity is verified, but could be a problem with trust on first use
-   (TOFU) and future EHDOC methods using e.g., pre-shared keys.  Note
-   that in cases where several EDHOC exchanges with different parameter
-   sets (method, COSE headers, etc.) are used, an attacker can affect
-   which of the parameter sets that will be used by blocking some of the
-   parameter sets.
+   lexicographically smallest G_X.  Note that in cases where several
+   EDHOC exchanges with different parameter sets (method, COSE headers,
+   etc.) are used, an attacker can affect which of the parameter sets
+   that will be used by blocking some of the parameter sets.
 
    If supported by the device, it is RECOMMENDED that at least the long-
    term private keys are stored in a Trusted Execution Environment (TEE)
@@ -2792,6 +2804,11 @@ Table of Contents
               Suite", August 2015,
               <https://apps.nsa.gov/iaarchive/programs/iad-initiatives/
               cnsa-suite.cfm>.
+
+   [HKDFpaper]
+              Krawczyk, H., "Cryptographic Extraction and Key
+              Derivation: The HKDF Scheme", May 2010,
+              <https://eprint.iacr.org/2010/264.pdf>.
 
    [I-D.arkko-arch-internet-threat-model-guidance]
               Arkko, J. and S. Farrell, "Internet Threat Model
@@ -3974,17 +3991,18 @@ Appendix I.  Change Log
 Acknowledgments
 
    The authors want to thank Christian Amsuess, Alessandro Bruni,
-   Karthikeyan Bhargavan, Timothy Claeys, Martin Disch, Loic Ferreira,
-   Theis Groenbech Petersen, Dan Harkins, Klaus Hartke, Russ Housley,
-   Stefan Hristozov, Alexandros Krontiris, Ilari Liusvaara, Karl
-   Norrman, Salvador Perez, Eric Rescorla, Michael Richardson, Thorvald
-   Sahl Joergensen, Jim Schaad, Carsten Schuermann, Ludwig Seitz,
-   Stanislav Smyshlyaev, Valery Smyslov, Peter van der Stok, Rene
-   Struik, Per Staehl, Vaishnavi Sundararajan, Erik Thormarker, Marco
-   Tiloca, Michel Veillette, and Malisa Vucinic for reviewing and
-   commenting on intermediate versions of the draft.  We are especially
-   indebted to Jim Schaad for his continuous reviewing and
-   implementation of different versions of the draft.
+   Karthikeyan Bhargavan, Timothy Claeys, Martin Disch, Stephen Farrell,
+   Loic Ferreira, Theis Groenbech Petersen, Dan Harkins, Klaus Hartke,
+   Russ Housley, Stefan Hristozov, Alexandros Krontiris, Ilari
+   Liusvaara, Kathleen Moriarty, Karl Norrman, Salvador Perez, Eric
+   Rescorla, Michael Richardson, Thorvald Sahl Joergensen, Jim Schaad,
+   Carsten Schuermann, Ludwig Seitz, Stanislav Smyshlyaev, Valery
+   Smyslov, Peter van der Stok, Rene Struik, Vaishnavi Sundararajan,
+   Erik Thormarker, Marco Tiloca, Sean Turner, Michel Veillette, and
+   Malisa Vucinic for reviewing and commenting on intermediate versions
+   of the draft.  We are especially indebted to Jim Schaad for his
+   continuous reviewing and implementation of different versions of the
+   draft.
 
    Work on this document has in part been supported by the H2020 project
    SIFIS-Home (grant agreement 952652).
