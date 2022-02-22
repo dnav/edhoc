@@ -1375,9 +1375,6 @@ Table of Contents
 
    *  Decode message_1 (see Appendix C.1).
 
-   *  Verify that G_X is not equal to G_X in a simultanous EDHOC message
-      exchange initiated by the Responder.
-
    *  Verify that the selected cipher suite is supported and that no
       prior cipher suite in SUITES_I is supported.
 
@@ -2143,6 +2140,13 @@ Table of Contents
    of [SP-800-56A].  For secp256r1, secp384r1, and secp521r1, at least
    partial public-key validation MUST be done.
 
+   So-called selfie attacks are mitigated as long as the Initiator does
+   not have its own identity in the set of Responder identities it is
+   allowed to communicate with.  In trust on first use (TOFU) use cases
+   the Initiator should verify that the the Responder's identity is not
+   equal to its own.  Any future EHDOC methods using e.g., pre-shared
+   keys might need to mitigate this in other ways.
+
 8.3.  Cipher Suites and Cryptographic Algorithms
 
    When using private cipher suite or registering new cipher suites, the
@@ -2345,15 +2349,10 @@ Table of Contents
    If two nodes unintentionally initiate two simultaneous EDHOC message
    exchanges with each other even if they only want to complete a single
    EDHOC message exchange, they MAY terminate the exchange with the
-   lexicographically smallest G_X.  If the two G_X values are equal, the
-   received message_1 MUST be discarded to mitigate reflection attacks.
-   Reflection attacks are not possible when the other endpoint's
-   identity is verified, but could be a problem with trust on first use
-   (TOFU) and future EHDOC methods using e.g., pre-shared keys.  Note
-   that in cases where several EDHOC exchanges with different parameter
-   sets (method, COSE headers, etc.) are used, an attacker can affect
-   which of the parameter sets that will be used by blocking some of the
-   parameter sets.
+   lexicographically smallest G_X.  Note that in cases where several
+   EDHOC exchanges with different parameter sets (method, COSE headers,
+   etc.) are used, an attacker can affect which of the parameter sets
+   that will be used by blocking some of the parameter sets.
 
    If supported by the device, it is RECOMMENDED that at least the long-
    term private keys are stored in a Trusted Execution Environment (TEE)
