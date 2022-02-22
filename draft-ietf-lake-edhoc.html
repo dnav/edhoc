@@ -1342,22 +1342,45 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-D" class="xref">Appendix D</a>.  <a href="#name-applicability-template-exam" class="xref">Applicability Template Example</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-D" class="xref">Appendix D</a>.  <a href="#name-authentication-related-veri" class="xref">Authentication Related Verifications</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+                <p id="section-toc.1-1.14.2.1.1"><a href="#appendix-D.1" class="xref">D.1</a>.  <a href="#name-validating-the-authenticati" class="xref">Validating the Authentication Credential</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+                <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-D.2" class="xref">D.2</a>.  <a href="#name-identities" class="xref">Identities</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.3">
+                <p id="section-toc.1-1.14.2.3.1"><a href="#appendix-D.3" class="xref">D.3</a>.  <a href="#name-certification-path-and-trus" class="xref">Certification Path and Trust Anchors</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.4">
+                <p id="section-toc.1-1.14.2.4.1"><a href="#appendix-D.4" class="xref">D.4</a>.  <a href="#name-revocation-status" class="xref">Revocation Status</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.5">
+                <p id="section-toc.1-1.14.2.5.1"><a href="#appendix-D.5" class="xref">D.5</a>.  <a href="#name-trust-on-first-use" class="xref">Trust-on-first-use</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-E" class="xref">Appendix E</a>.  <a href="#name-edhoc-message-deduplication" class="xref">EDHOC Message Deduplication</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-E" class="xref">Appendix E</a>.  <a href="#name-use-of-external-authorizati" class="xref">Use of External Authorization Data</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-F" class="xref">Appendix F</a>.  <a href="#name-transports-not-natively-pro" class="xref">Transports Not Natively Providing Correlation</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-F" class="xref">Appendix F</a>.  <a href="#name-applicability-template-exam" class="xref">Applicability Template Example</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#appendix-G" class="xref">Appendix G</a>.  <a href="#name-change-log" class="xref">Change Log</a></p>
+            <p id="section-toc.1-1.17.1"><a href="#appendix-G" class="xref">Appendix G</a>.  <a href="#name-edhoc-message-deduplication" class="xref">EDHOC Message Deduplication</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
-            <p id="section-toc.1-1.18.1"><a href="#appendix-H" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.18.1"><a href="#appendix-H" class="xref">Appendix H</a>.  <a href="#name-transports-not-natively-pro" class="xref">Transports Not Natively Providing Correlation</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
-            <p id="section-toc.1-1.19.1"><a href="#appendix-I" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.19.1"><a href="#appendix-I" class="xref">Appendix I</a>.  <a href="#name-change-log" class="xref">Change Log</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.20">
+            <p id="section-toc.1-1.20.1"><a href="#appendix-J" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21">
+            <p id="section-toc.1-1.21.1"><a href="#appendix-K" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1377,7 +1400,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <p id="section-1.1-2">The need for special protocols targeting constrained IoT deployments extends also to the security domain <span>[<a href="#I-D.ietf-lake-reqs" class="xref">I-D.ietf-lake-reqs</a>]</span>. Important characteristics in constrained environments are the number of round trips and protocol message sizes, which if kept low can contribute to good performance by enabling transport over a small number of radio frames, reducing latency due to fragmentation or duty cycles, etc. Another important criteria is code size, which may be prohibitive for certain deployments due to device capabilities or network load during firmware update. Some IoT deployments also need to support a variety of underlying transport technologies, potentially even with a single connection.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">Some security solutions for such settings exist already. CBOR Object Signing and Encryption (COSE, <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>) specifies basic application-layer security services efficiently encoded in CBOR. Another example is Object Security for Constrained RESTful Environments (OSCORE, <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>) which is a lightweight communication security extension to CoAP using CBOR and COSE. In order to establish good quality cryptographic keys for security protocols such as COSE and OSCORE, the two endpoints may run an authenticated Diffie-Hellman key exchange protocol, from which shared secret keying material can be derived. Such a key exchange protocol should also be lightweight; to prevent bad performance in case of repeated use, e.g., due to device rebooting or frequent rekeying for security reasons; or to avoid latencies in a network formation setting with many devices authenticating at the same time.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 <p id="section-1.1-4">This document specifies Ephemeral Diffie-Hellman Over COSE (EDHOC), a lightweight authenticated key exchange protocol providing good security properties including forward secrecy, identity protection, and cipher suite negotiation. Authentication can be based on raw public keys (RPK) or public key certificates and requires the application to provide input on how to verify that endpoints are trusted. This specification emphasizes the possibility to reference rather than to transport credentials in order to reduce message overhead, but the latter is also supported. EDHOC does not currently support pre-shared key (PSK) authentication as authentication with static Diffie-Hellman public keys by reference produces equally small message sizes but with much simpler key distribution and identity protection.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
-<p id="section-1.1-5">EDHOC makes use of known protocol constructions, such as SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> and Extract-and-Expand <span>[<a href="#RFC5869" class="xref">RFC5869</a>]</span>. EDHOC uses COSE for cryptography and identification of credentials (including COSE_Key, CBOR Web Token (CWT), CWT Claims Set (CCS), X.509 and CBOR encoded X.509 (C509) certificates, see <a href="#auth-cred" class="xref">Section 3.5.3</a>). COSE provides crypto agility and enables the use of future algorithms and credential types targeting IoT.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
+<p id="section-1.1-5">EDHOC makes use of known protocol constructions, such as SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> and Extract-and-Expand <span>[<a href="#RFC5869" class="xref">RFC5869</a>]</span>. EDHOC uses COSE for cryptography and identification of credentials (including COSE_Key, CBOR Web Token (CWT), CWT Claims Set (CCS), X.509 and CBOR encoded X.509 (C509) certificates, see <a href="#auth-cred" class="xref">Section 3.5.2</a>). COSE provides crypto agility and enables the use of future algorithms and credential types targeting IoT.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
 <p id="section-1.1-6">EDHOC is designed for highly constrained settings making it especially suitable for low-power wide area networks <span>[<a href="#RFC8376" class="xref">RFC8376</a>]</span> such as Cellular IoT, 6TiSCH, and LoRaWAN. A main objective for EDHOC is to be a lightweight authenticated key exchange for OSCORE, i.e., to provide authentication and session key establishment for IoT use cases such as those built on CoAP <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> involving 'things' with embedded microcontrollers, sensors, and actuators. By reusing the same lightweight primitives as OSCORE (CBOR, COSE, CoAP) the additional code size can be kept very low. Note that while CBOR and COSE primitives are built into the protocol messages, EDHOC is not bound to a particular transport.<a href="#section-1.1-6" class="pilcrow">¶</a></p>
 <p id="section-1.1-7">A typical setting is when one of the endpoints is constrained or in a constrained network, and the other endpoint is a node on the Internet (such as a mobile phone). Thing-to-thing interactions over constrained networks are also relevant since both endpoints would then benefit from the lightweight properties of the protocol. EDHOC could, e.g., be run when a device connects for the first time, or to establish fresh keys which are not revealed by a later compromise of the long-term keys.<a href="#section-1.1-7" class="pilcrow">¶</a></p>
 </section>
@@ -1461,9 +1484,9 @@ Initiator                                                   Responder
 <ul class="normal">
 <li class="normal" id="section-2-5.1">G_X and G_Y are the ECDH ephemeral public keys of I and R, respectively.<a href="#section-2-5.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-5.2">CRED_I and CRED_R are the credentials containing the public authentication keys of I and R, respectively.<a href="#section-2-5.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-5.2">CRED_I and CRED_R are the authentication credentials containing the public authentication keys of I and R, respectively.<a href="#section-2-5.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-5.3">ID_CRED_I and ID_CRED_R are used to identify and optionally transport the authentication keys of the Initiator and the Responder, respectively.<a href="#section-2-5.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-5.3">ID_CRED_I and ID_CRED_R are used to identify and optionally transport the credentials of the Initiator and the Responder, respectively.<a href="#section-2-5.3" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-2-5.4">Sig(I; . ) and Sig(R; . ) denote signatures made with the private authentication key of I and R, respectively.<a href="#section-2-5.4" class="pilcrow">¶</a>
 </li>
@@ -1630,74 +1653,61 @@ Initiator                                                   Responder
         <h3 id="name-authentication-parameters">
 <a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-authentication-parameters" class="section-name selfRef">Authentication Parameters</a>
         </h3>
-<p id="section-3.5-1">EDHOC supports various settings for how the other endpoint's authentication (public) key is transported, identified, and trusted as described in this section.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
-<p id="section-3.5-2">The authentication key (see <a href="#auth-keys" class="xref">Section 3.5.2</a>) is used in several parts of EDHOC:<a href="#section-3.5-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.5-3">
-<li id="section-3.5-3.1">as part of the authentication credential included in the integrity calculation<a href="#section-3.5-3.1" class="pilcrow">¶</a>
-</li>
-          <li id="section-3.5-3.2">for verification of the Signature_or_MAC field in message_2 and message_3 (see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a> and <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>)<a href="#section-3.5-3.2" class="pilcrow">¶</a>
-</li>
-          <li id="section-3.5-3.3">in the key derivation (in case of a static Diffie-Hellman key, see <a href="#key-der" class="xref">Section 4</a>).<a href="#section-3.5-3.3" class="pilcrow">¶</a>
-</li>
-        </ol>
-<p id="section-3.5-4">The authentication credential (CRED_x) contains, in addition to the authentication key, also the authentication key algorithm and optionally other parameters such as identity, key usage, expiry, issuer, etc. (see <a href="#auth-cred" class="xref">Section 3.5.3</a>). Identical authentication credentials need to be established in both endpoints to be able to verify integrity, see <a href="#fig-sigma" class="xref">Figure 2</a>. For many settings it is not necessary to transport the authentication credential within EDHOC over constrained links, for example, it may be pre-provisioned or acquired out-of-band over less constrained links.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
-<p id="section-3.5-5">EDHOC relies on COSE for identification of authentication credentials (using ID_CRED_x, see <a href="#id_cred" class="xref">Section 3.5.4</a>) and supports all credential types for which COSE header parameters are defined (see <a href="#auth-cred" class="xref">Section 3.5.3</a>).<a href="#section-3.5-5" class="pilcrow">¶</a></p>
-<p id="section-3.5-6">The choice of authentication credential depends also on the trust model (see <a href="#identities" class="xref">Section 3.5.1</a>). For example, a certificate or CWT may rely on a trusted third party, whereas a CCS or a self-signed certificate/CWT may be used when trust in the public key can be achieved by other means, or in the case of trust-on-first-use.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
-<p id="section-3.5-7">The type of authentication key, authentication credential, and the way to identify the credential have a large impact on the message size. For example, the signature_or_MAC field is much smaller with a static DH key than with a signature key. A CCS is much smaller than a self-signed certificate/CWT, but if it is possible to reference the credential with a COSE header like 'kid', then that is typically much smaller than to transport a CCS.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
-<div id="identities">
-<section id="section-3.5.1">
-          <h4 id="name-identities-and-trust-anchor">
-<a href="#section-3.5.1" class="section-number selfRef">3.5.1. </a><a href="#name-identities-and-trust-anchor" class="section-name selfRef">Identities and trust anchors</a>
-          </h4>
-<p id="section-3.5.1-1">Policies for what connections to allow are typically set based on the identity of the other party, and parties typically only allow connections from a specific identity or a small restricted set of identities. For example, in the case of a device connecting to a network, the network may only allow connections from devices which authenticate with certificates having a particular range of serial numbers and signed by a particular CA. On the other hand, the device may only be allowed to connect to a network which authenticates with a particular public key (information of which may be provisioned, e.g., out of band or in the external authorization data, see <a href="#AD" class="xref">Section 3.8</a>). The EDHOC implementation or the application must decide on allowing a connection or not depending on the intended endpoint, and in particular whether it is a specific identity or a set of identities. Either EDHOC passes information about identity to the application for a decision, or EDHOC needs to have access to relevant information and makes the decision on its own.<a href="#section-3.5.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.5.1-2">EDHOC assumes the existence of mechanisms (certification authority, trusted third party, pre-provisioning, etc.) for specifying and distributing authentication credentials.<a href="#section-3.5.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.5-1">EDHOC supports various settings for how the other endpoint's authentication (public) key may be transported, identified, and trusted.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2">EDHOC performs the following authentication related operations:<a href="#section-3.5-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.1-3.1">When a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate, and the identity is the subject whose unique name, e.g., a domain name, a Network Access Identifier (NAI), or an Extended Unique Identifier (EUI), is included in the endpoint's certificate. In order to run EDHOC each party needs at least one CA public key certificate, or just the public key, and a specific identity or set of identities it is allowed to communicate with. Only validated public-key certificates with an allowed subject name, as specified by the application, are to be accepted. EDHOC provides proof that the other party possesses the private authentication key corresponding to the public authentication key in its certificate, also known as proof-of-possession. The certification path contains proof that the subject of the certificate owns the public key in the certificate.<a href="#section-3.5.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5-3.1">EDHOC transports information about credentials in ID_CRED_I and ID_CRED_R (described in <a href="#id_cred" class="xref">Section 3.5.3</a>). Based on this information, the authentication credentials CRED_I and CRED_R (described in <a href="#auth-cred" class="xref">Section 3.5.2</a>) can be obtained. EDHOC may also transport certain authentication related information as External Authorization Data (see <a href="#AD" class="xref">Section 3.8</a>).<a href="#section-3.5-3.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.1-3.2">Similarly, when a PKI is used with CWTs, each party needs to have at least one trusted third party public key as trust anchor to verify the end-entity CWTs, and a specific identity or set of identities it is allowed to communicate with to match against the relevant claim, such as 'sub' (subject). The trusted third party public key can, e.g., be stored in a self-signed CWT or in a CCS.<a href="#section-3.5.1-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.5-3.2">
+            <p id="section-3.5-3.2.1">EDHOC uses the authentication credentials in two ways (see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a> and <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>):<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.5-3.2.2.1">The authentication credential is input to the integrity verification using the MAC fields.<a href="#section-3.5-3.2.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.1-3.3">When PKI is not used (CCS, self-signed certificate/CWT), the trust anchor is the authentication key of the other party. In this case, the identity is typically directly associated to the authentication key of the other party. For example, the name of the subject may be a canonical representation of the public key. Alternatively, if identities can be expressed in the form of unique subject names assigned to public keys, then a binding to identity can be achieved by including both public key and associated subject name in the protocol message computation: CRED_I or CRED_R may be a self-signed certificate/CWT or CCS containing the authentication key and the subject name, see <a href="#auth-cred" class="xref">Section 3.5.3</a>. In order to run EDHOC, each endpoint needs a specific authentication key/unique associated subject name, or a set of public authentication keys/unique associated subject names, which it is allowed to communicate with. EDHOC provides the proof that the other party possesses the private authentication key corresponding to the public authentication key.<a href="#section-3.5.1-3.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-3.5-3.2.2.2">The authentication key of the authentication credential is used with the Signature_or_MAC field to verify proof-of-possession of the private key.<a href="#section-3.5-3.2.2.2" class="pilcrow">¶</a>
 </li>
-          </ul>
-<p id="section-3.5.1-4">To prevent misbinding attacks in systems where an attacker can register public keys without proving knowledge of the private key, SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> enforces a MAC to be calculated over the "identity". EDHOC follows SIGMA by calculating a MAC over the whole credential, which in case of an X.509 or C509 certificate includes the "subject" and "subjectAltName" fields, and in the case of CWT or CCS includes the "sub" claim. While the SIGMA paper only focuses on the identity, the same principle is true for other information such as policies associated to the public key.<a href="#section-3.5.1-4" class="pilcrow">¶</a></p>
-</section>
-</div>
+            </ul>
+</li>
+        </ul>
+<p id="section-3.5-4">Other authentication related verifications are out of scope for EDHOC, and is the responsibility of the application. In particular, the authentication credential needs to be validated in the context of the connection for which EDHOC is used, see <a href="#auth-validation" class="xref">Appendix D</a>. EDHOC MUST allow the application to read received information about credential (ID_CRED_R, ID_CRED_I). EDHOC MUST have access to the authentication key and the authentication credential.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.5-5">Note that the type of authentication key, authentication credential, and the identification of the credential have a large impact on the message size. For example, the signature_or_MAC field is much smaller with a static DH key than with a signature key. A CCS is much smaller than a self-signed certificate/CWT, but if it is possible to reference the credential with a COSE header like 'kid', then that is in turn much smaller than a CCS.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
 <div id="auth-keys">
-<section id="section-3.5.2">
+<section id="section-3.5.1">
           <h4 id="name-authentication-keys">
-<a href="#section-3.5.2" class="section-number selfRef">3.5.2. </a><a href="#name-authentication-keys" class="section-name selfRef">Authentication Keys</a>
+<a href="#section-3.5.1" class="section-number selfRef">3.5.1. </a><a href="#name-authentication-keys" class="section-name selfRef">Authentication Keys</a>
           </h4>
-<p id="section-3.5.2-1">The authentication key (i.e. the public key used for authentication) MUST be a signature key or static Diffie-Hellman key. The Initiator and the Responder MAY use different types of authentication keys, e.g., one uses a signature key and the other uses a static Diffie-Hellman key. The authentication key algorithm needs to be compatible with the method and the cipher suite. The authentication key algorithm needs to be compatible with the EDHOC key exchange algorithm when static Diffie-Hellman authentication is used, and compatible with the EDHOC signature algorithm when signature authentication is used.<a href="#section-3.5.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.5.2-2">Note that for most signature algorithms, the signature is determined by the signature algorithm and the authentication key algorithm together. When using static Diffie-Hellman keys the Initiator's and Responder's private authentication keys are called I and R, respectively, and the public authentication keys are called G_I and G_R, respectively.<a href="#section-3.5.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.5.2-3">For X.509 the authentication key is represented with a SubjectPublicKeyInfo field. For CWT and CCS, the authentication key is represented with a 'cnf' claim <span>[<a href="#RFC8747" class="xref">RFC8747</a>]</span> containing a COSE_Key <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>.<a href="#section-3.5.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-1">The authentication key (i.e. the public key used for authentication) MUST be a signature key or static Diffie-Hellman key. The Initiator and the Responder MAY use different types of authentication keys, e.g., one uses a signature key and the other uses a static Diffie-Hellman key.<a href="#section-3.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-2">The authentication key algorithm needs to be compatible with the method and the cipher suite (see <a href="#cs" class="xref">Section 3.6</a>). The authentication key algorithm needs to be compatible with the EDHOC key exchange algorithm when static Diffie-Hellman authentication is used, and compatible with the EDHOC signature algorithm when signature authentication is used.<a href="#section-3.5.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-3">Note that for most signature algorithms, the signature is determined by the signature algorithm and the authentication key algorithm together. When using static Diffie-Hellman keys the Initiator's and Responder's private authentication keys are denoted I and R, respectively, and the public authentication keys are denoted G_I and G_R, respectively.<a href="#section-3.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-4">For X.509 certificates the authentication key is represented with a SubjectPublicKeyInfo field. For CWT and CCS (see <a href="#auth-cred" class="xref">Section 3.5.2</a>)) the authentication key is represented with a 'cnf' claim <span>[<a href="#RFC8747" class="xref">RFC8747</a>]</span> containing a COSE_Key <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>.<a href="#section-3.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="auth-cred">
-<section id="section-3.5.3">
+<section id="section-3.5.2">
           <h4 id="name-authentication-credentials">
-<a href="#section-3.5.3" class="section-number selfRef">3.5.3. </a><a href="#name-authentication-credentials" class="section-name selfRef">Authentication Credentials</a>
+<a href="#section-3.5.2" class="section-number selfRef">3.5.2. </a><a href="#name-authentication-credentials" class="section-name selfRef">Authentication Credentials</a>
           </h4>
-<p id="section-3.5.3-1">The authentication credentials, CRED_I and CRED_R, contain the public authentication key of the Initiator and the Responder, respectively.<a href="#section-3.5.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.5.3-2">EDHOC relies on COSE for identification of authentication credentials (see <a href="#id_cred" class="xref">Section 3.5.4</a>) and supports all credential types for which COSE header parameters are defined including X.509 <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>, C509 <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>, CWT <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span> and CWT Claims Set (CCS) <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>. When the identified credential is a chain or bag, CRED_x is just the end-entity X.509 or C509 certificate / CWT. In X.509 and C509 certificates, signature keys typically have key usage "digitalSignature" and Diffie-Hellman public keys typically have key usage "keyAgreement" <span>[<a href="#RFC3279" class="xref">RFC3279</a>]</span><span>[<a href="#RFC8410" class="xref">RFC8410</a>]</span>.<a href="#section-3.5.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.5.3-3">CRED_x needs to be defined such that it is identical when used by Initiator or Responder. The Initiator and Responder are expected to agree on a specific encoding of the credential, see <a href="#applicability" class="xref">Section 3.9</a>. It is RECOMMENDED that the COSE 'kid' parameter, when used, refers to a specific encoding. The Initiator and Responder SHOULD use an available authentication credential (transported in EDHOC or otherwise provisioned) without re-encoding. If for some reason re-encoding of the authentication credential may occur, then a potential common encoding for CBOR based credentials is bytewise lexicographic order of their deterministic encodings as specified in Section 4.2.1 of <span>[<a href="#RFC8949" class="xref">RFC8949</a>]</span>.<a href="#section-3.5.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.5.2-1">The authentication credentials, CRED_I and CRED_R, contain the public authentication key of the Initiator and the Responder, respectively.<a href="#section-3.5.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.5.2-2">EDHOC relies on COSE for identification of credentials (see <a href="#id_cred" class="xref">Section 3.5.3</a>), for example X.509 certificates <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>, C509 certificates <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>, CWTs <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span> and CWT Claims Sets (CCS) <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>. When the identified credential is a chain or a bag, the authentication credential CRED_x is just the end entity X.509 or C509 certificate / CWT.<a href="#section-3.5.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.5.2-3">Since CRED_R is used in the integrity verification, see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a>, it needs to be specified such that it is identical when used by Initiator or Responder. Similarly for CRED_I, see <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>. The Initiator and Responder are expected to agree on a specific encoding of the credential, see <a href="#applicability" class="xref">Section 3.9</a>.<a href="#section-3.5.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.5.2-4">It is RECOMMENDED that the COSE 'kid' parameter, when used to identify the authentication credential, refers to a specific encoding. The Initiator and Responder SHOULD use an available authentication credential (transported in EDHOC or otherwise provisioned) without re-encoding. If for some reason re-encoding of the authentication credential may occur, then a potential common encoding for CBOR based credentials is bytewise lexicographic order of their deterministic encodings as specified in Section 4.2.1 of <span>[<a href="#RFC8949" class="xref">RFC8949</a>]</span>.<a href="#section-3.5.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.3-4.1">When the authentication credential is an X.509 certificate, CRED_x SHALL be the end-entity DER encoded certificate, encoded as a bstr <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span>.<a href="#section-3.5.3-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5.2-5.1">When the authentication credential is an X.509 certificate, CRED_x SHALL be the DER encoded certificate, encoded as a bstr <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span>.<a href="#section-3.5.2-5.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.3-4.2">When the authentication credential is a C509 certificate, CRED_x SHALL be the end-entity C509Certificate <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span><a href="#section-3.5.3-4.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.5.2-5.2">When the authentication credential is a C509 certificate, CRED_x SHALL be the C509Certificate <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>.<a href="#section-3.5.2-5.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.3-4.3">When the authentication credential is a COSE_Key in a CWT, CRED_x SHALL be the untagged CWT.<a href="#section-3.5.3-4.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.5.2-5.3">When the authentication credential is a COSE_Key in a CWT, CRED_x SHALL be the untagged CWT.<a href="#section-3.5.2-5.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.3-4.4">
-              <p id="section-3.5.3-4.4.1">When the authentication credential is a COSE_Key but not in a CWT, CRED_x SHALL be an untagged CCS.<a href="#section-3.5.3-4.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.5.2-5.4">
+              <p id="section-3.5.2-5.4.1">When the authentication credential is a COSE_Key but not in a CWT, CRED_x SHALL be an untagged CCS.<a href="#section-3.5.2-5.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.3-4.4.2.1">Naked COSE_Keys are thus dressed as CCS when used in EDHOC, which is done by prefixing the COSE_Key with 0xA108A101.<a href="#section-3.5.3-4.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5.2-5.4.2.1">Naked COSE_Keys are thus dressed as CCS when used in EDHOC, which is done by prefixing the COSE_Key with 0xA108A101.<a href="#section-3.5.2-5.4.2.1" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
           </ul>
-<p id="section-3.5.3-5">An example of a CRED_x is shown below:<a href="#section-3.5.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.5.2-6">An example of a CRED_x is shown below:<a href="#section-3.5.2-6" class="pilcrow">¶</a></p>
 <span id="name-cwt-claims-set-ccs-containi"></span><figure id="figure-5">
-            <div class="alignLeft art-text artwork" id="section-3.5.3-6.1">
+            <div class="alignLeft art-text artwork" id="section-3.5.2-7.1">
 <pre>
 {                                              /CCS/
   2 : "42-50-31-FF-EF-37-32-39",               /sub/
@@ -1719,31 +1729,33 @@ Initiator                                                   Responder
 </section>
 </div>
 <div id="id_cred">
-<section id="section-3.5.4">
+<section id="section-3.5.3">
           <h4 id="name-identification-of-credentia">
-<a href="#section-3.5.4" class="section-number selfRef">3.5.4. </a><a href="#name-identification-of-credentia" class="section-name selfRef">Identification of Credentials</a>
+<a href="#section-3.5.3" class="section-number selfRef">3.5.3. </a><a href="#name-identification-of-credentia" class="section-name selfRef">Identification of Credentials</a>
           </h4>
-<p id="section-3.5.4-1">ID_CRED_R and ID_CRED_I are transported in message_2 and message_3, respectively (see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a> and <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>). They are used to identify and optionally transport the authentication keys of the Initiator and the Responder, respectively. ID_CRED_I and ID_CRED_R do not have any cryptographic purpose in EDHOC since EDHOC integrity protects the authentication credential. EDHOC relies on COSE for identification of authentication credentials and supports all types of COSE header parameters used to identify authentication credentials including X.509, C509, CWT and CCS.<a href="#section-3.5.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-1">ID_CRED_R and ID_CRED_I are transported in message_2 and message_3, respectively, see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a> and <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>. They are used to identify and optionally transport credentials:<a href="#section-3.5.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.4-2.1">ID_CRED_R is intended to facilitate for the Initiator to retrieve the Responder's authentication key.<a href="#section-3.5.4-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5.3-2.1">ID_CRED_R is intended to facilitate for the Initiator to retrieve the authentication credential CRED_R and the authentication key of R.<a href="#section-3.5.3-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.5.4-2.2">ID_CRED_I is intended to facilitate for the Responder to retrieve the Initiator's authentication key.<a href="#section-3.5.4-2.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.5.3-2.2">ID_CRED_I is intended to facilitate for the Responder to retrieve the authentication credential CRED_I and the authentication key of I.<a href="#section-3.5.3-2.2" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-3.5.4-3">ID_CRED_I and ID_CRED_R are COSE header maps and contains one or more COSE header parameter. ID_CRED_I and ID_CRED_R MAY contain different header parameters. The header parameters typically provide some information about the format of authentication credential.<a href="#section-3.5.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.5.4-4">Note that COSE header parameters in ID_CRED_x are used to identify the sender's authentication credential. There is therefore no reason to use the "-sender" header parameters, such as x5t-sender, defined in Section 3 of <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span>. Instead, the corresponding parameter without "-sender", such as x5t, SHOULD be used.<a href="#section-3.5.4-4" class="pilcrow">¶</a></p>
-<p id="section-3.5.4-5">Example: X.509 certificates can be identified by a hash value using the 'x5t' parameter:<a href="#section-3.5.4-5" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-3">ID_CRED_x may contain the authentication credential CRED_x, but for many settings it is not necessary to transport the authentication credential within EDHOC, for example, it may be pre-provisioned or acquired out-of-band over less constrained links. ID_CRED_I and ID_CRED_R do not have any cryptographic purpose in EDHOC since the authentication credentials are integrity protected.<a href="#section-3.5.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-4">EDHOC relies on COSE for identification of credentials and supports all credential types for which COSE header parameters are defined including X.509 certificates (<span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span>), C509 certificates (<span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>), CWT (<a href="#cwt-header-param" class="xref">Section 9.6</a>) and CWT Claims Set (CCS) (<a href="#cwt-header-param" class="xref">Section 9.6</a>).<a href="#section-3.5.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-5">ID_CRED_I and ID_CRED_R are COSE header maps and contains one or more COSE header parameters. ID_CRED_I and ID_CRED_R MAY contain different header parameters. The header parameters typically provide some information about the format of the credential.<a href="#section-3.5.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-6">Note that COSE header parameters in ID_CRED_x are used to identify the sender's credential. There is therefore no reason to use the "-sender" header parameters, such as x5t-sender, defined in Section 3 of <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span>. Instead, the corresponding parameter without "-sender", such as x5t, SHOULD be used.<a href="#section-3.5.3-6" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-7">Example: X.509 certificates can be identified by a hash value using the 'x5t' parameter:<a href="#section-3.5.3-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.4-6.1">ID_CRED_x = { 34 : COSE_CertHash }, for x = I or R,<a href="#section-3.5.4-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5.3-8.1">ID_CRED_x = { 34 : COSE_CertHash }, for x = I or R,<a href="#section-3.5.3-8.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-3.5.4-7">Example: CWT or CCS can be identified by a key identifier using the 'kid' parameter:<a href="#section-3.5.4-7" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-9">Example: CWT or CCS can be identified by a key identifier using the 'kid' parameter:<a href="#section-3.5.3-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.5.4-8.1">ID_CRED_x = { 4 : key_id_x }, where key_id_x : kid, for x = I or R.<a href="#section-3.5.4-8.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.5.3-10.1">ID_CRED_x = { 4 : key_id_x }, where key_id_x : kid, for x = I or R.<a href="#section-3.5.3-10.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-3.5.4-9">Note that 'kid' is extended to support int values to allow more one-byte identifiers (see <a href="#kid-header-param" class="xref">Section 9.7</a> and <a href="#kid-key-common-param" class="xref">Section 9.8</a>) which may be useful in many scenarios since constrained devices only have a few keys. As stated in Section 3.1 of <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>, applications MUST NOT assume that 'kid' values are unique and several keys associated with a 'kid' may need to be checked before the correct one is found. Applications might use additional information such as 'kid context' or lower layers to determine which key to try first. Applications should strive to make ID_CRED_x as unique as possible, since the recipient may otherwise have to try several keys.<a href="#section-3.5.4-9" class="pilcrow">¶</a></p>
-<p id="section-3.5.4-10">See <a href="#COSE" class="xref">Appendix C.3</a> for more examples.<a href="#section-3.5.4-10" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-11">Note that 'kid' is extended to support int values to allow more one-byte identifiers (see <a href="#kid-header-param" class="xref">Section 9.7</a> and <a href="#kid-key-common-param" class="xref">Section 9.8</a>) which may be useful in many scenarios since constrained devices only have a few keys. As stated in Section 3.1 of <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>, applications MUST NOT assume that 'kid' values are unique and several keys associated with a 'kid' may need to be checked before the correct one is found. Applications might use additional information such as 'kid context' or lower layers to determine which key to try first. Applications should strive to make ID_CRED_x as unique as possible, since the recipient may otherwise have to try several keys.<a href="#section-3.5.3-11" class="pilcrow">¶</a></p>
+<p id="section-3.5.3-12">See <a href="#COSE" class="xref">Appendix C.3</a> for more examples.<a href="#section-3.5.3-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1754,7 +1766,7 @@ Initiator                                                   Responder
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-cipher-suites" class="section-name selfRef">Cipher Suites</a>
         </h3>
 <p id="section-3.6-1">An EDHOC cipher suite consists of an ordered set of algorithms from the "COSE Algorithms" and "COSE Elliptic Curves" registries as well as the EDHOC MAC length. All algorithm names and definitions follows from COSE <span>[<a href="#I-D.ietf-cose-rfc8152bis-algs" class="xref">I-D.ietf-cose-rfc8152bis-algs</a>]</span>. Note that COSE sometimes uses peculiar names such as ES256 for ECDSA with SHA-256, A128 for AES-128, and Ed25519 for the curve edwards25519. Algorithms need to be specified with enough parameters to make them completely determined. The MAC length MUST be at least 8 bytes. Any cryptographic algorithm used in the COSE header parameters in ID_CRED is selected independently of the cipher suite. EDHOC is currently only specified for use with key exchange algorithms of type ECDH curves, but any Key Encapsulation Method (KEM), including Post-Quantum Cryptography (PQC) KEMs, can be used in method 0, see <a href="#pqc" class="xref">Section 8.4</a>. Use of other types of key exchange algorithms to replace static DH authentication (method 1,2,3) would likely require a specification updating EDHOC with new methods.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
-<p id="section-3.6-2">EDHOC supports all signature algorithms defined by COSE. Just like in (D)TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span><span>[<a href="#I-D.ietf-tls-dtls13" class="xref">I-D.ietf-tls-dtls13</a>]</span> and IKEv2 <span>[<a href="#RFC7296" class="xref">RFC7296</a>]</span>, a signature in COSE is determined by the signature algorithm and the authentication key algorithm together, see <a href="#auth-keys" class="xref">Section 3.5.2</a>. The exact details of the authentication key algorithm depend on the type of authentication credential. COSE supports different formats for storing the public authentication keys including COSE_Key and X.509, which use different names and ways to represent the authentication key and the authentication key algorithm.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
+<p id="section-3.6-2">EDHOC supports all signature algorithms defined by COSE. Just like in (D)TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span><span>[<a href="#I-D.ietf-tls-dtls13" class="xref">I-D.ietf-tls-dtls13</a>]</span> and IKEv2 <span>[<a href="#RFC7296" class="xref">RFC7296</a>]</span>, a signature in COSE is determined by the signature algorithm and the authentication key algorithm together, see <a href="#auth-keys" class="xref">Section 3.5.1</a>. The exact details of the authentication key algorithm depend on the type of authentication credential. COSE supports different formats for storing the public authentication keys including COSE_Key and X.509, which use different names and ways to represent the authentication key and the authentication key algorithm.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
 <p id="section-3.6-3">An EDHOC cipher suite consists of the following parameters:<a href="#section-3.6-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.6-4.1">EDHOC AEAD algorithm<a href="#section-3.6-4.1" class="pilcrow">¶</a>
@@ -1806,8 +1818,8 @@ Initiator                                                   Responder
         <h3 id="name-external-authorization-data">
 <a href="#section-3.8" class="section-number selfRef">3.8. </a><a href="#name-external-authorization-data" class="section-name selfRef">External Authorization Data (EAD)</a>
         </h3>
-<p id="section-3.8-1">In order to reduce round trips and number of messages or to simplify processing, external security applications may be integrated into EDHOC by transporting authorization related data in the messages. One example is third-party identity and authorization information whose protection is out of scope of EDHOC <span>[<a href="#I-D.selander-ace-ake-authz" class="xref">I-D.selander-ace-ake-authz</a>]</span>. Another example is a certificate enrollment request or the resulting issued certificate.<a href="#section-3.8-1" class="pilcrow">¶</a></p>
-<p id="section-3.8-2">EDHOC allows opaque external authorization data (EAD) to be sent in the EDHOC messages. External authorization data sent in message_1 (EAD_1) or message_2 (EAD_2) should be considered unprotected by EDHOC, see <a href="#unprot-data" class="xref">Section 8.5</a>. External authorization data sent in message_3 (EAD_3) or message_4 (EAD_4) is protected between Initiator and Responder.<a href="#section-3.8-2" class="pilcrow">¶</a></p>
+<p id="section-3.8-1">In order to reduce round trips and the number of messages or to simplify processing, external security applications may be integrated into EDHOC by transporting authorization related data in the messages.<a href="#section-3.8-1" class="pilcrow">¶</a></p>
+<p id="section-3.8-2">EDHOC allows opaque external authorization data (EAD) to be sent in each of the four EDHOC messages (EAD_1, EAD_2, EAD_3, EAD_4).<a href="#section-3.8-2" class="pilcrow">¶</a></p>
 <p id="section-3.8-3">External authorization data is a CBOR sequence (see <a href="#CBOR" class="xref">Appendix C.1</a>) consisting of one or more (ead_label, ead_value) pairs as defined below:<a href="#section-3.8-3" class="pilcrow">¶</a></p>
 <div id="section-3.8-4">
 <pre class="lang-CDDL sourcecode">
@@ -1817,8 +1829,8 @@ ead = 1* (
 )
 </pre><a href="#section-3.8-4" class="pilcrow">¶</a>
 </div>
-<p id="section-3.8-5">Applications using external authorization data need to specify ead_value format, processing, and security considerations and register the ead_label, see <a href="#iana-ead" class="xref">Section 9.5</a>.<a href="#section-3.8-5" class="pilcrow">¶</a></p>
-<p id="section-3.8-6">The EAD fields of EDHOC are not intended for generic application data. Since data carried in EAD_1 and EAD_2 fields may not be protected, special considerations need to be made such that it does not violate security and privacy requirements of the service which uses this data. Moreover, the content in an EAD field may impact the security properties provided by EDHOC. Security applications making use of the EAD fields must perform the necessary security analysis.<a href="#section-3.8-6" class="pilcrow">¶</a></p>
+<p id="section-3.8-5">A security application using external authorization data need to register an ead_label, specify the ead_value format for each message (see <a href="#iana-ead" class="xref">Section 9.5</a>), and describe processing and security considerations.<a href="#section-3.8-5" class="pilcrow">¶</a></p>
+<p id="section-3.8-6">The EAD fields of EDHOC must not be used for generic application data. Examples of the use of EAD is provided in <a href="#ead-appendix" class="xref">Appendix E</a>.<a href="#section-3.8-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="applicability">
@@ -1838,21 +1850,21 @@ ead = 1* (
 </li>
           <li id="section-3.9-3.2">Authentication method (METHOD; see <a href="#method" class="xref">Section 3.2</a>).<a href="#section-3.9-3.2" class="pilcrow">¶</a>
 </li>
-          <li id="section-3.9-3.3">Profile for authentication credentials (CRED_I, CRED_R; see <a href="#auth-cred" class="xref">Section 3.5.3</a>), e.g., profile for certificate or CCS, including supported authentication key algorithms (subject public key algorithm in X.509 or C509 certificate).<a href="#section-3.9-3.3" class="pilcrow">¶</a>
+          <li id="section-3.9-3.3">Profile for authentication credentials (CRED_I, CRED_R; see <a href="#auth-cred" class="xref">Section 3.5.2</a>), e.g., profile for certificate or CCS, including supported authentication key algorithms (subject public key algorithm in X.509 or C509 certificate).<a href="#section-3.9-3.3" class="pilcrow">¶</a>
 </li>
-          <li id="section-3.9-3.4">Type used to identify authentication credentials (ID_CRED_I, ID_CRED_R; see <a href="#id_cred" class="xref">Section 3.5.4</a>).<a href="#section-3.9-3.4" class="pilcrow">¶</a>
+          <li id="section-3.9-3.4">Type used to identify credentials (ID_CRED_I, ID_CRED_R; see <a href="#id_cred" class="xref">Section 3.5.3</a>).<a href="#section-3.9-3.4" class="pilcrow">¶</a>
 </li>
           <li id="section-3.9-3.5">Use and type of external authorization data (EAD_1, EAD_2, EAD_3, EAD_4; see <a href="#AD" class="xref">Section 3.8</a>).<a href="#section-3.9-3.5" class="pilcrow">¶</a>
 </li>
-          <li id="section-3.9-3.6">Identifier used as the identity of the endpoint; see <a href="#identities" class="xref">Section 3.5.1</a>.<a href="#section-3.9-3.6" class="pilcrow">¶</a>
+          <li id="section-3.9-3.6">Identifier used as the identity of the endpoint; see <a href="#identities" class="xref">Appendix D.2</a>.<a href="#section-3.9-3.6" class="pilcrow">¶</a>
 </li>
           <li id="section-3.9-3.7">If message_4 shall be sent/expected, and if not, how to ensure a protected application message is sent from the Responder to the Initiator; see <a href="#m4" class="xref">Section 5.5</a>.<a href="#section-3.9-3.7" class="pilcrow">¶</a>
 </li>
         </ol>
 <p id="section-3.9-4">The applicability template may also contain information about supported cipher suites. The procedure for selecting and verifying a cipher suite is still performed as described in <a href="#asym-msg1-form" class="xref">Section 5.2.1</a> and <a href="#wrong-selected" class="xref">Section 6.3</a>, but it may become simplified by this knowledge.<a href="#section-3.9-4" class="pilcrow">¶</a></p>
-<p id="section-3.9-5">An example of an applicability template is shown in <a href="#appl-temp" class="xref">Appendix D</a>.<a href="#section-3.9-5" class="pilcrow">¶</a></p>
+<p id="section-3.9-5">An example of an applicability template is shown in <a href="#appl-temp" class="xref">Appendix F</a>.<a href="#section-3.9-5" class="pilcrow">¶</a></p>
 <p id="section-3.9-6">For some parameters, like METHOD, ID_CRED_x, type of EAD, the receiver is able to verify compliance with applicability template, and if it needs to fail because of incompliance, to infer the reason why the protocol failed.<a href="#section-3.9-6" class="pilcrow">¶</a></p>
-<p id="section-3.9-7">For other parameters, like CRED_x in the case that it is not transported, it may not be possible to verify that incompliance with applicability template was the reason for failure: Integrity verification in message_2 or message_3 may fail not only because of wrong authentication credential. For example, in case the Initiator uses public key certificate by reference (i.e., not transported within the protocol) then both endpoints need to use an identical data structure as CRED_I or else the integrity verification will fail.<a href="#section-3.9-7" class="pilcrow">¶</a></p>
+<p id="section-3.9-7">For other parameters, like CRED_x in the case that it is not transported, it may not be possible to verify that incompliance with applicability template was the reason for failure: Integrity verification in message_2 or message_3 may fail not only because of wrong credential. For example, in case the Initiator uses public key certificate by reference (i.e., not transported within the protocol) then both endpoints need to use an identical data structure as CRED_I or else the integrity verification will fail.<a href="#section-3.9-7" class="pilcrow">¶</a></p>
 <p id="section-3.9-8">Note that it is not necessary for the endpoints to specify a single transport for the EDHOC messages. For example, a mix of CoAP and HTTP may be used along the path, and this may still allow correlation between messages.<a href="#section-3.9-8" class="pilcrow">¶</a></p>
 <p id="section-3.9-9">The applicability template may be dependent on the identity of the other endpoint, or other information carried in an EDHOC message, but it then applies only to the later phases of the protocol when such information is known. (The Initiator does not know the identity of the Responder before having verified message_2, and the Responder does not know the identity of the Initiator before having verified message_3.)<a href="#section-3.9-9" class="pilcrow">¶</a></p>
 <p id="section-3.9-10">Other conditions may be part of the applicability template, such as target application or use (if there is more than one application/use) to the extent that EDHOC can distinguish between them. In case multiple applicability templates are used, the receiver needs to be able to determine which is applicable for a given session, for example based on URI or external authorization data type.<a href="#section-3.9-10" class="pilcrow">¶</a></p>
@@ -1921,7 +1933,7 @@ ead = 1* (
 <a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-prk_3e2m" class="section-name selfRef">PRK_3e2m</a>
           </h4>
 <p id="section-4.1.2-1">The pseudo-random key PRK_3e2m is used to produce a MAC in message_2 and to encrypt message_3. PRK_3e2m is derived as follows:<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-2">If the Responder authenticates with a static Diffie-Hellman key, then PRK_3e2m = Extract( PRK_2e, G_RX ), where G_RX is the ECDH shared secret calculated from G_R and X, or G_X and R (the Responder's private authentication key, see <a href="#auth-keys" class="xref">Section 3.5.2</a>), else PRK_3e2m = PRK_2e.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-2">If the Responder authenticates with a static Diffie-Hellman key, then PRK_3e2m = Extract( PRK_2e, G_RX ), where G_RX is the ECDH shared secret calculated from G_R and X, or G_X and R (the Responder's private authentication key, see <a href="#auth-keys" class="xref">Section 3.5.1</a>), else PRK_3e2m = PRK_2e.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="prk4x3m">
@@ -1930,7 +1942,7 @@ ead = 1* (
 <a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-prk_4x3m" class="section-name selfRef">PRK_4x3m</a>
           </h4>
 <p id="section-4.1.3-1">The pseudo-random key PRK_4x3m is used to produce a MAC in message_3, to encrypt message_4, and to derive application specific data. PRK_4x3m is derived as follows:<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.3-2">If the Initiator authenticates with a static Diffie-Hellman key, then PRK_4x3m = Extract( PRK_3e2m, G_IY ), where G_IY is the ECDH shared secret calculated from G_I and Y, or G_Y and I (the Initiator's private authentication key, see <a href="#auth-keys" class="xref">Section 3.5.2</a>), else PRK_4x3m = PRK_3e2m.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.3-2">If the Initiator authenticates with a static Diffie-Hellman key, then PRK_4x3m = Extract( PRK_3e2m, G_IY ), where G_IY is the ECDH shared secret calculated from G_I and Y, or G_Y and I (the Initiator's private authentication key, see <a href="#auth-keys" class="xref">Section 3.5.1</a>), else PRK_4x3m = PRK_3e2m.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2064,7 +2076,7 @@ Additional optimizations are made to reduce message overhead.<a href="#section-5
 </li>
         </ol>
 <p id="section-5.1-5">If the processing fails for some reason then, typically, an error message is sent, the protocol is discontinued, and the protocol state erased. Further details are provided in the following subsections and in <a href="#error" class="xref">Section 6</a>.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
-<p id="section-5.1-6">Different instances of the same message MUST NOT be processed in one session.  Note that processing will fail if the same message appears a second time for EDHOC processing in the same session because the state of the protocol has moved on and now expects something else. This assumes that message duplication due to re-transmissions is handled by the transport protocol, see <a href="#transport" class="xref">Section 3.4</a>. The case when the transport does not support message deduplication is addressed in <a href="#duplication" class="xref">Appendix E</a>.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
+<p id="section-5.1-6">Different instances of the same message MUST NOT be processed in one session.  Note that processing will fail if the same message appears a second time for EDHOC processing in the same session because the state of the protocol has moved on and now expects something else. This assumes that message duplication due to re-transmissions is handled by the transport protocol, see <a href="#transport" class="xref">Section 3.4</a>. The case when the transport does not support message deduplication is addressed in <a href="#duplication" class="xref">Appendix G</a>.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="m1">
@@ -2101,7 +2113,7 @@ suites = [ 2* int ] / int
 </li>
             <li class="normal" id="section-5.2.1-4.4">C_I - variable length connection identifier<a href="#section-5.2.1-4.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.2.1-4.5">EAD_1 - unprotected external authorization data, see <a href="#AD" class="xref">Section 3.8</a>.<a href="#section-5.2.1-4.5" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.2.1-4.5">EAD_1 - external authorization data, see <a href="#AD" class="xref">Section 3.8</a>.<a href="#section-5.2.1-4.5" class="pilcrow">¶</a>
 </li>
           </ul>
 </section>
@@ -2146,7 +2158,7 @@ suites = [ 2* int ] / int
 </li>
             <li class="normal" id="section-5.2.3-2.2">Verify that the selected cipher suite is supported and that no prior cipher suite in SUITES_I is supported.<a href="#section-5.2.3-2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.2.3-2.3">Pass EAD_1 to the security application.<a href="#section-5.2.3-2.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.2.3-2.3">If EAD_1 is present then make it available to the application for EAD processing.<a href="#section-5.2.3-2.3" class="pilcrow">¶</a>
 </li>
           </ul>
 <p id="section-5.2.3-3">If any processing step fails, the Responder MUST send an EDHOC error message back, formatted as defined in <a href="#error" class="xref">Section 6</a>, and the session MUST be discontinued.<a href="#section-5.2.3-3" class="pilcrow">¶</a></p>
@@ -2198,11 +2210,11 @@ message_2 = (
             <li class="normal" id="section-5.3.2-2.4">
               <p id="section-5.3.2-2.4.1">Compute MAC_2 = EDHOC-KDF( PRK_3e2m, TH_2, "MAC_2", &lt;&lt; ID_CRED_R, CRED_R, ? EAD_2 &gt;&gt;, mac_length_2 ). If the Responder authenticates with a static Diffie-Hellman key (method equals 1 or 3), then mac_length_2 is the EDHOC MAC length given by the selected cipher suite. If the Responder authenticates with a signature key (method equals 0 or 2), then mac_length_2 is equal to the output size of the EDHOC hash algorithm given by the selected cipher suite.<a href="#section-5.3.2-2.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.3.2-2.4.2.1">ID_CRED_R - identifier to facilitate the retrieval of CRED_R, see <a href="#id_cred" class="xref">Section 3.5.4</a><a href="#section-5.3.2-2.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.3.2-2.4.2.1">ID_CRED_R - identifier to facilitate the retrieval of CRED_R, see <a href="#id_cred" class="xref">Section 3.5.3</a><a href="#section-5.3.2-2.4.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.3.2-2.4.2.2">CRED_R - CBOR item containing the credential of the Responder, see <a href="#auth-cred" class="xref">Section 3.5.3</a><a href="#section-5.3.2-2.4.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.3.2-2.4.2.2">CRED_R - CBOR item containing the authentication credential of the Responder, see <a href="#auth-cred" class="xref">Section 3.5.2</a><a href="#section-5.3.2-2.4.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.3.2-2.4.2.3">EAD_2 - unprotected external authorization data, see <a href="#AD" class="xref">Section 3.8</a><a href="#section-5.3.2-2.4.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.3.2-2.4.2.3">EAD_2 - external authorization data, see <a href="#AD" class="xref">Section 3.8</a><a href="#section-5.3.2-2.4.2.3" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
@@ -2253,9 +2265,9 @@ message_2 = (
 </li>
             <li class="normal" id="section-5.3.3-2.3">Decrypt CIPHERTEXT_2, see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a>, and discard padding, if present.<a href="#section-5.3.3-2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.3.3-2.4">Pass EAD_2 to the security application.<a href="#section-5.3.3-2.4" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.3.3-2.4">Make ID_CRED_R and EAD_2 (if present) available to the application for authentication- and EAD processing.<a href="#section-5.3.3-2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.3.3-2.5">Verify that the identity of the Responder is an allowed identity for this connection, see <a href="#identities" class="xref">Section 3.5.1</a>.<a href="#section-5.3.3-2.5" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.3.3-2.5">Obtain the authentication credential (CRED_R) and the authentication key of R from the application (or by other means).<a href="#section-5.3.3-2.5" class="pilcrow">¶</a>
 </li>
             <li class="normal" id="section-5.3.3-2.6">Verify Signature_or_MAC_2 using the algorithm in the selected cipher suite. The verification process depends on the method, see <a href="#asym-msg2-proc" class="xref">Section 5.3.2</a>.<a href="#section-5.3.3-2.6" class="pilcrow">¶</a>
 </li>
@@ -2297,11 +2309,11 @@ message_3 = (
             <li class="normal" id="section-5.4.2-2.2">
               <p id="section-5.4.2-2.2.1">Compute MAC_3 = EDHOC-KDF( PRK_4x3m, TH_3, "MAC_3", &lt;&lt; ID_CRED_I, CRED_I, ? EAD_3 &gt;&gt;, mac_length_3 ). If the Initiator authenticates with a static Diffie-Hellman key (method equals 2 or 3), then mac_length_3 is the EDHOC MAC length given by the selected cipher suite.  If the Initiator authenticates with a signature key (method equals 0 or 1), then mac_length_3 is equal to the output size of the EDHOC hash algorithm given by the selected cipher suite.<a href="#section-5.4.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.4.2-2.2.2.1">ID_CRED_I - identifier to facilitate the retrieval of CRED_I, see <a href="#id_cred" class="xref">Section 3.5.4</a><a href="#section-5.4.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.4.2-2.2.2.1">ID_CRED_I - identifier to facilitate the retrieval of CRED_I, see <a href="#id_cred" class="xref">Section 3.5.3</a><a href="#section-5.4.2-2.2.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.4.2-2.2.2.2">CRED_I - CBOR item containing the credential of the Initiator, see <a href="#auth-cred" class="xref">Section 3.5.3</a><a href="#section-5.4.2-2.2.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.4.2-2.2.2.2">CRED_I - CBOR item containing the authentication credential of the Initiator, see <a href="#auth-cred" class="xref">Section 3.5.2</a><a href="#section-5.4.2-2.2.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.4.2-2.2.2.3">EAD_3 - protected external authorization data, see <a href="#AD" class="xref">Section 3.8</a><a href="#section-5.4.2-2.2.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.4.2-2.2.2.3">EAD_3 - external authorization data, see <a href="#AD" class="xref">Section 3.8</a><a href="#section-5.4.2-2.2.2.3" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
@@ -2356,9 +2368,10 @@ CIPHERTEXT_3 is the 'ciphertext' of COSE_Encrypt0.<a href="#section-5.4.2-2.4.5"
 </li>
             <li class="normal" id="section-5.4.2-2.5">Encode message_3 as a CBOR data item as specified in <a href="#asym-msg3-form" class="xref">Section 5.4.1</a>.<a href="#section-5.4.2-2.5" class="pilcrow">¶</a>
 </li>
+            <li class="normal" id="section-5.4.2-2.6">Make the connection identifiers (C_I, C_R) and the application algorithms in the selected cipher suite available to the application. The application can now derive application keys using the EDHOC-Exporter interface, see <a href="#exporter" class="xref">Section 4.3</a>.<a href="#section-5.4.2-2.6" class="pilcrow">¶</a>
+</li>
           </ul>
-<p id="section-5.4.2-3">Pass the connection identifiers (C_I, C_R) and the application algorithms in the selected cipher suite to the application. The application can now derive application keys using the EDHOC-Exporter interface, see <a href="#exporter" class="xref">Section 4.3</a>.<a href="#section-5.4.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.4.2-4">After sending message_3, the Initiator is assured that no other party than the Responder can compute the key PRK_4x3m (implicit key authentication). The Initiator can securely derive application keys and send protected application data. However, the Initiator does not know that the Responder has actually computed the key PRK_4x3m and therefore the Initiator SHOULD NOT permanently store the keying material PRK_4x3m and TH_4, or derive application keys, until the Initiator is assured that the Responder has actually computed the key PRK_4x3m (explicit key confirmation). This is similar to waiting for acknowledgement (ACK) in a transport protocol. Explicit key confirmation is e.g., assured when the Initiator has verified an OSCORE message or message_4 from the Responder.<a href="#section-5.4.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.4.2-3">After sending message_3, the Initiator is assured that no other party than the Responder can compute the key PRK_4x3m (implicit key authentication). The Initiator can securely derive application keys and send protected application data. However, the Initiator does not know that the Responder has actually computed the key PRK_4x3m and therefore the Initiator SHOULD NOT permanently store the keying material PRK_4x3m and TH_4, or derive application keys, until the Initiator is assured that the Responder has actually computed the key PRK_4x3m (explicit key confirmation). This is similar to waiting for acknowledgement (ACK) in a transport protocol. Explicit key confirmation is e.g., assured when the Initiator has verified an OSCORE message or message_4 from the Responder.<a href="#section-5.4.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="responder-processing-of-message-3">
@@ -2374,13 +2387,13 @@ CIPHERTEXT_3 is the 'ciphertext' of COSE_Encrypt0.<a href="#section-5.4.2-2.4.5"
 </li>
             <li class="normal" id="section-5.4.3-2.3">Decrypt and verify the COSE_Encrypt0 as defined in Sections 5.2 and 5.3 of <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>, with the EDHOC AEAD algorithm in the selected cipher suite, and the parameters defined in <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>. Discard padding, if present.<a href="#section-5.4.3-2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.4.3-2.4">Pass EAD_3 to the security application.<a href="#section-5.4.3-2.4" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.4.3-2.4">Make ID_CRED_I and EAD_3 (if present) available to the application for authentication- and EAD processing.<a href="#section-5.4.3-2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.4.3-2.5">Verify that the identity of the Initiator is an allowed identity for this connection, see <a href="#identities" class="xref">Section 3.5.1</a>.<a href="#section-5.4.3-2.5" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.4.3-2.5">Obtain the authentication credential (CRED_I) and the authentication key of I from the application (or by other means).<a href="#section-5.4.3-2.5" class="pilcrow">¶</a>
 </li>
             <li class="normal" id="section-5.4.3-2.6">Verify Signature_or_MAC_3 using the algorithm in the selected cipher suite. The verification process depends on the method, see <a href="#asym-msg3-proc" class="xref">Section 5.4.2</a>.<a href="#section-5.4.3-2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.4.3-2.7">Pass the connection identifiers (C_I, C_R), and the application algorithms in the selected cipher suite to the security application. The application can now derive application keys using the EDHOC-Exporter interface.<a href="#section-5.4.3-2.7" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.4.3-2.7">Make the connection identifiers (C_I, C_R) and the application algorithms in the selected cipher suite available to the application. The application can now derive application keys using the EDHOC-Exporter interface, see <a href="#exporter" class="xref">Section 4.3</a>.<a href="#section-5.4.3-2.7" class="pilcrow">¶</a>
 </li>
           </ul>
 <p id="section-5.4.3-3">If any processing step fails, the Responder MUST send an EDHOC error message back, formatted as defined in <a href="#error" class="xref">Section 6</a>, and the session MUST be discontinued.<a href="#section-5.4.3-3" class="pilcrow">¶</a></p>
@@ -2452,7 +2465,9 @@ where<a href="#section-5.5.2-2.1.3" class="pilcrow">¶</a></p>
                 <li class="normal" id="section-5.5.2-2.1.4.3">
                   <p id="section-5.5.2-2.1.4.3.1">P = ( ? PAD, ? EAD_4 )<a href="#section-5.5.2-2.1.4.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.5.2-2.1.4.3.2.1">EAD_4 - protected external authorization data, see <a href="#AD" class="xref">Section 3.8</a>. PAD = 1*true is padding that may be used to hide the length of the unpadded plaintext.<a href="#section-5.5.2-2.1.4.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.5.2-2.1.4.3.2.1">PAD = 1*true is padding that may be used to hide the length of the unpadded plaintext.<a href="#section-5.5.2-2.1.4.3.2.1" class="pilcrow">¶</a>
+</li>
+                    <li class="normal" id="section-5.5.2-2.1.4.3.2.2">EAD_4 - external authorization data, see <a href="#AD" class="xref">Section 3.8</a>.<a href="#section-5.5.2-2.1.4.3.2.2" class="pilcrow">¶</a>
 </li>
                   </ul>
 </li>
@@ -2478,7 +2493,7 @@ CIPHERTEXT_4 is the 'ciphertext' of COSE_Encrypt0.<a href="#section-5.5.2-2.1.5"
 </li>
             <li class="normal" id="section-5.5.3-2.3">Decrypt and verify the COSE_Encrypt0 as defined in Sections 5.2 and 5.3 of <span>[<a href="#I-D.ietf-cose-rfc8152bis-struct" class="xref">I-D.ietf-cose-rfc8152bis-struct</a>]</span>, with the EDHOC AEAD algorithm in the selected cipher suite, and the parameters defined in <a href="#asym-msg4-proc" class="xref">Section 5.5.2</a>. Discard padding, if present.<a href="#section-5.5.3-2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.5.3-2.4">Pass EAD_4 to the security application.<a href="#section-5.5.3-2.4" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.5.3-2.4">Make EAD_4 (if present) available to the application for EAD processing.<a href="#section-5.5.3-2.4" class="pilcrow">¶</a>
 </li>
           </ul>
 <p id="section-5.5.3-3">If any processing step fails, the Responder MUST send an EDHOC error message back, formatted as defined in <a href="#error" class="xref">Section 6</a>, and the session MUST be discontinued.<a href="#section-5.5.3-3" class="pilcrow">¶</a></p>
@@ -2667,9 +2682,10 @@ Initiator                                                   Responder
 <p id="section-8.1-8">Compromise of the long-term keys (private signature or static DH keys) does not compromise the security of completed EDHOC exchanges. Compromising the private authentication keys of one party lets an active attacker impersonate that compromised party in EDHOC exchanges with other parties but does not let the attacker impersonate other parties in EDHOC exchanges with the compromised party. Compromise of the long-term keys does not enable a passive attacker to compromise future session keys. Compromise of the HDKF input parameters (ECDH shared secret) leads to compromise of all session keys derived from that compromised shared secret. Compromise of one session key does not compromise other session keys. Compromise of PRK_4x3m leads to compromise of all keying material derived with the EDHOC-Exporter since the last invocation (if any) of the EDHOC-KeyUpdate function.<a href="#section-8.1-8" class="pilcrow">¶</a></p>
 <p id="section-8.1-9">Based on the cryptographic algorithms requirements <a href="#sec_algs" class="xref">Section 8.3</a>, EDHOC provides a minimum of 64-bit security against online brute force attacks and a minimum of 128-bit security against offline brute force attacks. To break 64-bit security against online brute force an attacker would on average have to send 4.3 billion messages per second for 68 years, which is infeasible in constrained IoT radio technologies. A forgery against a 64-bit MAC in EDHOC breaks the security of all future application data, while a forgery against a 64-bit MAC in the subsequent application protocol (e.g., OSCORE <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>) typically only breaks the security of the data in the forged packet.<a href="#section-8.1-9" class="pilcrow">¶</a></p>
 <p id="section-8.1-10">After sending message_3, the Initiator is assured that no other party than the Responder can compute the key PRK_4x3m (implicit key authentication). The Initiator does however not know that the Responder has actually computed the key PRK_4x3m. While the Initiator can securely send protected application data, the Initiator SHOULD NOT permanently store the keying material PRK_4x3m and TH_4 until the Initiator is assured that the Responder has actually computed the key PRK_4x3m (explicit key confirmation). Explicit key confirmation is e.g., assured when the Initiator has verified an OSCORE message or message_4 from the Responder. After verifying message_3, the Responder is assured that the Initiator has calculated the key PRK_4x3m (explicit key confirmation) and that no other party than the Initiator can compute the key. The Responder can securely send protected application data and store the keying material PRK_4x3m and TH_4.<a href="#section-8.1-10" class="pilcrow">¶</a></p>
-<p id="section-8.1-11">Key compromise impersonation (KCI): In EDHOC authenticated with signature keys, EDHOC provides KCI protection against an attacker having access to the long-term key or the ephemeral secret key. With static Diffie-Hellman key authentication, KCI protection would be provided against an attacker having access to the long-term Diffie-Hellman key, but not to an attacker having access to the ephemeral secret key. Note that the term KCI has typically been used for compromise of long-term keys, and that an attacker with access to the ephemeral secret key can only attack that specific session.<a href="#section-8.1-11" class="pilcrow">¶</a></p>
-<p id="section-8.1-12">Repudiation: If an endpoint authenticates with a signature, the other endpoint can prove that the endpoint performed a run of the protocol by presenting the input to the signature function as well as the signature itself. With static Diffie-Hellman key authentication, the authenticating endpoint can deny having participated in the protocol.<a href="#section-8.1-12" class="pilcrow">¶</a></p>
-<p id="section-8.1-13">Two earlier versions of EDHOC have been formally analyzed <span>[<a href="#Norrman20" class="xref">Norrman20</a>]</span> <span>[<a href="#Bruni18" class="xref">Bruni18</a>]</span> and the specification has been updated based on the analysis.<a href="#section-8.1-13" class="pilcrow">¶</a></p>
+<p id="section-8.1-11">External authorization data sent in message_1 (EAD_1) or message_2 (EAD_2) should be considered unprotected by EDHOC, see <a href="#unprot-data" class="xref">Section 8.5</a>. EAD_2 is encrypted but the Responder has not yet authenticated the Initiator.  External authorization data sent in message_3 (EAD_3) or message_4 (EAD_4) is protected between Initiator and Responder by the protocol, but note that EAD fields may be used by the application before the message verification is completed, see <a href="#AD" class="xref">Section 3.8</a>.<a href="#section-8.1-11" class="pilcrow">¶</a></p>
+<p id="section-8.1-12">Key compromise impersonation (KCI): In EDHOC authenticated with signature keys, EDHOC provides KCI protection against an attacker having access to the long-term key or the ephemeral secret key. With static Diffie-Hellman key authentication, KCI protection would be provided against an attacker having access to the long-term Diffie-Hellman key, but not to an attacker having access to the ephemeral secret key. Note that the term KCI has typically been used for compromise of long-term keys, and that an attacker with access to the ephemeral secret key can only attack that specific session.<a href="#section-8.1-12" class="pilcrow">¶</a></p>
+<p id="section-8.1-13">Repudiation: If an endpoint authenticates with a signature, the other endpoint can prove that the endpoint performed a run of the protocol by presenting the input to the signature function as well as the signature itself. With static Diffie-Hellman key authentication, the authenticating endpoint can deny having participated in the protocol.<a href="#section-8.1-13" class="pilcrow">¶</a></p>
+<p id="section-8.1-14">Two earlier versions of EDHOC have been formally analyzed <span>[<a href="#Norrman20" class="xref">Norrman20</a>]</span> <span>[<a href="#Bruni18" class="xref">Bruni18</a>]</span> and the specification has been updated based on the analysis.<a href="#section-8.1-14" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="crypto">
@@ -2730,7 +2746,7 @@ authenticated encryption. Hence the message authenticating functionality of the 
 <p id="section-8.7-2">An attacker can also send faked message_2, message_3, message_4, or error in an attempt to trick the receiving party to send an error message and discontinue the session. EDHOC implementations MAY evaluate if a received message is likely to have been forged by an attacker and ignore it without sending an error message or discontinuing the session.<a href="#section-8.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="implementation-considerations">
+<div id="impl-cons">
 <section id="section-8.8">
         <h3 id="name-implementation-consideratio">
 <a href="#section-8.8" class="section-number selfRef">8.8. </a><a href="#name-implementation-consideratio" class="section-name selfRef">Implementation Considerations</a>
@@ -2932,7 +2948,7 @@ Reference: [[this document]]
         <h3 id="name-edhoc-external-authorizatio">
 <a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-edhoc-external-authorizatio" class="section-name selfRef">EDHOC External Authorization Data Registry</a>
         </h3>
-<p id="section-9.5-1">IANA has created a new registry entitled "EDHOC External Authorization Data" under the new group name "Ephemeral Diffie-Hellman Over COSE (EDHOC)". The registration procedure is "Expert Review". The columns of the registry are Label, Description, and Reference, where Label is an integer and the other columns are text strings.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+<p id="section-9.5-1">IANA has created a new registry entitled "EDHOC External Authorization Data" under the new group name "Ephemeral Diffie-Hellman Over COSE (EDHOC)". The registration procedure is "Specification Required". The columns of the registry are Label, Message, Description, and Reference, where Label is an integer and the other columns are text strings.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cwt-header-param">
@@ -3317,6 +3333,10 @@ Reference: [[this document]]
         <dd>
 <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Palombini, F.</span>, and <span class="refAuthor">M. Vucinic</span>, <span class="refTitle">"Comparison of CoAP Security Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-lwig-security-protocol-comparison-05</span>, <time datetime="2020-11-02" class="refDate">2 November 2020</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-lwig-security-protocol-comparison-05.txt">https://www.ietf.org/archive/id/draft-ietf-lwig-security-protocol-comparison-05.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
+        <dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, and <span class="refAuthor">J. O'Donoghue</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-11</span>, <time datetime="2021-10-24" class="refDate">24 October 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-eat-11.txt">https://www.ietf.org/archive/id/draft-ietf-rats-eat-11.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.ietf-tls-dtls13">[I-D.ietf-tls-dtls13]</dt>
         <dd>
 <span class="refAuthor">Rescorla, E.</span>, <span class="refAuthor">Tschofenig, H.</span>, and <span class="refAuthor">N. Modadugu</span>, <span class="refTitle">"The Datagram Transport Layer Security (DTLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-dtls13-43</span>, <time datetime="2021-04-30" class="refDate">30 April 2021</time>, <span>&lt;<a href="https://www.ietf.org/internet-drafts/draft-ietf-tls-dtls13-43.txt">https://www.ietf.org/internet-drafts/draft-ietf-tls-dtls13-43.txt</a>&gt;</span>. </dd>
@@ -3333,6 +3353,10 @@ Reference: [[this document]]
         <dd>
 <span class="refAuthor">Norrman, K.</span>, <span class="refAuthor">Sundararajan, V.</span>, and <span class="refAuthor">A. Bruni</span>, <span class="refTitle">"Formal Analysis of EDHOC Key Establishment for Constrained IoT Devices"</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://arxiv.org/abs/2007.11427">https://arxiv.org/abs/2007.11427</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC2986">[RFC2986]</dt>
+        <dd>
+<span class="refAuthor">Nystrom, M.</span> and <span class="refAuthor">B. Kaliski</span>, <span class="refTitle">"PKCS #10: Certification Request Syntax Specification Version 1.7"</span>, <span class="seriesInfo">RFC 2986</span>, <span class="seriesInfo">DOI 10.17487/RFC2986</span>, <time datetime="2000-11" class="refDate">November 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2986">https://www.rfc-editor.org/info/rfc2986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6194">[RFC6194]</dt>
         <dd>
 <span class="refAuthor">Polk, T.</span>, <span class="refAuthor">Chen, L.</span>, <span class="refAuthor">Turner, S.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Security Considerations for the SHA-0 and SHA-1 Message-Digest Algorithms"</span>, <span class="seriesInfo">RFC 6194</span>, <span class="seriesInfo">DOI 10.17487/RFC6194</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6194">https://www.rfc-editor.org/info/rfc6194</a>&gt;</span>. </dd>
@@ -3348,6 +3372,10 @@ Reference: [[this document]]
 <dt id="RFC7296">[RFC7296]</dt>
         <dd>
 <span class="refAuthor">Kaufman, C.</span>, <span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Nir, Y.</span>, <span class="refAuthor">Eronen, P.</span>, and <span class="refAuthor">T. Kivinen</span>, <span class="refTitle">"Internet Key Exchange Protocol Version 2 (IKEv2)"</span>, <span class="seriesInfo">STD 79</span>, <span class="seriesInfo">RFC 7296</span>, <span class="seriesInfo">DOI 10.17487/RFC7296</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7296">https://www.rfc-editor.org/info/rfc7296</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8366">[RFC8366]</dt>
+        <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Pritikin, M.</span>, and <span class="refAuthor">T. Eckert</span>, <span class="refTitle">"A Voucher Artifact for Bootstrapping Protocols"</span>, <span class="seriesInfo">RFC 8366</span>, <span class="seriesInfo">DOI 10.17487/RFC8366</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8366">https://www.rfc-editor.org/info/rfc8366</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8446">[RFC8446]</dt>
         <dd>
@@ -3699,353 +3727,447 @@ where protected, external_aad and payload are specified in <a href="#m2" class="
 </li>
         </ul>
 <p id="appendix-C.3-7">Note that a COSE header map can contain several header parameters, for example { x5u, x5t } or { kid, kid_context }.<a href="#appendix-C.3-7" class="pilcrow">¶</a></p>
-<p id="appendix-C.3-8">ID_CRED_x MAY also identify the authentication credential by value. For example, a certificate chain can be transported in ID_CRED_x with COSE header parameter c5c or x5chain, defined in <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span> and <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span> and credentials of type CWT and CCS can be transported with the COSE header parameters registered in <a href="#cwt-header-param" class="xref">Section 9.6</a>.<a href="#appendix-C.3-8" class="pilcrow">¶</a></p>
+<p id="appendix-C.3-8">ID_CRED_x MAY also identify the credential by value. For example, a certificate chain can be transported in ID_CRED_x with COSE header parameter c5c or x5chain, defined in <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span> and <span>[<a href="#I-D.ietf-cose-x509" class="xref">I-D.ietf-cose-x509</a>]</span> and credentials of type CWT and CCS can be transported with the COSE header parameters registered in <a href="#cwt-header-param" class="xref">Section 9.6</a>.<a href="#appendix-C.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
+<div id="auth-validation">
+<section id="appendix-D">
+      <h2 id="name-authentication-related-veri">
+<a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-authentication-related-veri" class="section-name selfRef">Authentication Related Verifications</a>
+      </h2>
+<p id="appendix-D-1">EDHOC performs certain authentication related operations, see <a href="#auth-key-id" class="xref">Section 3.5</a>, but in general it is necessary to make additional verifications beyond EDHOC message processing. What verifications are needed depend on the deployment, in particular the trust model and the security policies, but most commonly it can be expressed in terms of verifications of credential content.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">EDHOC assumes the existence of mechanisms (certification authority or other trusted third party, pre-provisioning, etc.) for generating and distributing authentication credentials and other credentials, as well as the existence of trust anchors (CA certificates, trusted public keys, etc.). For example, a public key certificate or CWT may rely on a trusted third party whose public key is pre-provisioned, whereas a CCS or a self-signed certificate/CWT may be used when trust in the public key can be achieved by other means, or in the case of trust-on-first-use, see <a href="#tofu" class="xref">Appendix D.5</a>.<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-3">In this section we provide some examples of such verifications. These verifications are the responsibility of the application but may be implemented as part of an EDHOC library.<a href="#appendix-D-3" class="pilcrow">¶</a></p>
+<div id="validating-auth-credential">
+<section id="appendix-D.1">
+        <h3 id="name-validating-the-authenticati">
+<a href="#appendix-D.1" class="section-number selfRef">D.1. </a><a href="#name-validating-the-authenticati" class="section-name selfRef">Validating the Authentication Credential</a>
+        </h3>
+<p id="appendix-D.1-1">The authentication credential may contain, in addition to the authentication key, other parameters that needs to be verified. For example:<a href="#appendix-D.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D.1-2.1">In X.509 and C509 certificates, signature keys typically have key usage "digitalSignature" and Diffie-Hellman public keys typically have key usage "keyAgreement" <span>[<a href="#RFC3279" class="xref">RFC3279</a>]</span><span>[<a href="#RFC8410" class="xref">RFC8410</a>]</span>.<a href="#appendix-D.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-D.1-2.2">In X.509 and C509 certificates validity is expressed using Not After and Not Before. In CWT and CCS, the "exp" and "nbf" claims have similar meanings.<a href="#appendix-D.1-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
+<div id="identities">
+<section id="appendix-D.2">
+        <h3 id="name-identities">
+<a href="#appendix-D.2" class="section-number selfRef">D.2. </a><a href="#name-identities" class="section-name selfRef">Identities</a>
+        </h3>
+<p id="appendix-D.2-1">The application must decide on allowing a connection or not depending on the intended endpoint, and in particular whether it is a specific identity or a set of identities. To prevent misbinding attacks, the identity of the endpoint is included in a MAC verified through the protocol. More details and examples are provided in this section.<a href="#appendix-D.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.2-2">Policies for what connections to allow are typically set based on the identity of the other endpoint, and endpoints typically only allow connections from a specific identity or a small restricted set of identities. For example, in the case of a device connecting to a network, the network may only allow connections from devices which authenticate with certificates having a particular range of serial numbers and signed by a particular CA. Conversely, a device may only be allowed to connect to a network which authenticates with a particular public key.<a href="#appendix-D.2-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D.2-3.1">When a Public Key Infrastructure (PKI) is used with certificates, the identity is the subject whose unique name, e.g., a domain name, a Network Access Identifier (NAI), or an Extended Unique Identifier (EUI), is included in the endpoint's certificate.<a href="#appendix-D.2-3.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-D.2-3.2">Similarly, when a PKI is used with CWTs, the identity is the subject identified by the relevant claim(s), such as 'sub' (subject).<a href="#appendix-D.2-3.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="appendix-D.2-3.3">When PKI is not used (e.g., CCS, self-signed certificate/CWT) the identity is typically directly associated to the authentication key of the other party. For example, if identities can be expressed in the form of unique subject names assigned to public keys, then a binding to identity is achieved by including both public key and associated subject name in the authentication credential: CRED_I or CRED_R may be a self-signed certificate/CWT or CCS containing the authentication key and the subject name, see <a href="#auth-cred" class="xref">Section 3.5.2</a>. Each endpoint thus needs to know the specific authentication key/unique associated subject name, or set of public authentication keys/unique associated subject names, which it is allowed to communicate with.<a href="#appendix-D.2-3.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="appendix-D.2-4">To prevent misbinding attacks in systems where an attacker can register public keys without proving knowledge of the private key, SIGMA <span>[<a href="#SIGMA" class="xref">SIGMA</a>]</span> enforces a MAC to be calculated over the "identity". EDHOC follows SIGMA by calculating a MAC over the whole authentication credential, which in case of an X.509 or C509 certificate includes the "subject" and "subjectAltName" fields, and in the case of CWT or CCS includes the "sub" claim.<a href="#appendix-D.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-D.2-5">(While the SIGMA paper only focuses on the identity, the same principle is true for other information such as policies associated to the public key.)<a href="#appendix-D.2-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cert-path">
+<section id="appendix-D.3">
+        <h3 id="name-certification-path-and-trus">
+<a href="#appendix-D.3" class="section-number selfRef">D.3. </a><a href="#name-certification-path-and-trus" class="section-name selfRef">Certification Path and Trust Anchors</a>
+        </h3>
+<p id="appendix-D.3-1">When a Public Key Infrastructure (PKI) is used with certificates, the trust anchor is a Certification Authority (CA) certificate. Each party needs at least one CA public key certificate, or just the CA public key. The certification path contains proof that the subject of the certificate owns the public key in the certificate. Only validated public-key certificates are to be accepted.<a href="#appendix-D.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-2">Similarly, when a PKI is used with CWTs, each party needs to have at least one trusted third party public key as trust anchor to verify the end entity CWTs. The trusted third party public key can, e.g., be stored in a self-signed CWT or in a CCS.<a href="#appendix-D.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-3">The signature of the authentication credential needs to be verified with the public key of the issuer. X.509 and C509 certificates includes the "Issuer" field. In CWT and CCS, the "iss" claim has a similar meaning. The public key is either a trust anchor or the public key in another valid and trusted credential in a certification path from trust anchor to authentication credential.<a href="#appendix-D.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-4">Similar verifications as made with the authentication credential (see <a href="#validating-auth-credential" class="xref">Appendix D.1</a>) are also needed for the other credentials in the certification path.<a href="#appendix-D.3-4" class="pilcrow">¶</a></p>
+<p id="appendix-D.3-5">When PKI is not used (CCS, self-signed certificate/CWT), the trust anchor is the authentication key of the other party, in which case there is no certification path.<a href="#appendix-D.3-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="revocation">
+<section id="appendix-D.4">
+        <h3 id="name-revocation-status">
+<a href="#appendix-D.4" class="section-number selfRef">D.4. </a><a href="#name-revocation-status" class="section-name selfRef">Revocation Status</a>
+        </h3>
+<p id="appendix-D.4-1">The application may need to verify that the credentials are not revoked, see <a href="#impl-cons" class="xref">Section 8.8</a>. Some use cases may be served by short-lived credentials, for example, where the validity of the credential is on par with with the interval between revocation checks. But, in general, credential life time and revokation checking are complementary measures to control credential status. Revocation information may be transported as External Authentication Data (EAD), see <a href="#ead-appendix" class="xref">Appendix E</a>.<a href="#appendix-D.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="tofu">
+<section id="appendix-D.5">
+        <h3 id="name-trust-on-first-use">
+<a href="#appendix-D.5" class="section-number selfRef">D.5. </a><a href="#name-trust-on-first-use" class="section-name selfRef">Trust-on-first-use</a>
+        </h3>
+<p id="appendix-D.5-1">TBD<a href="#appendix-D.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="ead-appendix">
+<section id="appendix-E">
+      <h2 id="name-use-of-external-authorizati">
+<a href="#appendix-E" class="section-number selfRef">Appendix E. </a><a href="#name-use-of-external-authorizati" class="section-name selfRef">Use of External Authorization Data</a>
+      </h2>
+<p id="appendix-E-1">In order to reduce the number of messages and round trips, or to simplify processing, external security applications may be integrated into EDHOC by transporting external authorization related data (EAD) in the messages.<a href="#appendix-E-1" class="pilcrow">¶</a></p>
+<p id="appendix-E-2">The EAD format is specified in <a href="#AD" class="xref">Section 3.8</a>, this section contains examples and further details of how EAD is used.<a href="#appendix-E-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-E-3.1">One example is third-party authorization information requested in EAD_1 and an authorization artifact ("voucher", cf. <span>[<a href="#RFC8366" class="xref">RFC8366</a>]</span>) returned in EAD_2, see <span>[<a href="#I-D.selander-ace-ake-authz" class="xref">I-D.selander-ace-ake-authz</a>]</span>.<a href="#appendix-E-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-E-3.2">Another example is remote attestation requested in EAD_2, and an Entity Attestation Token (EAT, <span>[<a href="#I-D.ietf-rats-eat" class="xref">I-D.ietf-rats-eat</a>]</span>) returned in EAD_3.<a href="#appendix-E-3.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-E-3.3">A third example is certificate enrolment where a Certificate Signing Request (CSR, <span>[<a href="#RFC2986" class="xref">RFC2986</a>]</span>) is included EAD_3, and the issued public key certificate (X.509 <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>, C509 <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>) or a reference thereof is returned i EAD_4.<a href="#appendix-E-3.3" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="appendix-E-4">External authorization data should be considered unprotected by EDHOC, and the protection of EAD is the responsibility of the security application (third party authorization, remote attestation, certificate enrolment, etc.). The security properties of the EAD fields (after EDHOC processing) are discussed in <a href="#sec-prop" class="xref">Section 8.1</a>.<a href="#appendix-E-4" class="pilcrow">¶</a></p>
+<p id="appendix-E-5">The content of the EAD field may be used in the EDHOC processing of the message in which they are contained. For example, authentication related information like assertions and revocation information, transported in EAD fields may provide input about trust anchors or validity of credentials relevant to the authentication processing. The EAD fields (like ID_CRED fields) are therefore made available to the application before the message is verified, see details of message processing in <a href="#asym" class="xref">Section 5</a>. In the first example above, a voucher in EAD_2 made available to the application can enable the Initiator to verify the identity or public key of the Responder before verifying the signature. An application allowing EAD fields containing authentication information thus may need to handle authentication related verifications associated with EAD processing.<a href="#appendix-E-5" class="pilcrow">¶</a></p>
+<p id="appendix-E-6">Conversely, the security application may need to wait for EDHOC message verification to complete. In the third example above, the validation of a CSR carried in EAD_3 is not started by the Responder before EDHOC has successfully verified message_3 and proven the possession of the private key of the Initiator.<a href="#appendix-E-6" class="pilcrow">¶</a></p>
+<p id="appendix-E-7">The security application may reuse EDHOC protocol fields which therefore need to be available to the application. For example, the security application may use the same crypto algorithms as in the EDHOC session and therefore needs access to the selected cipher suite (or the whole SUITES_I). The application may use the ephemeral public keys G_X and G_Y, as ephemeral keys or as nonces. How the security application gets access to these message fields is out of scope for this specification.<a href="#appendix-E-7" class="pilcrow">¶</a></p>
+<p id="appendix-E-8">The processing of (ead_label, ead_value) by the security application needs to be described in the specification where the ead_label is registered, see <a href="#iana-ead" class="xref">Section 9.5</a>, including the ead_value for each message and actions in case of errors. An application may support multiple security applications that make use of EAD, which may result in multiple (ead_label, ead_value) pairs in one EAD field, see <a href="#AD" class="xref">Section 3.8</a>. Any dependencies on security applications with previously registered EAD fields needs to be documented, and the processing needs to consider their simultaneous use.<a href="#appendix-E-8" class="pilcrow">¶</a></p>
+<p id="appendix-E-9">Since data carried in EAD may not be protected, or be processed by the application before the EDHOC message is verified, special considerations need to be made such that it does not violate security and privacy requirements of the service which uses this data, see <a href="#unprot-data" class="xref">Section 8.5</a>. The content in an EAD field may impact the security properties provided by EDHOC. Security applications making use of the EAD fields must perform the necessary security analysis.<a href="#appendix-E-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="appl-temp">
-<section id="appendix-D">
+<section id="appendix-F">
       <h2 id="name-applicability-template-exam">
-<a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-applicability-template-exam" class="section-name selfRef">Applicability Template Example</a>
+<a href="#appendix-F" class="section-number selfRef">Appendix F. </a><a href="#name-applicability-template-exam" class="section-name selfRef">Applicability Template Example</a>
       </h2>
-<p id="appendix-D-1">This appendix contains a rudimentary example of an applicability template, see <a href="#applicability" class="xref">Section 3.9</a>.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">For use of EDHOC in the XX protocol, the following assumptions are made:<a href="#appendix-D-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="appendix-D-3">
-<li id="appendix-D-3.1">Transfer in CoAP as specified in <a href="#coap" class="xref">Appendix A.3</a> with requests expected by the CoAP server (= Responder) at /app1-edh, no Content-Format needed.<a href="#appendix-D-3.1" class="pilcrow">¶</a>
+<p id="appendix-F-1">This appendix contains a rudimentary example of an applicability template, see <a href="#applicability" class="xref">Section 3.9</a>.<a href="#appendix-F-1" class="pilcrow">¶</a></p>
+<p id="appendix-F-2">For use of EDHOC in the XX protocol, the following assumptions are made:<a href="#appendix-F-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="appendix-F-3">
+<li id="appendix-F-3.1">Transfer in CoAP as specified in <a href="#coap" class="xref">Appendix A.3</a> with requests expected by the CoAP server (= Responder) at /app1-edh, no Content-Format needed.<a href="#appendix-F-3.1" class="pilcrow">¶</a>
 </li>
-        <li id="appendix-D-3.2">METHOD = 1 (I uses signature key, R uses static DH key.)<a href="#appendix-D-3.2" class="pilcrow">¶</a>
+        <li id="appendix-F-3.2">METHOD = 1 (I uses signature key, R uses static DH key.)<a href="#appendix-F-3.2" class="pilcrow">¶</a>
 </li>
-        <li id="appendix-D-3.3">
-          <p id="appendix-D-3.3.1">CRED_I is an IEEE 802.1AR IDevID encoded as a C509 certificate of type 0 <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>.<a href="#appendix-D-3.3.1" class="pilcrow">¶</a></p>
+        <li id="appendix-F-3.3">
+          <p id="appendix-F-3.3.1">CRED_I is an IEEE 802.1AR IDevID encoded as a C509 certificate of type 0 <span>[<a href="#I-D.ietf-cose-cbor-encoded-cert" class="xref">I-D.ietf-cose-cbor-encoded-cert</a>]</span>.<a href="#appendix-F-3.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-D-3.3.2.1">R acquires CRED_I out-of-band, indicated in EAD_1.<a href="#appendix-D-3.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-F-3.3.2.1">R acquires CRED_I out-of-band, indicated in EAD_1.<a href="#appendix-F-3.3.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-D-3.3.2.2">ID_CRED_I = {4: h''} is a 'kid' with value empty CBOR byte string.<a href="#appendix-D-3.3.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-F-3.3.2.2">ID_CRED_I = {4: h''} is a 'kid' with value empty CBOR byte string.<a href="#appendix-F-3.3.2.2" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li id="appendix-D-3.4">
-          <p id="appendix-D-3.4.1">CRED_R is a CCS of type OKP as specified in <a href="#auth-cred" class="xref">Section 3.5.3</a>.<a href="#appendix-D-3.4.1" class="pilcrow">¶</a></p>
+        <li id="appendix-F-3.4">
+          <p id="appendix-F-3.4.1">CRED_R is a CCS of type OKP as specified in <a href="#auth-cred" class="xref">Section 3.5.2</a>.<a href="#appendix-F-3.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-D-3.4.2.1">The CBOR map has parameters 1 (kty), -1 (crv), and -2 (x-coordinate).<a href="#appendix-D-3.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-F-3.4.2.1">The CBOR map has parameters 1 (kty), -1 (crv), and -2 (x-coordinate).<a href="#appendix-F-3.4.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-D-3.4.2.2">ID_CRED_R is {TBD2 : CCS}.   Editor's note: TBD2 is the COSE header parameter value of 'kccs', see <a href="#cwt-header-param" class="xref">Section 9.6</a><a href="#appendix-D-3.4.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-F-3.4.2.2">ID_CRED_R is {TBD2 : CCS}.   Editor's note: TBD2 is the COSE header parameter value of 'kccs', see <a href="#cwt-header-param" class="xref">Section 9.6</a><a href="#appendix-F-3.4.2.2" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li id="appendix-D-3.5">External authorization data is defined and processed as specified in <span>[<a href="#I-D.selander-ace-ake-authz" class="xref">I-D.selander-ace-ake-authz</a>]</span>.<a href="#appendix-D-3.5" class="pilcrow">¶</a>
+        <li id="appendix-F-3.5">External authorization data is defined and processed as specified in <span>[<a href="#I-D.selander-ace-ake-authz" class="xref">I-D.selander-ace-ake-authz</a>]</span>.<a href="#appendix-F-3.5" class="pilcrow">¶</a>
 </li>
-        <li id="appendix-D-3.6">EUI-64 is used as the identity of the endpoint (see example in <a href="#auth-cred" class="xref">Section 3.5.3</a>).<a href="#appendix-D-3.6" class="pilcrow">¶</a>
+        <li id="appendix-F-3.6">EUI-64 is used as the identity of the endpoint (see example in <a href="#auth-cred" class="xref">Section 3.5.2</a>).<a href="#appendix-F-3.6" class="pilcrow">¶</a>
 </li>
-        <li id="appendix-D-3.7">No use of message_4: the application sends protected messages from R to I.<a href="#appendix-D-3.7" class="pilcrow">¶</a>
+        <li id="appendix-F-3.7">No use of message_4: the application sends protected messages from R to I.<a href="#appendix-F-3.7" class="pilcrow">¶</a>
 </li>
       </ol>
 </section>
 </div>
 <div id="duplication">
-<section id="appendix-E">
+<section id="appendix-G">
       <h2 id="name-edhoc-message-deduplication">
-<a href="#appendix-E" class="section-number selfRef">Appendix E. </a><a href="#name-edhoc-message-deduplication" class="section-name selfRef">EDHOC Message Deduplication</a>
+<a href="#appendix-G" class="section-number selfRef">Appendix G. </a><a href="#name-edhoc-message-deduplication" class="section-name selfRef">EDHOC Message Deduplication</a>
       </h2>
-<p id="appendix-E-1">EDHOC by default assumes that message duplication is handled by the transport, in this section exemplified with CoAP.<a href="#appendix-E-1" class="pilcrow">¶</a></p>
-<p id="appendix-E-2">Deduplication of CoAP messages is described in Section 4.5 of <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span>. This handles the case when the same Confirmable (CON) message is received multiple times due to missing acknowledgement on CoAP messaging layer. The recommended processing in <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> is that the duplicate message is acknowledged (ACK), but the received message is only processed once by the CoAP stack.<a href="#appendix-E-2" class="pilcrow">¶</a></p>
-<p id="appendix-E-3">Message deduplication is resource demanding and therefore not supported in all CoAP implementations. Since EDHOC is targeting constrained environments, it is desirable that EDHOC can optionally support transport layers which do not handle message duplication. Special care is needed to avoid issues with duplicate messages, see <a href="#proc-outline" class="xref">Section 5.1</a>.<a href="#appendix-E-3" class="pilcrow">¶</a></p>
-<p id="appendix-E-4">The guiding principle here is similar to the deduplication processing on CoAP messaging layer: a received duplicate EDHOC message SHALL NOT result in a response consisting of another instance of the next EDHOC message. The result MAY be that a duplicate EDHOC response is sent, provided it is still relevant with respect to the current protocol state. In any case, the received message MUST NOT be processed more than once in the same EDHOC session. This is called "EDHOC message deduplication".<a href="#appendix-E-4" class="pilcrow">¶</a></p>
-<p id="appendix-E-5">An EDHOC implementation MAY store the previously sent EDHOC message to be able to resend it. An EDHOC implementation MAY keep the protocol state to be able to recreate the previously sent EDHOC message and resend it. The previous message or protocol state MUST NOT be kept longer than what is required for retransmission, for example, in the case of CoAP transport, no longer than the EXCHANGE_LIFETIME (see Section 4.8.2 of <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span>).<a href="#appendix-E-5" class="pilcrow">¶</a></p>
-<p id="appendix-E-6">Note that the requirements in <a href="#proc-outline" class="xref">Section 5.1</a> still apply because duplicate messages are not processed by the EDHOC state machine:<a href="#appendix-E-6" class="pilcrow">¶</a></p>
+<p id="appendix-G-1">EDHOC by default assumes that message duplication is handled by the transport, in this section exemplified with CoAP.<a href="#appendix-G-1" class="pilcrow">¶</a></p>
+<p id="appendix-G-2">Deduplication of CoAP messages is described in Section 4.5 of <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span>. This handles the case when the same Confirmable (CON) message is received multiple times due to missing acknowledgement on CoAP messaging layer. The recommended processing in <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> is that the duplicate message is acknowledged (ACK), but the received message is only processed once by the CoAP stack.<a href="#appendix-G-2" class="pilcrow">¶</a></p>
+<p id="appendix-G-3">Message deduplication is resource demanding and therefore not supported in all CoAP implementations. Since EDHOC is targeting constrained environments, it is desirable that EDHOC can optionally support transport layers which do not handle message duplication. Special care is needed to avoid issues with duplicate messages, see <a href="#proc-outline" class="xref">Section 5.1</a>.<a href="#appendix-G-3" class="pilcrow">¶</a></p>
+<p id="appendix-G-4">The guiding principle here is similar to the deduplication processing on CoAP messaging layer: a received duplicate EDHOC message SHALL NOT result in a response consisting of another instance of the next EDHOC message. The result MAY be that a duplicate EDHOC response is sent, provided it is still relevant with respect to the current protocol state. In any case, the received message MUST NOT be processed more than once in the same EDHOC session. This is called "EDHOC message deduplication".<a href="#appendix-G-4" class="pilcrow">¶</a></p>
+<p id="appendix-G-5">An EDHOC implementation MAY store the previously sent EDHOC message to be able to resend it. An EDHOC implementation MAY keep the protocol state to be able to recreate the previously sent EDHOC message and resend it. The previous message or protocol state MUST NOT be kept longer than what is required for retransmission, for example, in the case of CoAP transport, no longer than the EXCHANGE_LIFETIME (see Section 4.8.2 of <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span>).<a href="#appendix-G-5" class="pilcrow">¶</a></p>
+<p id="appendix-G-6">Note that the requirements in <a href="#proc-outline" class="xref">Section 5.1</a> still apply because duplicate messages are not processed by the EDHOC state machine:<a href="#appendix-G-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-E-7.1">EDHOC messages SHALL be processed according to the current protocol state.<a href="#appendix-E-7.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-G-7.1">EDHOC messages SHALL be processed according to the current protocol state.<a href="#appendix-G-7.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-E-7.2">Different instances of the same message MUST NOT be processed in one session.<a href="#appendix-E-7.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-G-7.2">Different instances of the same message MUST NOT be processed in one session.<a href="#appendix-G-7.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
 </div>
 <div id="transports-not-natively-providing-correlation">
-<section id="appendix-F">
+<section id="appendix-H">
       <h2 id="name-transports-not-natively-pro">
-<a href="#appendix-F" class="section-number selfRef">Appendix F. </a><a href="#name-transports-not-natively-pro" class="section-name selfRef">Transports Not Natively Providing Correlation</a>
+<a href="#appendix-H" class="section-number selfRef">Appendix H. </a><a href="#name-transports-not-natively-pro" class="section-name selfRef">Transports Not Natively Providing Correlation</a>
       </h2>
-<p id="appendix-F-1">Protocols that do not natively provide full correlation between a series of messages can send the C_I and C_R identifiers along as needed.<a href="#appendix-F-1" class="pilcrow">¶</a></p>
-<p id="appendix-F-2">The transport over CoAP (<a href="#coap" class="xref">Appendix A.3</a>) can serve as a blueprint for other server-client protocols:
+<p id="appendix-H-1">Protocols that do not natively provide full correlation between a series of messages can send the C_I and C_R identifiers along as needed.<a href="#appendix-H-1" class="pilcrow">¶</a></p>
+<p id="appendix-H-2">The transport over CoAP (<a href="#coap" class="xref">Appendix A.3</a>) can serve as a blueprint for other server-client protocols:
 The client prepends the C_x which the server selected (or, for message_1, the CBOR simple value 'true' which is not a valid C_x) to any request message it sends.
-The server does not send any such indicator, as responses are matched to request by the client-server protocol design.<a href="#appendix-F-2" class="pilcrow">¶</a></p>
-<p id="appendix-F-3">Protocols that do not provide any correlation at all can prescribe prepending of the peer's chosen C_x to all messages.<a href="#appendix-F-3" class="pilcrow">¶</a></p>
+The server does not send any such indicator, as responses are matched to request by the client-server protocol design.<a href="#appendix-H-2" class="pilcrow">¶</a></p>
+<p id="appendix-H-3">Protocols that do not provide any correlation at all can prescribe prepending of the peer's chosen C_x to all messages.<a href="#appendix-H-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="change-log">
-<section id="appendix-G">
+<section id="appendix-I">
       <h2 id="name-change-log">
-<a href="#appendix-G" class="section-number selfRef">Appendix G. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
+<a href="#appendix-I" class="section-number selfRef">Appendix I. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<p id="appendix-G-1">RFC Editor: Please remove this appendix.<a href="#appendix-G-1" class="pilcrow">¶</a></p>
+<p id="appendix-I-1">RFC Editor: Please remove this appendix.<a href="#appendix-I-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.1">
-          <p id="appendix-G-2.1.1">From -11 to -12:<a href="#appendix-G-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-I-2.1">
+          <p id="appendix-I-2.1.1">From -11 to -12:<a href="#appendix-I-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.1.2.1">Clarified applicability to KEMs<a href="#appendix-G-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.1.2.1">Clarified applicability to KEMs<a href="#appendix-I-2.1.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.2">Clarified use of COSE header parameters<a href="#appendix-G-2.1.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.2">Clarified use of COSE header parameters<a href="#appendix-I-2.1.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.3">Updates on MTI<a href="#appendix-G-2.1.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.3">Updates on MTI<a href="#appendix-I-2.1.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.4">Updated security considerations<a href="#appendix-G-2.1.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.4">Updated security considerations<a href="#appendix-I-2.1.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.5">New section on PQC<a href="#appendix-G-2.1.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.5">New section on PQC<a href="#appendix-I-2.1.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.6">Removed duplicate definition of cipher suites<a href="#appendix-G-2.1.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.6">Removed duplicate definition of cipher suites<a href="#appendix-I-2.1.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.7">Explanations of use of COSE moved to Appendix C.3<a href="#appendix-G-2.1.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.7">Explanations of use of COSE moved to Appendix C.3<a href="#appendix-I-2.1.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.1.2.8">Updated internal references<a href="#appendix-G-2.1.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.1.2.8">Updated internal references<a href="#appendix-I-2.1.2.8" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.2">
-          <p id="appendix-G-2.2.1">From -10 to -11:<a href="#appendix-G-2.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.2">
+          <p id="appendix-I-2.2.1">From -10 to -11:<a href="#appendix-I-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.2.2.1">Restructured section on authentication parameters<a href="#appendix-G-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.2.2.1">Restructured section on authentication parameters<a href="#appendix-I-2.2.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.2">Changed UCCS to CCS<a href="#appendix-G-2.2.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.2">Changed UCCS to CCS<a href="#appendix-I-2.2.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.3">Changed names and description of COSE header parameters for CWT/CCS<a href="#appendix-G-2.2.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.3">Changed names and description of COSE header parameters for CWT/CCS<a href="#appendix-I-2.2.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.4">Changed several of the KDF and Exporter labels<a href="#appendix-G-2.2.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.4">Changed several of the KDF and Exporter labels<a href="#appendix-I-2.2.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.5">Removed edhoc_aead_id from info (already in transcript_hash)<a href="#appendix-G-2.2.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.5">Removed edhoc_aead_id from info (already in transcript_hash)<a href="#appendix-I-2.2.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.6">Added MTI section<a href="#appendix-G-2.2.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.6">Added MTI section<a href="#appendix-I-2.2.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.7">EAD: changed CDDL names and added value type to registry<a href="#appendix-G-2.2.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.7">EAD: changed CDDL names and added value type to registry<a href="#appendix-I-2.2.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.8">Updated Figures 1, 2, and 3<a href="#appendix-G-2.2.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.8">Updated Figures 1, 2, and 3<a href="#appendix-I-2.2.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.9">Some correction and clarifications<a href="#appendix-G-2.2.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.9">Some correction and clarifications<a href="#appendix-I-2.2.2.9" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.2.2.10">Added core.edhoc to CoRE Resource Type registry<a href="#appendix-G-2.2.2.10" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.2.2.10">Added core.edhoc to CoRE Resource Type registry<a href="#appendix-I-2.2.2.10" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.3">
-          <p id="appendix-G-2.3.1">From -09 to -10:<a href="#appendix-G-2.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.3">
+          <p id="appendix-I-2.3.1">From -09 to -10:<a href="#appendix-I-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.3.2.1">SUITES_I simplified to only contain the selected and more preferred suites<a href="#appendix-G-2.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.3.2.1">SUITES_I simplified to only contain the selected and more preferred suites<a href="#appendix-I-2.3.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.3.2.2">Info is a CBOR sequence and context is a bstr<a href="#appendix-G-2.3.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.3.2.2">Info is a CBOR sequence and context is a bstr<a href="#appendix-I-2.3.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.3.2.3">Added kid to UCCS example<a href="#appendix-G-2.3.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.3.2.3">Added kid to UCCS example<a href="#appendix-I-2.3.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.3.2.4">Separate header parameters for CWT and UCCS<a href="#appendix-G-2.3.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.3.2.4">Separate header parameters for CWT and UCCS<a href="#appendix-I-2.3.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.3.2.5">CWT Confirmation Method kid extended to bstr / int<a href="#appendix-G-2.3.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.3.2.5">CWT Confirmation Method kid extended to bstr / int<a href="#appendix-I-2.3.2.5" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.4">
-          <p id="appendix-G-2.4.1">From -08 to -09:<a href="#appendix-G-2.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.4">
+          <p id="appendix-I-2.4.1">From -08 to -09:<a href="#appendix-I-2.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.4.2.1">G_Y and CIPHERTEXT_2 are now included in one CBOR bstr<a href="#appendix-G-2.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.4.2.1">G_Y and CIPHERTEXT_2 are now included in one CBOR bstr<a href="#appendix-I-2.4.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.2">MAC_2 and MAC_3 are now generated with EDHOC-KDF<a href="#appendix-G-2.4.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.2">MAC_2 and MAC_3 are now generated with EDHOC-KDF<a href="#appendix-I-2.4.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.3">Info field "context" is now general and explicit in EDHOC-KDF<a href="#appendix-G-2.4.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.3">Info field "context" is now general and explicit in EDHOC-KDF<a href="#appendix-I-2.4.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.4">Restructured Section 4, Key Derivation<a href="#appendix-G-2.4.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.4">Restructured Section 4, Key Derivation<a href="#appendix-I-2.4.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.5">Added EDHOC MAC length to cipher suite for use with static DH<a href="#appendix-G-2.4.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.5">Added EDHOC MAC length to cipher suite for use with static DH<a href="#appendix-I-2.4.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.6">More details on the use of CWT and UCCS<a href="#appendix-G-2.4.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.6">More details on the use of CWT and UCCS<a href="#appendix-I-2.4.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.7">Restructured and clarified Section 3.5, Authentication Parameters<a href="#appendix-G-2.4.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.7">Restructured and clarified Section 3.5, Authentication Parameters<a href="#appendix-I-2.4.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.8">Replaced 'kid2' with extension of 'kid'<a href="#appendix-G-2.4.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.8">Replaced 'kid2' with extension of 'kid'<a href="#appendix-I-2.4.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.9">EAD encoding now supports multiple ead types in one message<a href="#appendix-G-2.4.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.9">EAD encoding now supports multiple ead types in one message<a href="#appendix-I-2.4.2.9" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.10">Clarified EAD type<a href="#appendix-G-2.4.2.10" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.10">Clarified EAD type<a href="#appendix-I-2.4.2.10" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.11">Updated message sizes<a href="#appendix-G-2.4.2.11" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.11">Updated message sizes<a href="#appendix-I-2.4.2.11" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.12">Replaced "perfect forward secrecy" with "forward secrecy"<a href="#appendix-G-2.4.2.12" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.12">Replaced "perfect forward secrecy" with "forward secrecy"<a href="#appendix-I-2.4.2.12" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.13">Updated security considerations<a href="#appendix-G-2.4.2.13" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.13">Updated security considerations<a href="#appendix-I-2.4.2.13" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.14">Replaced prepended 'null' with 'true' in the CoAP transport of message_1<a href="#appendix-G-2.4.2.14" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.14">Replaced prepended 'null' with 'true' in the CoAP transport of message_1<a href="#appendix-I-2.4.2.14" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.15">Updated CDDL definitions<a href="#appendix-G-2.4.2.15" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.15">Updated CDDL definitions<a href="#appendix-I-2.4.2.15" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.4.2.16">Expanded on the use of COSE<a href="#appendix-G-2.4.2.16" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.4.2.16">Expanded on the use of COSE<a href="#appendix-I-2.4.2.16" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.5">
-          <p id="appendix-G-2.5.1">From -07 to -08:<a href="#appendix-G-2.5.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.5">
+          <p id="appendix-I-2.5.1">From -07 to -08:<a href="#appendix-I-2.5.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.5.2.1">Prepended C_x moved from the EDHOC protocol itself to the transport mapping<a href="#appendix-G-2.5.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.5.2.1">Prepended C_x moved from the EDHOC protocol itself to the transport mapping<a href="#appendix-I-2.5.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.2">METHOD_CORR renamed to METHOD, corr removed<a href="#appendix-G-2.5.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.2">METHOD_CORR renamed to METHOD, corr removed<a href="#appendix-I-2.5.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.3">Removed bstr_identifier and use bstr / int instead; C_x can now be int without any implied bstr semantics<a href="#appendix-G-2.5.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.3">Removed bstr_identifier and use bstr / int instead; C_x can now be int without any implied bstr semantics<a href="#appendix-I-2.5.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.4">Defined COSE header parameter 'kid2' with value type bstr / int for use with ID_CRED_x<a href="#appendix-G-2.5.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.4">Defined COSE header parameter 'kid2' with value type bstr / int for use with ID_CRED_x<a href="#appendix-I-2.5.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.5">Updated message sizes<a href="#appendix-G-2.5.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.5">Updated message sizes<a href="#appendix-I-2.5.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.6">New cipher suites with AES-GCM and ChaCha20 / Poly1305<a href="#appendix-G-2.5.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.6">New cipher suites with AES-GCM and ChaCha20 / Poly1305<a href="#appendix-I-2.5.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.7">Changed from one- to two-byte identifier of CNSA compliant suite<a href="#appendix-G-2.5.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.7">Changed from one- to two-byte identifier of CNSA compliant suite<a href="#appendix-I-2.5.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.8">Separate sections on transport and connection id with further sub-structure<a href="#appendix-G-2.5.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.8">Separate sections on transport and connection id with further sub-structure<a href="#appendix-I-2.5.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.9">Moved back key derivation for OSCORE from draft-ietf-core-oscore-edhoc<a href="#appendix-G-2.5.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.9">Moved back key derivation for OSCORE from draft-ietf-core-oscore-edhoc<a href="#appendix-I-2.5.2.9" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.10">OSCORE and CoAP specific processing moved to new appendix<a href="#appendix-G-2.5.2.10" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.10">OSCORE and CoAP specific processing moved to new appendix<a href="#appendix-I-2.5.2.10" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.5.2.11">Message 4 section moved to message processing section<a href="#appendix-G-2.5.2.11" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.5.2.11">Message 4 section moved to message processing section<a href="#appendix-I-2.5.2.11" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.6">
-          <p id="appendix-G-2.6.1">From -06 to -07:<a href="#appendix-G-2.6.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.6">
+          <p id="appendix-I-2.6.1">From -06 to -07:<a href="#appendix-I-2.6.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.6.2.1">Changed transcript hash definition for TH_2 and TH_3<a href="#appendix-G-2.6.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.6.2.1">Changed transcript hash definition for TH_2 and TH_3<a href="#appendix-I-2.6.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.2">Removed "EDHOC signature algorithm curve" from cipher suite<a href="#appendix-G-2.6.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.2">Removed "EDHOC signature algorithm curve" from cipher suite<a href="#appendix-I-2.6.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.3">New IANA registry "EDHOC Exporter Label"<a href="#appendix-G-2.6.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.3">New IANA registry "EDHOC Exporter Label"<a href="#appendix-I-2.6.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.4">New application defined parameter "context" in EDHOC-Exporter<a href="#appendix-G-2.6.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.4">New application defined parameter "context" in EDHOC-Exporter<a href="#appendix-I-2.6.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.5">Changed normative language for failure from MUST to SHOULD send error<a href="#appendix-G-2.6.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.5">Changed normative language for failure from MUST to SHOULD send error<a href="#appendix-I-2.6.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.6">Made error codes non-negative and 0 for success<a href="#appendix-G-2.6.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.6">Made error codes non-negative and 0 for success<a href="#appendix-I-2.6.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.7">Added detail on success error code<a href="#appendix-G-2.6.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.7">Added detail on success error code<a href="#appendix-I-2.6.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.8">Aligned terminology "protocol instance" -&gt;  "session"<a href="#appendix-G-2.6.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.8">Aligned terminology "protocol instance" -&gt;  "session"<a href="#appendix-I-2.6.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.9">New appendix on compact EC point representation<a href="#appendix-G-2.6.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.9">New appendix on compact EC point representation<a href="#appendix-I-2.6.2.9" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.10">Added detail on use of ephemeral public keys<a href="#appendix-G-2.6.2.10" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.10">Added detail on use of ephemeral public keys<a href="#appendix-I-2.6.2.10" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.11">Moved key derivation for OSCORE to draft-ietf-core-oscore-edhoc<a href="#appendix-G-2.6.2.11" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.11">Moved key derivation for OSCORE to draft-ietf-core-oscore-edhoc<a href="#appendix-I-2.6.2.11" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.12">Additional security considerations<a href="#appendix-G-2.6.2.12" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.12">Additional security considerations<a href="#appendix-I-2.6.2.12" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.13">Renamed "Auxililary Data" as "External Authorization Data"<a href="#appendix-G-2.6.2.13" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.13">Renamed "Auxililary Data" as "External Authorization Data"<a href="#appendix-I-2.6.2.13" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.6.2.14">Added encrypted EAD_4 to message_4<a href="#appendix-G-2.6.2.14" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.6.2.14">Added encrypted EAD_4 to message_4<a href="#appendix-I-2.6.2.14" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.7">
-          <p id="appendix-G-2.7.1">From -05 to -06:<a href="#appendix-G-2.7.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.7">
+          <p id="appendix-I-2.7.1">From -05 to -06:<a href="#appendix-I-2.7.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.7.2.1">New section 5.2 "Message Processing Outline"<a href="#appendix-G-2.7.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.7.2.1">New section 5.2 "Message Processing Outline"<a href="#appendix-I-2.7.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.2">Optional inital byte C_1 = null in message_1<a href="#appendix-G-2.7.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.2">Optional inital byte C_1 = null in message_1<a href="#appendix-I-2.7.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.3">New format of error messages, table of error codes, IANA registry<a href="#appendix-G-2.7.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.3">New format of error messages, table of error codes, IANA registry<a href="#appendix-I-2.7.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.4">Change of recommendation transport of error in CoAP<a href="#appendix-G-2.7.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.4">Change of recommendation transport of error in CoAP<a href="#appendix-I-2.7.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.5">Merge of content in 3.7 and appendix C into new section 3.7 "Applicability Statement"<a href="#appendix-G-2.7.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.5">Merge of content in 3.7 and appendix C into new section 3.7 "Applicability Statement"<a href="#appendix-I-2.7.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.6">Requiring use of deterministic CBOR<a href="#appendix-G-2.7.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.6">Requiring use of deterministic CBOR<a href="#appendix-I-2.7.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.7">New section on message deduplication<a href="#appendix-G-2.7.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.7">New section on message deduplication<a href="#appendix-I-2.7.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.8">New appendix containin all CDDL definitions<a href="#appendix-G-2.7.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.8">New appendix containin all CDDL definitions<a href="#appendix-I-2.7.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.9">New appendix with change log<a href="#appendix-G-2.7.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.9">New appendix with change log<a href="#appendix-I-2.7.2.9" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.10">Removed section "Other Documents Referencing EDHOC"<a href="#appendix-G-2.7.2.10" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.10">Removed section "Other Documents Referencing EDHOC"<a href="#appendix-I-2.7.2.10" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.7.2.11">Clarifications based on review comments<a href="#appendix-G-2.7.2.11" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.7.2.11">Clarifications based on review comments<a href="#appendix-I-2.7.2.11" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.8">
-          <p id="appendix-G-2.8.1">From -04 to -05:<a href="#appendix-G-2.8.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.8">
+          <p id="appendix-I-2.8.1">From -04 to -05:<a href="#appendix-I-2.8.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.8.2.1">EDHOC-Rekey-FS -&gt; EDHOC-KeyUpdate<a href="#appendix-G-2.8.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.8.2.1">EDHOC-Rekey-FS -&gt; EDHOC-KeyUpdate<a href="#appendix-I-2.8.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.8.2.2">Clarification of cipher suite negotiation<a href="#appendix-G-2.8.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.8.2.2">Clarification of cipher suite negotiation<a href="#appendix-I-2.8.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.8.2.3">Updated security considerations<a href="#appendix-G-2.8.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.8.2.3">Updated security considerations<a href="#appendix-I-2.8.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.8.2.4">Updated test vectors<a href="#appendix-G-2.8.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.8.2.4">Updated test vectors<a href="#appendix-I-2.8.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.8.2.5">Updated applicability statement template<a href="#appendix-G-2.8.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.8.2.5">Updated applicability statement template<a href="#appendix-I-2.8.2.5" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.9">
-          <p id="appendix-G-2.9.1">From -03 to -04:<a href="#appendix-G-2.9.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.9">
+          <p id="appendix-I-2.9.1">From -03 to -04:<a href="#appendix-I-2.9.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.9.2.1">Restructure of section 1<a href="#appendix-G-2.9.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.9.2.1">Restructure of section 1<a href="#appendix-I-2.9.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.2">Added references to C509 Certificates<a href="#appendix-G-2.9.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.2">Added references to C509 Certificates<a href="#appendix-I-2.9.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.3">Change in CIPHERTEXT_2 -&gt; plaintext XOR KEYSTREAM_2 (test vector not updated)<a href="#appendix-G-2.9.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.3">Change in CIPHERTEXT_2 -&gt; plaintext XOR KEYSTREAM_2 (test vector not updated)<a href="#appendix-I-2.9.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.4">"K_2e", "IV_2e" -&gt; KEYSTREAM_2<a href="#appendix-G-2.9.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.4">"K_2e", "IV_2e" -&gt; KEYSTREAM_2<a href="#appendix-I-2.9.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.5">Specified optional message 4<a href="#appendix-G-2.9.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.5">Specified optional message 4<a href="#appendix-I-2.9.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.6">EDHOC-Exporter-FS -&gt; EDHOC-Rekey-FS<a href="#appendix-G-2.9.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.6">EDHOC-Exporter-FS -&gt; EDHOC-Rekey-FS<a href="#appendix-I-2.9.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.7">Less constrained devices SHOULD implement both suite 0 and 2<a href="#appendix-G-2.9.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.7">Less constrained devices SHOULD implement both suite 0 and 2<a href="#appendix-I-2.9.2.7" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.8">Clarification of error message<a href="#appendix-G-2.9.2.8" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.8">Clarification of error message<a href="#appendix-I-2.9.2.8" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.9.2.9">Added exporter interface test vector<a href="#appendix-G-2.9.2.9" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.9.2.9">Added exporter interface test vector<a href="#appendix-I-2.9.2.9" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.10">
-          <p id="appendix-G-2.10.1">From -02 to -03:<a href="#appendix-G-2.10.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.10">
+          <p id="appendix-I-2.10.1">From -02 to -03:<a href="#appendix-I-2.10.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.10.2.1">Rearrangements of section 3 and beginning of section 4<a href="#appendix-G-2.10.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.10.2.1">Rearrangements of section 3 and beginning of section 4<a href="#appendix-I-2.10.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.2">Key derivation new section 4<a href="#appendix-G-2.10.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.2">Key derivation new section 4<a href="#appendix-I-2.10.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.3">Cipher suites 4 and 5 added<a href="#appendix-G-2.10.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.3">Cipher suites 4 and 5 added<a href="#appendix-I-2.10.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.4">EDHOC-EXPORTER-FS - generate a new PRK_4x3m from an old one<a href="#appendix-G-2.10.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.4">EDHOC-EXPORTER-FS - generate a new PRK_4x3m from an old one<a href="#appendix-I-2.10.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.5">Change in CIPHERTEXT_2 -&gt; COSE_Encrypt0 without tag (no change to test vector)<a href="#appendix-G-2.10.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.5">Change in CIPHERTEXT_2 -&gt; COSE_Encrypt0 without tag (no change to test vector)<a href="#appendix-I-2.10.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.6">Clarification of error message<a href="#appendix-G-2.10.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.6">Clarification of error message<a href="#appendix-I-2.10.2.6" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.10.2.7">New appendix C applicability statement<a href="#appendix-G-2.10.2.7" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.10.2.7">New appendix C applicability statement<a href="#appendix-I-2.10.2.7" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.11">
-          <p id="appendix-G-2.11.1">From -01 to -02:<a href="#appendix-G-2.11.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.11">
+          <p id="appendix-I-2.11.1">From -01 to -02:<a href="#appendix-I-2.11.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.11.2.1">New section 1.2 Use of EDHOC<a href="#appendix-G-2.11.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.11.2.1">New section 1.2 Use of EDHOC<a href="#appendix-I-2.11.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.11.2.2">Clarification of identities<a href="#appendix-G-2.11.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.11.2.2">Clarification of identities<a href="#appendix-I-2.11.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.11.2.3">New section 4.3 clarifying bstr_identifier<a href="#appendix-G-2.11.2.3" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.11.2.3">New section 4.3 clarifying bstr_identifier<a href="#appendix-I-2.11.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.11.2.4">Updated security considerations<a href="#appendix-G-2.11.2.4" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.11.2.4">Updated security considerations<a href="#appendix-I-2.11.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.11.2.5">Updated text on cipher suite negotiation and key confirmation<a href="#appendix-G-2.11.2.5" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.11.2.5">Updated text on cipher suite negotiation and key confirmation<a href="#appendix-I-2.11.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.11.2.6">Test vector for static DH<a href="#appendix-G-2.11.2.6" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.11.2.6">Test vector for static DH<a href="#appendix-I-2.11.2.6" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-G-2.12">
-          <p id="appendix-G-2.12.1">From -00 to -01:<a href="#appendix-G-2.12.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-I-2.12">
+          <p id="appendix-I-2.12.1">From -00 to -01:<a href="#appendix-I-2.12.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-G-2.12.2.1">Removed PSK method<a href="#appendix-G-2.12.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-I-2.12.2.1">Removed PSK method<a href="#appendix-I-2.12.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="appendix-G-2.12.2.2">Removed references to certificate by value<a href="#appendix-G-2.12.2.2" class="pilcrow">¶</a>
+            <li class="normal" id="appendix-I-2.12.2.2">Removed references to certificate by value<a href="#appendix-I-2.12.2.2" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
@@ -4053,16 +4175,16 @@ The server does not send any such indicator, as responses are matched to request
 </section>
 </div>
 <div id="acknowledgments">
-<section id="appendix-H">
+<section id="appendix-J">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-H-1">The authors want to thank Christian Amsuess, Alessandro Bruni, Karthikeyan Bhargavan, Timothy Claeys, Martin Disch, Stephen Farrell, Loic Ferreira, Theis Groenbech Petersen, Dan Harkins, Klaus Hartke, Russ Housley, Stefan Hristozov, Alexandros Krontiris, Ilari Liusvaara, Kathleen Moriarty, Karl Norrman, Salvador Perez, Eric Rescorla, Michael Richardson, Thorvald Sahl Joergensen, Jim Schaad, Carsten Schuermann, Ludwig Seitz, Stanislav Smyshlyaev, Valery Smyslov, Peter van der Stok, Rene Struik, Vaishnavi Sundararajan, Erik Thormarker, Marco Tiloca, Sean Turner, Michel Veillette, and Malisa Vucinic for reviewing and commenting on intermediate versions of the draft. We are especially indebted to Jim Schaad for his continuous reviewing and implementation of different versions of the draft.<a href="#appendix-H-1" class="pilcrow">¶</a></p>
-<p id="appendix-H-2">Work on this document has in part been supported by the H2020 project SIFIS-Home (grant agreement 952652).<a href="#appendix-H-2" class="pilcrow">¶</a></p>
+<p id="appendix-J-1">The authors want to thank Christian Amsuess, Alessandro Bruni, Karthikeyan Bhargavan, Timothy Claeys, Martin Disch, Stephen Farrell, Loic Ferreira, Theis Groenbech Petersen, Dan Harkins, Klaus Hartke, Russ Housley, Stefan Hristozov, Alexandros Krontiris, Ilari Liusvaara, Kathleen Moriarty, Karl Norrman, Salvador Perez, Eric Rescorla, Michael Richardson, Thorvald Sahl Joergensen, Jim Schaad, Carsten Schuermann, Ludwig Seitz, Stanislav Smyshlyaev, Valery Smyslov, Peter van der Stok, Rene Struik, Vaishnavi Sundararajan, Erik Thormarker, Marco Tiloca, Sean Turner, Michel Veillette, and Malisa Vucinic for reviewing and commenting on intermediate versions of the draft. We are especially indebted to Jim Schaad for his continuous reviewing and implementation of different versions of the draft.<a href="#appendix-J-1" class="pilcrow">¶</a></p>
+<p id="appendix-J-2">Work on this document has in part been supported by the H2020 project SIFIS-Home (grant agreement 952652).<a href="#appendix-J-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-I">
+<section id="appendix-K">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
