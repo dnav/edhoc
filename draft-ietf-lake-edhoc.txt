@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 26 August 2022                                         Ericsson
-                                                        22 February 2022
+Expires: 27 August 2022                                         Ericsson
+                                                        23 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 August 2022.
+   This Internet-Draft will expire on 27 August 2022.
 
 Copyright Notice
 
@@ -83,7 +83,7 @@ Table of Contents
      3.6.  Cipher Suites
      3.7.  Ephemeral Public Keys
      3.8.  External Authorization Data (EAD)
-     3.9.  Applicability Template
+     3.9.  Application Profile
    4.  Key Derivation
      4.1.  Extract
      4.2.  Expand
@@ -143,7 +143,7 @@ Table of Contents
      D.4.  Revocation Status
      D.5.  Trust-on-first-use
    Appendix E.  Use of External Authorization Data
-   Appendix F.  Applicability Template Example
+   Appendix F.  Application Profile Example
    Appendix G.  EDHOC Message Deduplication
    Appendix H.  Transports Not Natively Providing Correlation
    Appendix I.  Change Log
@@ -869,17 +869,18 @@ Table of Contents
    The EAD fields of EDHOC must not be used for generic application
    data.  Examples of the use of EAD is provided in Appendix E.
 
-3.9.  Applicability Template
+3.9.  Application Profile
 
    EDHOC requires certain parameters to be agreed upon between Initiator
-   and Responder.  Some parameters can be agreed through the protocol
-   execution (specifically cipher suite negotiation, see Section 3.6)
-   but other parameters may need to be known out-of-band (e.g., which
-   authentication method is used, see Section 3.2).
+   and Responder.  Some parameters can be negotiated through the
+   protocol execution (specifically, cipher suite, see Section 3.6) but
+   other parameters are only communicated and may not be negotiated
+   (e.g., which authentication method is used, see Section 3.2).  Yet
+   other parameters need to be known out-of-band.
 
-   The purpose of the applicability template is to describe the intended
-   use of EDHOC to allow for the relevant processing and verifications
-   to be made, including things like:
+   The purpose of an application profile is to describe the intended use
+   of EDHOC to allow for the relevant processing and verifications to be
+   made, including things like:
 
    1.  How the endpoint detects that an EDHOC message is received.  This
        includes how EDHOC messages are transported, for example in the
@@ -912,46 +913,46 @@ Table of Contents
        protected application message is sent from the Responder to the
        Initiator; see Section 5.5.
 
-   The applicability template may also contain information about
-   supported cipher suites.  The procedure for selecting and verifying a
-   cipher suite is still performed as described in Section 5.2.1 and
+   The application profile may also contain information about supported
+   cipher suites.  The procedure for selecting and verifying a cipher
+   suite is still performed as described in Section 5.2.1 and
    Section 6.3, but it may become simplified by this knowledge.
 
-   An example of an applicability template is shown in Appendix F.
+   An example of an application profile is shown in Appendix F.
 
    For some parameters, like METHOD, ID_CRED_x, type of EAD, the
-   receiver is able to verify compliance with applicability template,
+   receiver is able to verify compliance with the application profile,
    and if it needs to fail because of incompliance, to infer the reason
    why the protocol failed.
 
-   For other parameters, like CRED_x in the case that it is not
-   transported, it may not be possible to verify that incompliance with
-   applicability template was the reason for failure: Integrity
-   verification in message_2 or message_3 may fail not only because of
-   wrong credential.  For example, in case the Initiator uses public key
-   certificate by reference (i.e., not transported within the protocol)
-   then both endpoints need to use an identical data structure as CRED_I
-   or else the integrity verification will fail.
+   For other parameters, like the profile of CRED_x in the case that it
+   is not transported, it may not be possible to verify that
+   incompliance with the application profile was the reason for failure:
+   Integrity verification in message_2 or message_3 may fail not only
+   because of wrong credential.  For example, in case the Initiator uses
+   public key certificate by reference (i.e., not transported within the
+   protocol) then both endpoints need to use an identical data structure
+   as CRED_I or else the integrity verification will fail.
 
    Note that it is not necessary for the endpoints to specify a single
    transport for the EDHOC messages.  For example, a mix of CoAP and
    HTTP may be used along the path, and this may still allow correlation
    between messages.
 
-   The applicability template may be dependent on the identity of the
-   other endpoint, or other information carried in an EDHOC message, but
-   it then applies only to the later phases of the protocol when such
+   The application profile may be dependent on the identity of the other
+   endpoint, or other information carried in an EDHOC message, but it
+   then applies only to the later phases of the protocol when such
    information is known.  (The Initiator does not know the identity of
    the Responder before having verified message_2, and the Responder
    does not know the identity of the Initiator before having verified
    message_3.)
 
-   Other conditions may be part of the applicability template, such as
+   Other conditions may be part of the application profile, such as
    target application or use (if there is more than one application/use)
    to the extent that EDHOC can distinguish between them.  In case
-   multiple applicability templates are used, the receiver needs to be
-   able to determine which is applicable for a given session, for
-   example based on URI or external authorization data type.
+   multiple application profiles are used, the receiver needs to be able
+   to determine which is applicable for a given session, for example
+   based on URI or external authorization data type.
 
 4.  Key Derivation
 
@@ -1188,9 +1189,9 @@ Table of Contents
    For each new/ongoing session, the endpoints are assumed to keep an
    associated protocol state containing identifiers, keying material,
    etc. used for subsequent processing of protocol related data.  The
-   protocol state is assumed to be associated to an applicability
-   template (Section 3.9) which provides the context for how messages
-   are transported, identified, and processed.
+   protocol state is assumed to be associated to an application profile
+   (Section 3.9) which provides the context for how messages are
+   transported, identified, and processed.
 
    EDHOC messages SHALL be processed according to the current protocol
    state.  The following steps are expected to be performed at reception
@@ -3637,12 +3638,12 @@ Appendix E.  Use of External Authorization Data
    properties provided by EDHOC.  Security applications making use of
    the EAD fields must perform the necessary security analysis.
 
-Appendix F.  Applicability Template Example
+Appendix F.  Application Profile Example
 
-   This appendix contains a rudimentary example of an applicability
-   template, see Section 3.9.
+   This appendix contains a rudimentary example of an application
+   profile, see Section 3.9.
 
-   For use of EDHOC in the XX protocol, the following assumptions are
+   For use of EDHOC with application X the following assumptions are
    made:
 
    1.  Transfer in CoAP as specified in Appendix A.3 with requests
