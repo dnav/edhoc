@@ -3489,7 +3489,7 @@ and only the part of the body following the identifier is used for EDHOC process
 <p id="appendix-A.3-6">Consequently, the application/edhoc media type does not apply to these messages;
 their media type is unnamed.<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-7">An example of a successful EDHOC exchange using CoAP is shown in <a href="#fig-coap1" class="xref">Figure 10</a>. In this case the CoAP Token enables correlation on the Initiator side, and the prepended C_R enables correlation on the Responder (server) side.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
-<span id="name-transferring-edhoc-in-coap-"></span><div id="fig-coap1">
+<span id="name-example-of-transferring-edh"></span><div id="fig-coap1">
 <figure id="figure-10">
           <div class="alignCenter art-text artwork" id="appendix-A.3-8.1">
 <pre>
@@ -3508,17 +3508,18 @@ Client    Server
   |          | Payload: C_R, EDHOC message_3
   |          |
   |&lt;---------+ Header: 2.04 Changed
-  |   2.04   |
+  |   2.04   | Content-Format: application/edhoc
+  |          | Payload: EDHOC message_4
   |          |
 </pre>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
-<a href="#name-transferring-edhoc-in-coap-" class="selfRef">Transferring EDHOC in CoAP when the Initiator is CoAP client.</a>
+<a href="#name-example-of-transferring-edh" class="selfRef">Example of transferring EDHOC in CoAP when the Initiator is CoAP client. The optional message_4 is included.</a>
           </figcaption></figure>
 </div>
 <p id="appendix-A.3-9">The exchange in <a href="#fig-coap1" class="xref">Figure 10</a> protects the client identity against active attackers and the server identity against passive attackers.<a href="#appendix-A.3-9" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-10">An alternative exchange that protects the server identity against active attackers and the client identity against passive attackers is shown in <a href="#fig-coap2" class="xref">Figure 11</a>. In this case the CoAP Token enables the Responder to correlate message_2 and message_3, and the prepended C_I enables correlation on the Initiator (server) side. If EDHOC message_4 is used, C_I is prepended, and it is transported with CoAP in the payload of a POST request with a 2.04 (Changed) response.<a href="#appendix-A.3-10" class="pilcrow">¶</a></p>
-<span id="name-transferring-edhoc-in-coap-w"></span><div id="fig-coap2">
+<span id="name-example-of-transferring-edho"></span><div id="fig-coap2">
 <figure id="figure-11">
           <div class="alignCenter art-text artwork" id="appendix-A.3-11.1">
 <pre>
@@ -3542,7 +3543,7 @@ Client    Server
 </pre>
 </div>
 <figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
-<a href="#name-transferring-edhoc-in-coap-w" class="selfRef">Transferring EDHOC in CoAP when the Initiator is CoAP server.</a>
+<a href="#name-example-of-transferring-edho" class="selfRef">Example of transferring EDHOC in CoAP when the Initiator is CoAP server.</a>
           </figcaption></figure>
 </div>
 <p id="appendix-A.3-12">To protect against denial-of-service attacks, the CoAP server MAY respond to the first POST request with a 4.01 (Unauthorized) containing an Echo option <span>[<a href="#I-D.ietf-core-echo-request-tag" class="xref">I-D.ietf-core-echo-request-tag</a>]</span>. This forces the Initiator to demonstrate its reachability at its apparent network address. If message fragmentation is needed, the EDHOC messages may be fragmented using the CoAP Block-Wise Transfer mechanism <span>[<a href="#RFC7959" class="xref">RFC7959</a>]</span>.<a href="#appendix-A.3-12" class="pilcrow">¶</a></p>

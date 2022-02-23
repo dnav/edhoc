@@ -3143,11 +3143,12 @@ A.3.  Transferring EDHOC over CoAP
                |          | Payload: C_R, EDHOC message_3
                |          |
                |<---------+ Header: 2.04 Changed
-               |   2.04   |
+               |   2.04   | Content-Format: application/edhoc
+               |          | Payload: EDHOC message_4
                |          |
 
-      Figure 10: Transferring EDHOC in CoAP when the Initiator is CoAP
-                                  client.
+         Figure 10: Example of transferring EDHOC in CoAP when the
+       Initiator is CoAP client.  The optional message_4 is included.
 
    The exchange in Figure 10 protects the client identity against active
    attackers and the server identity against passive attackers.
@@ -3178,8 +3179,8 @@ A.3.  Transferring EDHOC over CoAP
                |          | Payload: EDHOC message_3
                |          |
 
-      Figure 11: Transferring EDHOC in CoAP when the Initiator is CoAP
-                                  server.
+         Figure 11: Example of transferring EDHOC in CoAP when the
+                         Initiator is CoAP server.
 
    To protect against denial-of-service attacks, the CoAP server MAY
    respond to the first POST request with a 4.01 (Unauthorized)
