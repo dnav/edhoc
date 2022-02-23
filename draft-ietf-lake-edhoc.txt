@@ -3148,7 +3148,8 @@ A.3.  Transferring EDHOC over CoAP
                |          |
 
          Figure 10: Example of transferring EDHOC in CoAP when the
-       Initiator is CoAP client.  The optional message_4 is included.
+      Initiator is CoAP client.  The optional message_4 is included in
+         this example, without which that message needs no payload.
 
    The exchange in Figure 10 protects the client identity against active
    attackers and the server identity against passive attackers.
