@@ -1600,7 +1600,7 @@ Initiator                                                   Responder
           <h4 id="name-selection-of-connection-ide">
 <a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-selection-of-connection-ide" class="section-name selfRef">Selection of Connection Identifiers</a>
           </h4>
-<p id="section-3.3.1-1">C_I and C_R are chosen by I and R, respectively. The Initiator selects C_I and sends it in message_1 for the Responder to use as a reference to the connection in communications with the Initiator. The Responder selects C_R and sends it in message_2 for the Initiator to use as a reference to the connection in communications with the Responder.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.1-1">C_I and C_R are chosen by I and R, respectively. The Initiator selects C_I and sends it in message_1 for the Responder to use as a reference to the connection in communications with the Initiator. The Responder selects C_R and sends it in message_2 for the Initiator to use as a reference to the connection in communications with the Responder. An endpoint may choose to select only integer or only byte string connection identifiers.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.1-2">If connection identifiers are used by an application protocol for which EDHOC establishes keys then the selected connection identifiers SHALL adhere to the requirements for that protocol, see <a href="#ci-oscore" class="xref">Section 3.3.2</a> for an example.<a href="#section-3.3.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1609,7 +1609,7 @@ Initiator                                                   Responder
           <h4 id="name-use-of-connection-identifie">
 <a href="#section-3.3.2" class="section-number selfRef">3.3.2. </a><a href="#name-use-of-connection-identifie" class="section-name selfRef">Use of Connection Identifiers with OSCORE</a>
           </h4>
-<p id="section-3.3.2-1">For OSCORE, the choice of a connection identifier results in the endpoint selecting its Recipient ID, see Section 3.1 of <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>, for which certain uniqueness requirements apply, see Section 3.3 of <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>. Therefore, the Initiator and the Responder MUST NOT select connection identifiers such that it results in same OSCORE Recipient ID. Since the Recipient ID is a byte string and an EDHOC connection identifier is either a CBOR byte string or a CBOR integer, care must be taken when selecting the connection identifiers and converting them to Recipient IDs. A mapping from EDHOC connection identifier to OSCORE Recipient ID is specified in <a href="#edhoc-to-oscore" class="xref">Appendix A.1</a>.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.2-1">For OSCORE, the choice of a connection identifier results in the endpoint selecting its Recipient ID, see Section 3.1 of <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>, for which certain uniqueness requirements apply, see Section 3.3 of <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>. Therefore, the Initiator and the Responder MUST NOT select connection identifiers such that it results in same OSCORE Recipient ID. Since the Recipient ID is a byte string and an EDHOC connection identifier is either a CBOR byte string or a CBOR integer, care must be taken when selecting the connection identifiers and converting them to Recipient IDs. One simplification is to restrict to only use integer or only byte string connection identifiers. A mapping from EDHOC connection identifier to OSCORE Recipient ID is specified in <a href="#edhoc-to-oscore" class="xref">Appendix A.1</a>.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3432,6 +3432,26 @@ Reference: [[this document]]
 <p id="appendix-A.1-5">For example, a byte-string valued C_R equal to 0xFF (0x41FF in CBOR encoding) is converted to a (typically client) Sender ID equal to 0xFF.<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-6">Two EDHOC connection identifiers are called "equivalent" if and only if, by applying the conversion above, they both result in the same OSCORE Sender/Recipient ID. For example, the two EDHOC connection identifiers with CBOR encoding 0x0A (numeric) and 0x410A (byte-valued) are equivalent since they both result in the same OSCORE Sender/Recipient ID 0x0A.<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-7">When EDHOC is used to establish an OSCORE security context, the connection identifiers C_I and C_R MUST NOT be equivalent. Furthermore, in case of multiple OSCORE security contexts with potentially different endpoints, to facilitate the retrieval of the correct OSCORE security context, an endpoint SHOULD select an EDHOC connection identifier that when converted to OSCORE Recipient ID does not coincide with its other Recipient IDs.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-8">An endpoint MAY choose to select, for example, only numeric connection identifiers which then are equivalent if and only if the integer value is the same, thus simplifying the comparison. The number of unique OSCORE Sender/Recipient ID of a given byte length on the wire is reduced by this choice, see <a href="#fig-number-connection-id" class="xref">Figure 10</a>.<a href="#appendix-A.1-8" class="pilcrow">¶</a></p>
+<span id="name-number-of-edhoc-connection-"></span><div id="fig-number-connection-id">
+<figure id="figure-10">
+          <div class="alignLeft art-text artwork" id="appendix-A.1-9.1">
+<pre>
++---------------------+----------------------+----------------------+
+|     Size of SID/RID | Number of CI as bstr |  Number of CI as int |
++==========+===============+========================================+
+|                   0 |                    1 |                    0 |
++---------------------+----------------------+----------------------+
+|                   1 |                  208 |                   48 |
++---------------------+----------------------+----------------------+
+|                   2 |                65072 |                  464 |
++---------------------+----------------------+----------------------+
+</pre>
+</div>
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
+<a href="#name-number-of-edhoc-connection-" class="selfRef">Number of EDHOC Connection Identifiers resulting in OSCORE Sender/Recipient Identifier of a given size in bytes.</a>
+          </figcaption></figure>
+</div>
 </section>
 </div>
 <div id="oscore-ctx-derivation">
@@ -3488,9 +3508,9 @@ They are sent in front of the actual EDHOC message,
 and only the part of the body following the identifier is used for EDHOC processing.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-6">Consequently, the application/edhoc media type does not apply to these messages;
 their media type is unnamed.<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.3-7">An example of a successful EDHOC exchange using CoAP is shown in <a href="#fig-coap1" class="xref">Figure 10</a>. In this case the CoAP Token enables correlation on the Initiator side, and the prepended C_R enables correlation on the Responder (server) side.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-7">An example of a successful EDHOC exchange using CoAP is shown in <a href="#fig-coap1" class="xref">Figure 11</a>. In this case the CoAP Token enables correlation on the Initiator side, and the prepended C_R enables correlation on the Responder (server) side.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
 <span id="name-example-of-transferring-edh"></span><div id="fig-coap1">
-<figure id="figure-10">
+<figure id="figure-11">
           <div class="alignCenter art-text artwork" id="appendix-A.3-8.1">
 <pre>
 Client    Server
@@ -3513,14 +3533,14 @@ Client    Server
   |          |
 </pre>
 </div>
-<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
 <a href="#name-example-of-transferring-edh" class="selfRef">Example of transferring EDHOC in CoAP when the Initiator is CoAP client. The optional message_4 is included in this example, without which that message needs no payload.</a>
           </figcaption></figure>
 </div>
-<p id="appendix-A.3-9">The exchange in <a href="#fig-coap1" class="xref">Figure 10</a> protects the client identity against active attackers and the server identity against passive attackers.<a href="#appendix-A.3-9" class="pilcrow">¶</a></p>
-<p id="appendix-A.3-10">An alternative exchange that protects the server identity against active attackers and the client identity against passive attackers is shown in <a href="#fig-coap2" class="xref">Figure 11</a>. In this case the CoAP Token enables the Responder to correlate message_2 and message_3, and the prepended C_I enables correlation on the Initiator (server) side. If EDHOC message_4 is used, C_I is prepended, and it is transported with CoAP in the payload of a POST request with a 2.04 (Changed) response.<a href="#appendix-A.3-10" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-9">The exchange in <a href="#fig-coap1" class="xref">Figure 11</a> protects the client identity against active attackers and the server identity against passive attackers.<a href="#appendix-A.3-9" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-10">An alternative exchange that protects the server identity against active attackers and the client identity against passive attackers is shown in <a href="#fig-coap2" class="xref">Figure 12</a>. In this case the CoAP Token enables the Responder to correlate message_2 and message_3, and the prepended C_I enables correlation on the Initiator (server) side. If EDHOC message_4 is used, C_I is prepended, and it is transported with CoAP in the payload of a POST request with a 2.04 (Changed) response.<a href="#appendix-A.3-10" class="pilcrow">¶</a></p>
 <span id="name-example-of-transferring-edho"></span><div id="fig-coap2">
-<figure id="figure-11">
+<figure id="figure-12">
           <div class="alignCenter art-text artwork" id="appendix-A.3-11.1">
 <pre>
 Client    Server
@@ -3542,7 +3562,7 @@ Client    Server
   |          |
 </pre>
 </div>
-<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
+<figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
 <a href="#name-example-of-transferring-edho" class="selfRef">Example of transferring EDHOC in CoAP when the Initiator is CoAP server.</a>
           </figcaption></figure>
 </div>
