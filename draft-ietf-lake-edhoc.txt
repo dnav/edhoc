@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 27 August 2022                                         Ericsson
-                                                        23 February 2022
+Expires: 29 August 2022                                         Ericsson
+                                                        25 February 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 August 2022.
+   This Internet-Draft will expire on 29 August 2022.
 
 Copyright Notice
 
@@ -476,7 +476,9 @@ Table of Contents
    Connection identifiers in EDHOC are byte strings or integers, encoded
    in CBOR.  One byte connection identifiers (the integers -24 to 23 and
    the empty CBOR byte string h'') are realistic in many scenarios as
-   most constrained devices only have a few connections.
+   most constrained devices only have a few connections.  An endpoint
+   may choose to select only integer or only byte string connection
+   identifiers.
 
 3.3.1.  Selection of Connection Identifiers
 
@@ -485,8 +487,7 @@ Table of Contents
    reference to the connection in communications with the Initiator.
    The Responder selects C_R and sends it in message_2 for the Initiator
    to use as a reference to the connection in communications with the
-   Responder.  An endpoint may choose to select only integer or only
-   byte string connection identifiers.
+   Responder.
 
    If connection identifiers are used by an application protocol for
    which EDHOC establishes keys then the selected connection identifiers
@@ -495,7 +496,7 @@ Table of Contents
 
 3.3.2.  Use of Connection Identifiers with OSCORE
 
-   For OSCORE, the choice of a connection identifier results in the
+   For OSCORE, the choice of connection identifier results in the
    endpoint selecting its Recipient ID, see Section 3.1 of [RFC8613],
    for which certain uniqueness requirements apply, see Section 3.3 of
    [RFC8613].  Therefore, the Initiator and the Responder MUST NOT
@@ -503,10 +504,8 @@ Table of Contents
    Recipient ID.  Since the Recipient ID is a byte string and an EDHOC
    connection identifier is either a CBOR byte string or a CBOR integer,
    care must be taken when selecting the connection identifiers and
-   converting them to Recipient IDs.  One simplification is to restrict
-   to only use integer or only byte string connection identifiers.  A
-   mapping from EDHOC connection identifier to OSCORE Recipient ID is
-   specified in Appendix A.1.
+   converting them to Recipient IDs.  A mapping from EDHOC connection
+   identifier to OSCORE Recipient ID is specified in Appendix A.1.
 
 3.4.  Transport
 
@@ -2647,11 +2646,12 @@ Table of Contents
 10.1.  Normative References
 
    [I-D.ietf-core-echo-request-tag]
-              Amsüss, C., Mattsson, J. P., and G. Selander, "CoAP: Echo,
-              Request-Tag, and Token Processing", Work in Progress,
-              Internet-Draft, draft-ietf-core-echo-request-tag-14, 4
-              October 2021, <https://www.ietf.org/archive/id/draft-ietf-
-              core-echo-request-tag-14.txt>.
+              Amsüss, C., Mattsson, J. P., and G. Selander, "Constrained
+              Application Protocol (CoAP): Echo, Request-Tag, and Token
+              Processing", Work in Progress, Internet-Draft, draft-ietf-
+              core-echo-request-tag-14, 4 October 2021,
+              <https://www.ietf.org/archive/id/draft-ietf-core-echo-
+              request-tag-14.txt>.
 
    [I-D.ietf-cose-rfc8152bis-algs]
               Schaad, J., "CBOR Object Signing and Encryption (COSE):
@@ -2882,9 +2882,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., and J. O'Donoghue, "The Entity
               Attestation Token (EAT)", Work in Progress, Internet-
-              Draft, draft-ietf-rats-eat-11, 24 October 2021,
+              Draft, draft-ietf-rats-eat-12, 24 February 2022,
               <https://www.ietf.org/archive/id/draft-ietf-rats-eat-
-              11.txt>.
+              12.txt>.
 
    [I-D.ietf-tls-dtls13]
               Rescorla, E., Tschofenig, H., and N. Modadugu, "The
@@ -2990,7 +2990,8 @@ A.1.  Selecting EDHOC Connection Identifier
    This section specifies a rule for converting from EDHOC connection
    identifier to OSCORE Sender/Recipient ID.  (An identifier is Sender
    ID or Recipient ID depending on from which endpoint is the point of
-   view, see Section 3.1 of [RFC8613].)
+   view, see Section 3.1 of [RFC8613].)  Typically the Initiator is
+   OSCORE client, in which case C_R becomes the client Sender ID.
 
    *  If the EDHOC connection identifier is numeric, i.e., encoded as a
       CBOR integer on the wire, it is converted to an OSCORE Sender/
@@ -3010,11 +3011,10 @@ A.1.  Selecting EDHOC Connection Identifier
    0xFF.
 
    Two EDHOC connection identifiers are called "equivalent" if and only
-   if, by applying the conversion above, they both result in the same
-   OSCORE Sender/Recipient ID.  For example, the two EDHOC connection
-   identifiers with CBOR encoding 0x0A (numeric) and 0x410A (byte-
-   valued) are equivalent since they both result in the same OSCORE
-   Sender/Recipient ID 0x0A.
+   if, when converted, they both result in the same OSCORE Sender/
+   Recipient ID.  For example, the two EDHOC connection identifiers with
+   CBOR encoding 0x0A (numeric) and 0x410A (byte-valued) are equivalent
+   since they both result in the same OSCORE Sender/Recipient ID 0x0A.
 
    When EDHOC is used to establish an OSCORE security context, the
    connection identifiers C_I and C_R MUST NOT be equivalent.
@@ -3024,24 +3024,25 @@ A.1.  Selecting EDHOC Connection Identifier
    connection identifier that when converted to OSCORE Recipient ID does
    not coincide with its other Recipient IDs.
 
-   An endpoint MAY choose to select, for example, only numeric
-   connection identifiers which then are equivalent if and only if the
-   integer value is the same, thus simplifying the comparison.  The
-   number of unique OSCORE Sender/Recipient ID of a given byte length on
-   the wire is reduced by this choice, see Figure 10.
+   An endpoint MAY choose to select only a specific range of connection
+   identifiers, e.g., connection identifiers which are only int or only
+   bstr.  The number of unique OSCORE Sender/Recipient ID of a given
+   byte length on the wire is reduced by this choice, an example is
+   given in Figure 10.
 
-   +---------------------+----------------------+----------------------+
-   |     Size of SID/RID | Number of CI as bstr |  Number of CI as int |
-   +==========+===============+========================================+
-   |                   0 |                    1 |                    0 |
-   +---------------------+----------------------+----------------------+
-   |                   1 |                  208 |                   48 |
-   +---------------------+----------------------+----------------------+
-   |                   2 |                65072 |                  464 |
-   +---------------------+----------------------+----------------------+
+   +---------------------+----------------------+
+   |     Size of SID/RID |  Number of CI as int |
+   +=====================+======================+
+   |                   0 |                    0 |
+   +---------------------+----------------------+
+   |                   1 |                   48 |
+   +---------------------+----------------------+
+   |                   2 |                  464 |
+   +---------------------+----------------------+
 
-       Figure 10: Number of EDHOC Connection Identifiers resulting in
-       OSCORE Sender/ Recipient Identifier of a given size in bytes.
+         Figure 10: Number of integer EDHOC Connection Identifiers
+      corresponding to OSCORE Sender/Recipient Identifiers of a given
+                               size in bytes.
 
 A.2.  Deriving the OSCORE Security Context
 
