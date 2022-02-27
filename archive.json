@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-24T01:17:32.398757+00:00",
+  "timestamp": "2022-02-27T01:16:09.928317+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -5731,7 +5731,7 @@
       ],
       "body": "```\r\nead = (\r\n  type : int,\r\n  1* ext_authz_data : any,\r\n)\r\n```\r\n\r\nWhat is type? Is that the the external security application or the content, i.e., the sequence of ext_authz_data?\r\n\r\nIf type is the external security application, is the same type supposed to be used in message_1, 2, 3, and 4?\r\n\r\nIf type referes to the ext_authz_data, would it be better with:\r\n\r\n`\r\nead = + ( type : int, ext_authz_data : any )\r\n`",
       "createdAt": "2021-08-05T07:08:40Z",
-      "updatedAt": "2022-02-23T13:23:38Z",
+      "updatedAt": "2022-02-25T16:42:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -5782,6 +5782,13 @@
           "body": "#240 is now merged.",
           "createdAt": "2022-02-23T13:23:29Z",
           "updatedAt": "2022-02-23T13:23:29Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "draft-selander-ace-ake-authz now includes IANA registration of EAD and updated text.\r\n\r\nThe commit is here:\r\nhttps://github.com/EricssonResearch/ace-ake-authz/commit/c0eb180\r\n\r\nEditor's copy is here (IANA is section 7.1): \r\nhttps://ericssonresearch.github.io/ace-ake-authz/draft-selander-ace-ake-authz.html\r\n\r\n@emanjon @malishav Please review",
+          "createdAt": "2022-02-24T12:21:12Z",
+          "updatedAt": "2022-02-24T12:21:12Z"
         }
       ]
     },
@@ -8894,10 +8901,12 @@
       "assignees": [
         "gselander"
       ],
-      "labels": [],
+      "labels": [
+        "Close?"
+      ],
       "body": "Proxying question from Stefan: \r\n\r\n> Is there a strong reason to define the encoding as bstr/int. Is it not enough to have just int? From my perspective to allow one of both bstr or int depending on the user makes not only the the implementation more complex but as well the EDHOC API more user unfriendly. \r\n\r\nThis would reduce the number of identifiers of a given size. Perhaps this could be a constraint in the applicability template / application profile.",
       "createdAt": "2022-02-10T13:32:35Z",
-      "updatedAt": "2022-02-23T11:53:24Z",
+      "updatedAt": "2022-02-25T19:03:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -8927,6 +8936,20 @@
           "body": "Overall yes, thanks. Two comments on the new added text:\r\n\r\n> One simplification is to restrict to only use integer or only byte string connection identifiers.\r\n\r\nI suggest to replace \"use\" with \"select\", also consistently with other just added text as intended to apply to what is offered to the other peer, not used overall.\r\n\r\n\r\n> An endpoint MAY choose to select, for example, only numeric connection identifiers which then are equivalent if and only if the integer value is the same, thus simplifying the comparison.\r\n\r\nI can't fully parse this sentence. The word \"equivalent\" is defined a few paragraphs above as applicable to two equivalent connection identifiers (one bstr and one int) yielding the same OSCORE identifier and hence ambiguous. The word was not intended to be used for two int connection identifiers.\r\n\r\nAlso, the numbers in the table are the result of applying both the rules in the {{edhoc-to-oscore}} section and the companion rules in draft-ietf-core-oscore-edhoc , which is probably better to mention. That's what ensures that, when selecting an available OSCORE Recipient ID, only one of the two equivalent corresponding connection identifier is deterministically selected.\r\n\r\nPerhaps here you mean that, due to the above, there is only a limited number of eligible integer connection identifier for each identifier size (e.g., 48 for 1-byte integer identifiers). Due to the rules in the {{edhoc-to-oscore}} section, those are the identifiers whose CBOR encoding is equal to the corresponding OSCORE ID, which indeed simplifies a comparison.",
           "createdAt": "2022-02-23T11:53:24Z",
           "updatedAt": "2022-02-23T11:53:24Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated after discussion with @marco-tiloca-sics: 4f568988",
+          "createdAt": "2022-02-25T16:38:51Z",
+          "updatedAt": "2022-02-25T16:38:51Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Looks good to me.",
+          "createdAt": "2022-02-25T19:03:52Z",
+          "updatedAt": "2022-02-25T19:03:52Z"
         }
       ]
     },
@@ -8970,7 +8993,7 @@
       ],
       "body": "I've started to work on the update of -traces, see c936328e.\r\n\r\nWhat is missing is:\r\n\r\n* Trace 2: SUITES_I = [6, 2] instead of 2.\r\n\r\n* Trace 2: Add bytes for raw x.509 (in addition to the CBOR encoded, see c936328e)\r\n     * In total two new entries: CRED_I (Raw Value) and CRED_R (Raw Value)\r\n     \r\n* Trace 2: Pretty print of all byte strings\r\n   * the analogue of vectors.txt for p256\r\n   * 16 bytes per row\r\n    * space between bytes\r\n\r\n* Marek's address\r\n\r\n@stoprocent could you help out here?\r\n\r\n\r\nThere is also TODO on version and reference which we need to fix, but that's just an editorial.\r\n",
       "createdAt": "2022-02-22T11:14:26Z",
-      "updatedAt": "2022-02-23T14:49:39Z",
+      "updatedAt": "2022-02-26T08:57:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -8979,6 +9002,20 @@
           "body": "Hi \r\n\r\nSorry i was super loaded at work last few days. I will have a look on this and also your email tomorrow or the.\r\n\r\nBest\r\n\r\nM",
           "createdAt": "2022-02-22T14:10:53Z",
           "updatedAt": "2022-02-22T14:10:53Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": " @stoprocent Submission deadline Monday in 10 days :-)",
+          "createdAt": "2022-02-25T17:04:48Z",
+          "updatedAt": "2022-02-25T17:04:48Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Done here: https://github.com/lake-wg/edhoc/pull/254\r\n\r\nPlease review and sorry for the delay",
+          "createdAt": "2022-02-26T08:57:28Z",
+          "updatedAt": "2022-02-26T08:57:28Z"
         }
       ]
     }
@@ -12131,6 +12168,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 254,
+      "id": "PR_kwDOEItXAM4zhXzt",
+      "title": "Updated Test Vectors according to request from #253",
+      "url": "https://github.com/lake-wg/edhoc/pull/254",
+      "state": "OPEN",
+      "author": "stoprocent",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "So changes according to #253\r\n\r\n- Added Vectors in txt format\r\n- I have now hardcoded X and Y in the generator \r\n- I have switched ECDSA to deterministic \r\n\r\nChanges which are done to the test vector generator can be reviewed here: https://github.com/stoprocent/edhoc/commit/cab937d6cb04adf7651fbeaa2d6210e0cde6f5d6\r\n\r\nPlease let me know if all of this is ok.\r\n\r\nAlso as usual test vectors generator can be found here: https://github.com/stoprocent/edhoc/tree/feature/mbedtls",
+      "createdAt": "2022-02-26T08:56:45Z",
+      "updatedAt": "2022-02-26T08:56:45Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "4f56898808989e449cc412a8b136674202a0ddce",
+      "headRepository": "stoprocent/edhoc",
+      "headRefName": "test-vectors-rfc-p256",
+      "headRefOid": "54cbf1f178af9cc6596cf2a12a8ce3679a31de21",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
