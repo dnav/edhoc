@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-27T01:16:09.928317+00:00",
+  "timestamp": "2022-03-03T01:20:54.860671+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -8993,7 +8993,7 @@
       ],
       "body": "I've started to work on the update of -traces, see c936328e.\r\n\r\nWhat is missing is:\r\n\r\n* Trace 2: SUITES_I = [6, 2] instead of 2.\r\n\r\n* Trace 2: Add bytes for raw x.509 (in addition to the CBOR encoded, see c936328e)\r\n     * In total two new entries: CRED_I (Raw Value) and CRED_R (Raw Value)\r\n     \r\n* Trace 2: Pretty print of all byte strings\r\n   * the analogue of vectors.txt for p256\r\n   * 16 bytes per row\r\n    * space between bytes\r\n\r\n* Marek's address\r\n\r\n@stoprocent could you help out here?\r\n\r\n\r\nThere is also TODO on version and reference which we need to fix, but that's just an editorial.\r\n",
       "createdAt": "2022-02-22T11:14:26Z",
-      "updatedAt": "2022-02-26T08:57:28Z",
+      "updatedAt": "2022-03-02T20:58:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -9016,6 +9016,41 @@
           "body": "Done here: https://github.com/lake-wg/edhoc/pull/254\r\n\r\nPlease review and sorry for the delay",
           "createdAt": "2022-02-26T08:57:28Z",
           "updatedAt": "2022-02-26T08:57:28Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\r\n@stoprocent Thanks for the update. Started to update trace 2, ran into this: \r\n\r\n> C_I (Raw Value) (Connection identifier chosen by Initiator) (int)\r\n> -24\r\n>\r\n> C_I (CBOR Data Item) (Connection identifier chosen by Initiator) (2 bytes)\r\n> 41 e8\r\n> \r\n> C_R (Raw Value) (Connection identifier chosen by Responder) (int)\r\n> -8\r\n> \r\n> C_R (CBOR Data Item) (Connection identifier chosen by Responder) (2 bytes)\r\n> 41 f8\r\n\r\nHow is this CBOR encoding made? I would have expected \r\n> -24 \r\n\r\nto be encoded as \r\n> 37 # negative(23)\r\n\r\nand\r\n> -8\r\n\r\nas\r\n> 27 # negative(7)\r\n\r\n\r\n",
+          "createdAt": "2022-03-02T07:20:42Z",
+          "updatedAt": "2022-03-02T07:20:42Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi\r\n\r\nThere was an incompatibility in the generator function for identifiers. This has been fixed here: https://github.com/stoprocent/edhoc/commit/abc197ef7372930c3c0d40dc4d0042cca27c6487\r\nand updated test vectors are here: https://github.com/lake-wg/edhoc/pull/255",
+          "createdAt": "2022-03-02T15:44:24Z",
+          "updatedAt": "2022-03-02T15:44:24Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, I'll take a look later today.",
+          "createdAt": "2022-03-02T15:44:46Z",
+          "updatedAt": "2022-03-02T15:44:46Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "New test vector included in trace 2.",
+          "createdAt": "2022-03-02T20:53:36Z",
+          "updatedAt": "2022-03-02T20:53:36Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We are still missing update of label/remove of \"Master\" in trace 1, per #205.\r\n\r\n@emanjon @stoprocent Could anyone of you help?\r\n\r\n(Replace \"OSCORE_Master_Secret/Salt\" with \"OSCORE_Secret/Salt\" and re-generate test vector for EdDSA in vectors.txt)\r\n",
+          "createdAt": "2022-03-02T20:58:03Z",
+          "updatedAt": "2022-03-02T20:58:03Z"
         }
       ]
     }
@@ -12174,25 +12209,63 @@
       "id": "PR_kwDOEItXAM4zhXzt",
       "title": "Updated Test Vectors according to request from #253",
       "url": "https://github.com/lake-wg/edhoc/pull/254",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "stoprocent",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "So changes according to #253\r\n\r\n- Added Vectors in txt format\r\n- I have now hardcoded X and Y in the generator \r\n- I have switched ECDSA to deterministic \r\n\r\nChanges which are done to the test vector generator can be reviewed here: https://github.com/stoprocent/edhoc/commit/cab937d6cb04adf7651fbeaa2d6210e0cde6f5d6\r\n\r\nPlease let me know if all of this is ok.\r\n\r\nAlso as usual test vectors generator can be found here: https://github.com/stoprocent/edhoc/tree/feature/mbedtls",
       "createdAt": "2022-02-26T08:56:45Z",
-      "updatedAt": "2022-02-26T08:56:45Z",
+      "updatedAt": "2022-03-02T06:51:15Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "4f56898808989e449cc412a8b136674202a0ddce",
       "headRepository": "stoprocent/edhoc",
       "headRefName": "test-vectors-rfc-p256",
       "headRefOid": "54cbf1f178af9cc6596cf2a12a8ce3679a31de21",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2022-03-02T06:51:15Z",
+      "mergedAt": "2022-03-02T06:51:15Z",
+      "mergedBy": "gselander",
+      "mergeCommit": {
+        "oid": "460712fec8d0f5dc978ad2d8a01174b767fd27a3"
+      },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 255,
+      "id": "PR_kwDOEItXAM4z1oOJ",
+      "title": "Fixing Connection Identifiers in p-256 vectors",
+      "url": "https://github.com/lake-wg/edhoc/pull/255",
+      "state": "MERGED",
+      "author": "stoprocent",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-02T15:41:38Z",
+      "updatedAt": "2022-03-02T17:24:02Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "460712fec8d0f5dc978ad2d8a01174b767fd27a3",
+      "headRepository": "stoprocent/edhoc",
+      "headRefName": "test-vectors-rfc-p256",
+      "headRefOid": "3603b75c4cd2aa38a3c4dc44bd6b0ee633dbdf67",
+      "closedAt": "2022-03-02T17:24:02Z",
+      "mergedAt": "2022-03-02T17:24:01Z",
+      "mergedBy": "gselander",
+      "mergeCommit": {
+        "oid": "0f6f141a56ba962cea5346f22d62080021ddfc6a"
+      },
+      "comments": [
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This is addressing #253",
+          "createdAt": "2022-03-02T15:42:43Z",
+          "updatedAt": "2022-03-02T15:42:43Z"
+        }
+      ],
       "reviews": []
     }
   ]
