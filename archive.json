@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-03T01:20:54.860671+00:00",
+  "timestamp": "2022-03-06T01:16:23.480729+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -9053,6 +9053,22 @@
           "updatedAt": "2022-03-02T20:58:03Z"
         }
       ]
+    },
+    {
+      "number": 257,
+      "id": "I_kwDOEItXAM5FKx6d",
+      "title": "Clarification Appendix A.3.",
+      "url": "https://github.com/lake-wg/edhoc/issues/257",
+      "state": "OPEN",
+      "author": "StefanHri",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi,\r\n\r\nI don't understand this very good: \r\n> \"For the default case when the\r\n   server is Responder, the prepended connection identifier is C_R, and\r\n   C_I if the server is Initiator.  If message_1 is sent to the server,\r\n   the CBOR simple value \"true\" (0xf5) is sent in its place (given that\r\n   the server has not selected C_R yet).\"\r\n\r\nIn the case where:\r\n* the initiator is a client and\r\n* the responder is a server\r\nDo we need to replace C_I with 0xf5 in message_1??? \r\n\r\n@AleksanderDemianowski",
+      "createdAt": "2022-03-05T21:50:42Z",
+      "updatedAt": "2022-03-05T21:50:42Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -12264,6 +12280,40 @@
           "body": "This is addressing #253",
           "createdAt": "2022-03-02T15:42:43Z",
           "updatedAt": "2022-03-02T15:42:43Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 256,
+      "id": "PR_kwDOEItXAM4z6ZDB",
+      "title": "Updated test vectors to include G_X and G_Y compact representable keys.",
+      "url": "https://github.com/lake-wg/edhoc/pull/256",
+      "state": "OPEN",
+      "author": "stoprocent",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- Updated test vectors to include G_X and G_Y compact representable keys.\r\n- Added uncompressed p256 G_X and G_Y public keys in vectors",
+      "createdAt": "2022-03-03T19:29:24Z",
+      "updatedAt": "2022-03-03T19:30:15Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
+      "headRepository": "stoprocent/edhoc",
+      "headRefName": "test-vectors-rfc-p256",
+      "headRefOid": "7ec32d3e459a7861b157ab804bd5a1b2dd3ca2e1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "As usual updates to generator are here: https://github.com/stoprocent/edhoc/commit/92adddac2d808495c5c67b3058c84e98b551f247",
+          "createdAt": "2022-03-03T19:30:15Z",
+          "updatedAt": "2022-03-03T19:30:15Z"
         }
       ],
       "reviews": []
