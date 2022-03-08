@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-06T01:16:23.480729+00:00",
+  "timestamp": "2022-03-08T01:17:41.287996+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -12296,7 +12296,7 @@
       "labels": [],
       "body": "- Updated test vectors to include G_X and G_Y compact representable keys.\r\n- Added uncompressed p256 G_X and G_Y public keys in vectors",
       "createdAt": "2022-03-03T19:29:24Z",
-      "updatedAt": "2022-03-03T19:30:15Z",
+      "updatedAt": "2022-03-07T21:09:51Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
@@ -12314,6 +12314,55 @@
           "body": "As usual updates to generator are here: https://github.com/stoprocent/edhoc/commit/92adddac2d808495c5c67b3058c84e98b551f247",
           "createdAt": "2022-03-03T19:30:15Z",
           "updatedAt": "2022-03-03T19:30:15Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I summarize below my understanding of EC point representation and encoding.\r\n\r\nIn the affine representation, the point on an elliptic curve is defined as (X,Y), where X is the x coordinate, and Y is the y coordinate. There are 3 different ways to serialize a point:\r\n\r\n## Compressed\r\n\r\n`Output = Y || X`\r\n\r\n`Y`: 1 byte that encodes the sign: `0x02` if y coordinate is positive; `0x03` if y coordinate is negative.\r\n`X`: 32 bytes\r\nTotal serialized length: 33 bytes\r\n\r\nComment: Point `Y` is calculated from `X` based on the curve equation and the byte that encodes the sign. The procedure is at [1].\r\n\r\n## Uncompressed\r\n\r\n`Output = 0x04 || X || Y`\r\n\r\n`0x04`: 1 byte\r\n`X`: 32 bytes\r\n`Y`: 32 bytes\r\nTotal serialized length: 65 bytes\r\n\r\nComment: Both points are fully encoded.\r\n\r\n## Compact (called \"raw\" in the traces draft)\r\n\r\n`Output = X`\r\n\r\n`X`: 32 bytes\r\nTotal: 32 bytes\r\n\r\nComment: Defined in RFC6090, Section 4.2. Only the `X` coordinate is encoded. `Y` is calculated as either +Y or -Y.  Used in EDHOC. \r\n[1] https://www.secg.org/sec1-v2.pdf, Section 2.3.3",
+          "createdAt": "2022-03-07T12:39:24Z",
+          "updatedAt": "2022-03-07T12:42:54Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The traces draft uses the term \"raw\" for what I believe is compact representation. I would propose that we only keep the compact representation in the draft, sicne this is what is used by EDHOC. \r\n\r\n\r\n@emanjon @gselander @franziskuskiefer : I tag you here to sanity check my understanding of the different representation and if you have any input related for this discussion",
+          "createdAt": "2022-03-07T12:41:53Z",
+          "updatedAt": "2022-03-07T12:41:53Z"
+        },
+        {
+          "author": "franziskuskiefer",
+          "authorAssociation": "NONE",
+          "body": "Thanks for tagging @malishav. The comment generally looks correct to me with one nit.\r\n\r\n> Comment: Defined in RFC6090, Section 4.2. Only the `X` coordinate is encoded. `Y` is calculated as either +Y or -Y. Used in EDHOC.\r\n\r\n`Y` is not either + or - as the edhoc draft specifies that the result is supposed to be equivalent to the compressed form with `0x02` for the sign byte (Appendix B. Compact Representation).\r\n\r\n\r\n",
+          "createdAt": "2022-03-07T14:39:49Z",
+          "updatedAt": "2022-03-07T14:39:49Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@franziskuskiefer That's what I have said on the email thread with the guys. \r\n\r\n> Message 1 is a cbor sequence where G_X is placed as bstr not as COSE_key\r\n> 0, [6, 2], h'0250A76B38EA840FA1B1A51152591D4CD52C75892152C870277225B1ED998ED953', -24\r\n \r\nand the spec states that \r\n\r\n> For such use, the compact representation can be transformed into the SECG point compressed format by prepending it with the single byte 0x02 (i.e., M = 0x02 || X).\r\n\r\nhttps://datatracker.ietf.org/doc/html/draft-ietf-lake-edhoc-12#appendix-B",
+          "createdAt": "2022-03-07T15:13:52Z",
+          "updatedAt": "2022-03-07T15:13:52Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@stoprocent in my understanding, the text in the spec does not relate to the bytes on the wire, only explains how *compact* representation is transformed into *compressed* form for compliance with different libraries. ",
+          "createdAt": "2022-03-07T15:22:38Z",
+          "updatedAt": "2022-03-07T15:23:07Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@malishav is right, but I think I understand where the confusion may come from. \r\n\r\nSection 3.7 states:\r\n\r\n>    EDHOC always uses compact representation of elliptic curve points,\r\n>    see Appendix B. In COSE compact representation is achieved by\r\n>    formatting the ECDH ephemeral public keys as COSE_Keys of type EC2 or\r\n>    OKP according to Sections 7.1 and 7.2 of\r\n>    [I-D.ietf-cose-rfc8152bis-algs], but only including the 'x' parameter\r\n>    in G_X and G_Y. \r\n\r\nSo this text does two things, it states that compact representation only includes the 'x' parameter, and it references appendix B. The former is what @malishav is referring to.\r\n\r\nNow, appendix B first paragraph states\r\n\r\n>    One example is ECDH with compact output, where only the x-coordinate\r\n>    of the computed value is used as the shared secret.\r\n\r\nand the rest of the appendix defines a format for the compact representation. \r\n\r\nThe text @stoprocent quoted is prepended with a condition: \r\n\r\n>   If a y-coordinate is required for validation or compatibily with APIs the\r\n>    value ~yp SHALL be set to zero.  For such use, the compact\r\n>    representation can be transformed into the SECG point compressed\r\n>    format by prepending it with the single byte 0x02 (i.e., M = 0x02 || X).\r\n\r\nAs stated in Section 3.7, the y-coordinate is not used (edit:) *on the wire*, but appendix B may give the impression that it should be used.\r\n\r\nIs this the confusion?\r\n",
+          "createdAt": "2022-03-07T16:15:17Z",
+          "updatedAt": "2022-03-07T16:19:05Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So to make it clear `G_X` and `G_Y` in vectors must be a raw `x` so `32b`?",
+          "createdAt": "2022-03-07T21:09:51Z",
+          "updatedAt": "2022-03-07T21:09:51Z"
         }
       ],
       "reviews": []
