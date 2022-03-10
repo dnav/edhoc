@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-08T01:17:41.287996+00:00",
+  "timestamp": "2022-03-10T01:25:06.154345+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -8993,7 +8993,7 @@
       ],
       "body": "I've started to work on the update of -traces, see c936328e.\r\n\r\nWhat is missing is:\r\n\r\n* Trace 2: SUITES_I = [6, 2] instead of 2.\r\n\r\n* Trace 2: Add bytes for raw x.509 (in addition to the CBOR encoded, see c936328e)\r\n     * In total two new entries: CRED_I (Raw Value) and CRED_R (Raw Value)\r\n     \r\n* Trace 2: Pretty print of all byte strings\r\n   * the analogue of vectors.txt for p256\r\n   * 16 bytes per row\r\n    * space between bytes\r\n\r\n* Marek's address\r\n\r\n@stoprocent could you help out here?\r\n\r\n\r\nThere is also TODO on version and reference which we need to fix, but that's just an editorial.\r\n",
       "createdAt": "2022-02-22T11:14:26Z",
-      "updatedAt": "2022-03-02T20:58:03Z",
+      "updatedAt": "2022-03-09T10:16:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -9051,6 +9051,13 @@
           "body": "We are still missing update of label/remove of \"Master\" in trace 1, per #205.\r\n\r\n@emanjon @stoprocent Could anyone of you help?\r\n\r\n(Replace \"OSCORE_Master_Secret/Salt\" with \"OSCORE_Secret/Salt\" and re-generate test vector for EdDSA in vectors.txt)\r\n",
           "createdAt": "2022-03-02T20:58:03Z",
           "updatedAt": "2022-03-02T20:58:03Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> We are still missing update of label/remove of \"Master\" in trace 1, per https://github.com/lake-wg/edhoc/pull/205.\r\n> \r\n> @emanjon @stoprocent Could anyone of you help?\r\n> \r\n> (Replace \"OSCORE_Master_Secret/Salt\" with \"OSCORE_Secret/Salt\" and re-generate test vector for EdDSA in vectors.txt)\r\n\r\nFor the first trace using EdDSA, with the new labels \"OSCORE_Secret\" and \"OSCORE_Salt\", I derive:\r\n\r\nOSCORE Master Secret (Raw Value) (16 bytes)\r\n9565355973280280d64a3ce8d7fa0a93\r\n\r\nOSCORE Master Salt (Raw Value) (8 bytes)\r\n37478eddb09e5d7a\r\n\r\nOSCORE Master Secret after KeyUpdate (Raw Value) (16 bytes)\r\nad4870dc7aca505bf80868785bd40d1b\r\n\r\nOSCORE Master Salt after KeyUpdate (Raw Value) (8 bytes)\r\n7138715cb50303a2\r\n\r\nCan anyone confirm?",
+          "createdAt": "2022-03-09T10:16:50Z",
+          "updatedAt": "2022-03-09T10:16:50Z"
         }
       ]
     },
@@ -12296,7 +12303,7 @@
       "labels": [],
       "body": "- Updated test vectors to include G_X and G_Y compact representable keys.\r\n- Added uncompressed p256 G_X and G_Y public keys in vectors",
       "createdAt": "2022-03-03T19:29:24Z",
-      "updatedAt": "2022-03-07T21:09:51Z",
+      "updatedAt": "2022-03-08T07:34:13Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
@@ -12363,6 +12370,20 @@
           "body": "So to make it clear `G_X` and `G_Y` in vectors must be a raw `x` so `32b`?",
           "createdAt": "2022-03-07T21:09:51Z",
           "updatedAt": "2022-03-07T21:09:51Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "For the wire / message format, only use the 'x' parameter, i.e. compact format. For the test vectors I remember Marco and others have additionally requested both 'x' and 'y', i.e. the uncompressed format.",
+          "createdAt": "2022-03-08T07:06:05Z",
+          "updatedAt": "2022-03-08T07:06:05Z"
+        },
+        {
+          "author": "franziskuskiefer",
+          "authorAssociation": "NONE",
+          "body": "> For the wire / message format, only use the 'x' parameter, i.e. compact format. For the test vectors I remember Marco and others have additionally requested both 'x' and 'y', i.e. the uncompressed format.\r\n\r\n\ud83d\udc4d\ud83c\udffb Having the uncompressed point in addition to the compact form is nice because it allows testing the conversion. Not all P256 implementations will support compressed points such that EDHOC implementations will need to implement the conversion from compact representation to uncompressed.\r\n\r\nBut the test vectors must make clear whether the uncompressed point is the actual point or the point after converting from the compact representation since the sign gets lost.",
+          "createdAt": "2022-03-08T07:34:13Z",
+          "updatedAt": "2022-03-08T07:34:13Z"
         }
       ],
       "reviews": []
