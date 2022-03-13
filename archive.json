@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-10T01:25:06.154345+00:00",
+  "timestamp": "2022-03-13T01:16:55.976813+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -9073,9 +9073,43 @@
       "labels": [],
       "body": "Hi,\r\n\r\nI don't understand this very good: \r\n> \"For the default case when the\r\n   server is Responder, the prepended connection identifier is C_R, and\r\n   C_I if the server is Initiator.  If message_1 is sent to the server,\r\n   the CBOR simple value \"true\" (0xf5) is sent in its place (given that\r\n   the server has not selected C_R yet).\"\r\n\r\nIn the case where:\r\n* the initiator is a client and\r\n* the responder is a server\r\nDo we need to replace C_I with 0xf5 in message_1??? \r\n\r\n@AleksanderDemianowski",
       "createdAt": "2022-03-05T21:50:42Z",
-      "updatedAt": "2022-03-05T21:50:42Z",
+      "updatedAt": "2022-03-10T20:14:04Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "No, this is only referring to the *prepended* connection identifiers. \r\n\r\nThe prepended connection identifiers are only used when the session can't be inferred from the previous message. The first message is a special case since there is no previous message, which is why \"true\" is used. \r\n\r\nMaybe the \"in its place\" is not sufficiently clear?\r\n\r\n ",
+          "createdAt": "2022-03-10T20:14:04Z",
+          "updatedAt": "2022-03-10T20:14:04Z"
+        }
+      ]
+    },
+    {
+      "number": 258,
+      "id": "I_kwDOEItXAM5Feu7r",
+      "title": "Switching cipher suites between traces 1 and 2",
+      "url": "https://github.com/lake-wg/edhoc/issues/258",
+      "state": "OPEN",
+      "author": "gselander",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "traces and test vectors"
+      ],
+      "body": "@marco-tiloca-sics  pointed out that if we switch cipher suite between traces 1 and 2 then we don't have to use deterministic ECDSA to get reproducible traces (because there is no ECDSA signature):\r\n\r\nMethod 0, cipher suite 0  ->  EdDSA signatures \r\nMethod 3, cipher suite 2  ->  P-256 with static DH \r\n\r\nWhat do people think about that?\r\n",
+      "createdAt": "2022-03-10T20:26:31Z",
+      "updatedAt": "2022-03-11T07:22:44Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think this is a good idea. Since the most constrained devices are likely going to use `STAT-STAT` and considering that these legacy devices dominantly have P-256 accelerated in hardware, it definitely makes sense to have this combination, not only from the deterministic vs random signature but also from the functional point of view. ",
+          "createdAt": "2022-03-11T07:22:44Z",
+          "updatedAt": "2022-03-11T07:22:44Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -12303,13 +12337,13 @@
       "labels": [],
       "body": "- Updated test vectors to include G_X and G_Y compact representable keys.\r\n- Added uncompressed p256 G_X and G_Y public keys in vectors",
       "createdAt": "2022-03-03T19:29:24Z",
-      "updatedAt": "2022-03-08T07:34:13Z",
+      "updatedAt": "2022-03-11T06:22:28Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
       "headRepository": "stoprocent/edhoc",
       "headRefName": "test-vectors-rfc-p256",
-      "headRefOid": "7ec32d3e459a7861b157ab804bd5a1b2dd3ca2e1",
+      "headRefOid": "5ab48b3825d73c7cb0ad4fd37d8fa8e00975eb7a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -12384,6 +12418,55 @@
           "body": "> For the wire / message format, only use the 'x' parameter, i.e. compact format. For the test vectors I remember Marco and others have additionally requested both 'x' and 'y', i.e. the uncompressed format.\r\n\r\n\ud83d\udc4d\ud83c\udffb Having the uncompressed point in addition to the compact form is nice because it allows testing the conversion. Not all P256 implementations will support compressed points such that EDHOC implementations will need to implement the conversion from compact representation to uncompressed.\r\n\r\nBut the test vectors must make clear whether the uncompressed point is the actual point or the point after converting from the compact representation since the sign gets lost.",
           "createdAt": "2022-03-08T07:34:13Z",
           "updatedAt": "2022-03-08T07:34:13Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Please have a look. I've updated G_X and G_Y keys in vectors.",
+          "createdAt": "2022-03-10T07:32:38Z",
+          "updatedAt": "2022-03-10T07:32:38Z"
+        },
+        {
+          "author": "franziskuskiefer",
+          "authorAssociation": "NONE",
+          "body": "> Please have a look. I've updated G_X and G_Y keys in vectors.\r\n\r\nThanks. They look good. But I think a little more is needed. I presume `g_x_uncompressed_raw` is the actual point `g^x` (this must be noted somewhere).\r\nThen we have a test vector here that covers the case where the sign bit happens to be \"unchanged\". At least one test vector where this is not the case is needed, i.e. where `g^x` is _not_ equal to `0x02 || X`",
+          "createdAt": "2022-03-10T11:52:26Z",
+          "updatedAt": "2022-03-10T11:52:26Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "`g_x_uncompressed_raw` is `0x04 || X || Y`",
+          "createdAt": "2022-03-10T14:39:30Z",
+          "updatedAt": "2022-03-10T14:39:40Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I believe all information is available in the latest update:\r\n\r\n> \r\n> X (Raw Value) (Initiator's ephemeral private key) (32 bytes)\r\n> 36 8e c1 f6 9a eb 65 9b a3 7d 5a 8d 45 b2 1b dc 02 99 dc ea a8 ef 23\r\n> 5f 3c a4 2c e3 53 0f 95 25\r\n> \r\n> G_X (Raw Value) (Initiator's ephemeral public key) (32 bytes)\r\n> 8a f6 f4 30 eb e1 8d 34 18 40 17 a9 a1 1b f5 11 c8 df f8 f8 34 73 0b\r\n> 96 c1 b7 c8 db ca 2f c3 b6\r\n> \r\n> G_X (Uncompressed Raw Value) (Initiator's ephemeral public key) (65 bytes)\r\n> 04 8a f6 f4 30 eb e1 8d 34 18 40 17 a9 a1 1b f5 11 c8 df f8 f8 34 73\r\n> 0b 96 c1 b7 c8 db ca 2f c3 b6 51 e8 af 6c 6e db 78 16 01 ad 1d 9c 5f\r\n> a8 bf 7a a1 57 16 c7 c0 6a 5d 03 85 03 c6 14 ff 80 c9 b3\r\n> \r\n> G_X (CBOR Data Item) (Initiator's ephemeral public key) (34 bytes)\r\n> 58 20 8a f6 f4 30 eb e1 8d 34 18 40 17 a9 a1 1b f5 11 c8 df f8 f8 34\r\n> 73 0b 96 c1 b7 c8 db ca 2f c3 b6\r\n\r\n but would it be better with a different representation? \r\n\r\nFor example:\r\n\r\n\r\nX (Raw Value) (Initiator's ephemeral private key) (32 bytes)\r\n36 8e c1 f6 9a eb 65 9b a3 7d 5a 8d 45 b2 1b dc 02 99 dc ea a8 ef 23\r\n5f 3c a4 2c e3 53 0f 95 25\r\n\r\nG_X (Raw Value) (Initiator's ephemeral public key, 'x'-coordinate) (32 bytes)\r\n8a f6 f4 30 eb e1 8d 34 18 40 17 a9 a1 1b f5 11 c8 df f8 f8 34 73 0b\r\n96 c1 b7 c8 db ca 2f c3 b6\r\n\r\nG_X (Raw Value) (Initiator's ephemeral public key, 'y'-coordinate) (32 bytes)\r\n 51 e8 af 6c 6e db 78 16 01 ad 1d 9c 5f a8 bf 7a a1 57 16 c7 c0 6a 5d\r\n03 85 03 c6 14 ff 80 c9 b3\r\n\r\nG_X (CBOR Data Item) (Initiator's ephemeral public key, 'x'-coordinate) (34 bytes)\r\n58 20 8a f6 f4 30 eb e1 8d 34 18 40 17 a9 a1 1b f5 11 c8 df f8 f8 34\r\n73 0b 96 c1 b7 c8 db ca 2f c3 b6\r\n\r\nWhat do you think @franziskuskiefer @marco-tiloca-sics @malishav \r\n",
+          "createdAt": "2022-03-10T16:07:44Z",
+          "updatedAt": "2022-03-10T16:07:44Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Looks good! One comment:\r\n\r\n> G_X (Raw Value) (Initiator's ephemeral public key, 'y'-coordinate) (32 bytes)\r\n\r\nshould probably just be\r\n\r\nInitiator's ephemeral public key, 'y'-coordinate (32 bytes)\r\n\r\nWhile this is part of the Initiator's ephemeral public key used for deriving the Diffie-Hellman secret (though not playing a role in that process), it is not part of the EDHOC G_X, which is about the 'x' coordinate only.",
+          "createdAt": "2022-03-10T17:04:07Z",
+          "updatedAt": "2022-03-10T17:04:07Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Have a look in latest commit",
+          "createdAt": "2022-03-10T21:51:27Z",
+          "updatedAt": "2022-03-10T21:51:27Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks good to me. \r\n\r\nPlease all have a look at #258. Once we decided on that I think we are ready to update -traces.",
+          "createdAt": "2022-03-11T06:22:28Z",
+          "updatedAt": "2022-03-11T06:22:28Z"
         }
       ],
       "reviews": []
