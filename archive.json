@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-13T01:16:55.976813+00:00",
+  "timestamp": "2022-03-15T01:23:00.920708+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -9073,7 +9073,7 @@
       "labels": [],
       "body": "Hi,\r\n\r\nI don't understand this very good: \r\n> \"For the default case when the\r\n   server is Responder, the prepended connection identifier is C_R, and\r\n   C_I if the server is Initiator.  If message_1 is sent to the server,\r\n   the CBOR simple value \"true\" (0xf5) is sent in its place (given that\r\n   the server has not selected C_R yet).\"\r\n\r\nIn the case where:\r\n* the initiator is a client and\r\n* the responder is a server\r\nDo we need to replace C_I with 0xf5 in message_1??? \r\n\r\n@AleksanderDemianowski",
       "createdAt": "2022-03-05T21:50:42Z",
-      "updatedAt": "2022-03-10T20:14:04Z",
+      "updatedAt": "2022-03-14T07:24:14Z",
       "closedAt": null,
       "comments": [
         {
@@ -9082,6 +9082,13 @@
           "body": "No, this is only referring to the *prepended* connection identifiers. \r\n\r\nThe prepended connection identifiers are only used when the session can't be inferred from the previous message. The first message is a special case since there is no previous message, which is why \"true\" is used. \r\n\r\nMaybe the \"in its place\" is not sufficiently clear?\r\n\r\n ",
           "createdAt": "2022-03-10T20:14:04Z",
           "updatedAt": "2022-03-10T20:14:04Z"
+        },
+        {
+          "author": "AleksanderDemianowski",
+          "authorAssociation": "NONE",
+          "body": "@StefanHri just for clarifiaction, @gselander please correct me if needed. Assuming the responder is a server, the first send data it's a message from client to server. This message is a concatenation of 1B (true - 0xf5) and EDHOC message_1. EDHOC message_1 includes C_I inside and this is not changing (is not repclaced). \r\nIn this case always client (initiator) sends data like: (**0xf5**) || (METHOD, SUITES_I, G_X, **C_I**, EAD_1 ), where || is a symbol of concatenation.\r\nThis is what we can see as the first message on [Figure 10 in A.3. chapter.](https://tools.ietf.org/id/draft-ietf-lake-edhoc-12.html#fig-coap1)",
+          "createdAt": "2022-03-14T07:20:20Z",
+          "updatedAt": "2022-03-14T07:24:14Z"
         }
       ]
     },
@@ -9099,7 +9106,7 @@
       ],
       "body": "@marco-tiloca-sics  pointed out that if we switch cipher suite between traces 1 and 2 then we don't have to use deterministic ECDSA to get reproducible traces (because there is no ECDSA signature):\r\n\r\nMethod 0, cipher suite 0  ->  EdDSA signatures \r\nMethod 3, cipher suite 2  ->  P-256 with static DH \r\n\r\nWhat do people think about that?\r\n",
       "createdAt": "2022-03-10T20:26:31Z",
-      "updatedAt": "2022-03-11T07:22:44Z",
+      "updatedAt": "2022-03-14T23:29:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -9108,6 +9115,27 @@
           "body": "I think this is a good idea. Since the most constrained devices are likely going to use `STAT-STAT` and considering that these legacy devices dominantly have P-256 accelerated in hardware, it definitely makes sense to have this combination, not only from the deterministic vs random signature but also from the functional point of view. ",
           "createdAt": "2022-03-11T07:22:44Z",
           "updatedAt": "2022-03-11T07:22:44Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Should I redo traces for p-256 then ?",
+          "createdAt": "2022-03-13T22:58:34Z",
+          "updatedAt": "2022-03-13T22:58:34Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Not hearing anyone against, so let's do the change. \r\n\r\nWho can help with EdDSA?",
+          "createdAt": "2022-03-14T11:46:20Z",
+          "updatedAt": "2022-03-14T11:46:20Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I will try tomorrow to do both. Will post updates back here. \r\nAlso on EdDSA there is a need to change labels right?",
+          "createdAt": "2022-03-14T23:29:03Z",
+          "updatedAt": "2022-03-14T23:29:03Z"
         }
       ]
     }
