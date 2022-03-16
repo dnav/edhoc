@@ -5,8 +5,8 @@
 Network Working Group                                        G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 3 September 2022                                       Ericsson
-                                                            2 March 2022
+Expires: 17 September 2022                                      Ericsson
+                                                           16 March 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 September 2022.
+   This Internet-Draft will expire on 17 September 2022.
 
 Copyright Notice
 
@@ -2195,8 +2195,8 @@ Table of Contents
    mitigate such attacks, an implementation SHOULD rely on lower layer
    mechanisms.  For instance, when EDHOC is transferred as an exchange
    of CoAP messages, the CoAP server can use the Echo option defined in
-   [I-D.ietf-core-echo-request-tag] which forces the CoAP client to
-   demonstrate reachability at its apparent network address.
+   [RFC9175] which forces the CoAP client to demonstrate reachability at
+   its apparent network address.
 
    An attacker can also send faked message_2, message_3, message_4, or
    error in an attempt to trick the receiving party to send an error
@@ -2645,14 +2645,6 @@ Table of Contents
 
 10.1.  Normative References
 
-   [I-D.ietf-core-echo-request-tag]
-              Amsüss, C., Mattsson, J. P., and G. Selander, "Constrained
-              Application Protocol (CoAP): Echo, Request-Tag, and Token
-              Processing", Work in Progress, Internet-Draft, draft-ietf-
-              core-echo-request-tag-14, 4 October 2021,
-              <https://www.ietf.org/archive/id/draft-ietf-core-echo-
-              request-tag-14.txt>.
-
    [I-D.ietf-cose-rfc8152bis-algs]
               Schaad, J., "CBOR Object Signing and Encryption (COSE):
               Initial Algorithms", Work in Progress, Internet-Draft,
@@ -2792,6 +2784,12 @@ Table of Contents
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/info/rfc8949>.
 
+   [RFC9175]  Amsüss, C., Preuß Mattsson, J., and G. Selander,
+              "Constrained Application Protocol (CoAP): Echo, Request-
+              Tag, and Token Processing", RFC 9175,
+              DOI 10.17487/RFC9175, February 2022,
+              <https://www.rfc-editor.org/info/rfc9175>.
+
 10.2.  Informative References
 
    [Bruni18]  Bruni, A., Sahl Jørgensen, T., Grønbech Petersen, T., and
@@ -2825,16 +2823,15 @@ Table of Contents
               Palombini, F., Tiloca, M., Hoeglund, R., Hristozov, S.,
               and G. Selander, "Profiling EDHOC for CoAP and OSCORE",
               Work in Progress, Internet-Draft, draft-ietf-core-oscore-
-              edhoc-02, 25 October 2021,
-              <https://www.ietf.org/archive/id/draft-ietf-core-oscore-
-              edhoc-02.txt>.
+              edhoc-03, 7 March 2022, <https://www.ietf.org/archive/id/
+              draft-ietf-core-oscore-edhoc-03.txt>.
 
    [I-D.ietf-core-oscore-key-update]
               Höglund, R. and M. Tiloca, "Key Update for OSCORE
               (KUDOS)", Work in Progress, Internet-Draft, draft-ietf-
-              core-oscore-key-update-00, 6 December 2021,
+              core-oscore-key-update-01, 7 March 2022,
               <https://www.ietf.org/archive/id/draft-ietf-core-oscore-
-              key-update-00.txt>.
+              key-update-01.txt>.
 
    [I-D.ietf-core-resource-directory]
               Amsüss, C., Shelby, Z., Koster, M., Bormann, C., and P. V.
@@ -3208,11 +3205,10 @@ A.3.  Transferring EDHOC over CoAP
 
    To protect against denial-of-service attacks, the CoAP server MAY
    respond to the first POST request with a 4.01 (Unauthorized)
-   containing an Echo option [I-D.ietf-core-echo-request-tag].  This
-   forces the Initiator to demonstrate its reachability at its apparent
-   network address.  If message fragmentation is needed, the EDHOC
-   messages may be fragmented using the CoAP Block-Wise Transfer
-   mechanism [RFC7959].
+   containing an Echo option [RFC9175].  This forces the Initiator to
+   demonstrate its reachability at its apparent network address.  If
+   message fragmentation is needed, the EDHOC messages may be fragmented
+   using the CoAP Block-Wise Transfer mechanism [RFC7959].
 
    EDHOC does not restrict how error messages are transported with CoAP,
    as long as the appropriate error message can to be transported in
