@@ -1879,7 +1879,7 @@ ead = 1* (
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-key-derivation" class="section-name selfRef">Key Derivation</a>
       </h2>
 <p id="section-4-1">EDHOC uses Extract-and-Expand <span>[<a href="#RFC5869" class="xref">RFC5869</a>]</span> with the EDHOC hash algorithm in the selected cipher suite to derive keys used in EDHOC and in the application. Extract is used to derive fixed-length uniformly pseudorandom keys (PRK) from ECDH shared secrets. Expand is used to derive additional output keying material (OKM) from the PRKs.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">This section defines Extract, Expand and other key derivation functions based on these: Expand is used to define EDHOC-KDF and in turn EDHOC-Exporter, whereas Extract is used to define EDHOC-KeyUpdate. In EDHOC a specific message always use the same key, but how the key is derived depends on the method. A diagram of the EDHOC key schedule can be found in Figure 2 of <span>[<a href="#Vucinic22" class="xref">Vucinic22</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-2">This section defines Extract, Expand and other key derivation functions based on these: Expand is used to define EDHOC-KDF and in turn EDHOC-Exporter, whereas Extract is used to define EDHOC-KeyUpdate. In EDHOC a specific message is protected with a certain pseudorandom key, but how the key is derived depends on the method. A diagram of the EDHOC key schedule can be found in Figure 2 of <span>[<a href="#Vucinic22" class="xref">Vucinic22</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <div id="extract">
 <section id="section-4.1">
         <h3 id="name-extract">

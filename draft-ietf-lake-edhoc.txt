@@ -967,9 +967,10 @@ Table of Contents
    This section defines Extract, Expand and other key derivation
    functions based on these: Expand is used to define EDHOC-KDF and in
    turn EDHOC-Exporter, whereas Extract is used to define EDHOC-
-   KeyUpdate.  In EDHOC a specific message always use the same key, but
-   how the key is derived depends on the method.  A diagram of the EDHOC
-   key schedule can be found in Figure 2 of [Vucinic22].
+   KeyUpdate.  In EDHOC a specific message is protected with a certain
+   pseudorandom key, but how the key is derived depends on the method.
+   A diagram of the EDHOC key schedule can be found in Figure 2 of
+   [Vucinic22].
 
 4.1.  Extract
 
