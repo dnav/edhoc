@@ -97,6 +97,21 @@ Table of Contents
    input, output and intermediate processing results to simplify testing
    of implementations.
 
+   The document contains two traces:
+
+   *  Section 3.  Authentication with signature keys identified by the
+      hash value of the X.509 certificates (provided in Section 3.7).
+      The endpoints use EdDSA [RFC8032] for authentication and X25519
+      [RFC7748] for ephemeral-ephemeral Diffie-Hellman key exchange.
+
+   *  Section 4.  Authentication with static Diffie-Hellman keys
+      identified by short key identifiers labelling CWT Claim Sets
+      (CCSs) [RFC8392].  The endpoints use NIST P-256 (FIPS PUB 186-4)
+      for both ephemeral-ephemeral and static-ephemeral Diffie-Hellman
+      key exchange.  This trace also illustrates the cipher suite
+      negotiation, and provides an example of low protocol overhead,
+      with messages sizes of (39, 45, 19) bytes.
+
    The traces in this draft are valid for versions -11 and -12 of
    [I-D.ietf-lake-edhoc], with the additional modification in
    https://github.com/lake-wg/edhoc/pull/205.
@@ -2110,6 +2125,19 @@ Table of Contents
               Progress, Internet-Draft, draft-ietf-lake-edhoc-12, 20
               October 2021, <https://www.ietf.org/archive/id/draft-ietf-
               lake-edhoc-12.txt>.
+
+   [RFC7748]  Langley, A., Hamburg, M., and S. Turner, "Elliptic Curves
+              for Security", RFC 7748, DOI 10.17487/RFC7748, January
+              2016, <https://www.rfc-editor.org/info/rfc7748>.
+
+   [RFC8032]  Josefsson, S. and I. Liusvaara, "Edwards-Curve Digital
+              Signature Algorithm (EdDSA)", RFC 8032,
+              DOI 10.17487/RFC8032, January 2017,
+              <https://www.rfc-editor.org/info/rfc8032>.
+
+   [RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,
+              "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
+              May 2018, <https://www.rfc-editor.org/info/rfc8392>.
 
    [RFC8949]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", STD 94, RFC 8949,

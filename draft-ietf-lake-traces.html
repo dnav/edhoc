@@ -1204,9 +1204,16 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">EDHOC <span>[<a href="#I-D.ietf-lake-edhoc" class="xref">I-D.ietf-lake-edhoc</a>]</span> is a lightweight authenticated key exchange protocol designed for highly constrained settings. This document contains annotated traces of EDHOC protocol runs, with input, output and intermediate processing results to simplify testing of implementations.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">The traces in this draft are valid for versions -11 and -12 of <span>[<a href="#I-D.ietf-lake-edhoc" class="xref">I-D.ietf-lake-edhoc</a>]</span>, with the additional modification in https://github.com/lake-wg/edhoc/pull/205.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">A more extensive test vector suite and related code that was used to generate trace 1 can be found at: https://github.com/lake-wg/edhoc/tree/master/test-vectors-11.
-The test vector for trace 2 can be found at: https://github.com/lake-wg/edhoc/tree/master/test-vectors-11/p256.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-2">The document contains two traces:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-3.1">Section 3. Authentication with signature keys identified by the hash value of the X.509 certificates (provided in <a href="#certs" class="xref">Section 3.7</a>). The endpoints use EdDSA <span>[<a href="#RFC8032" class="xref">RFC8032</a>]</span> for authentication and X25519 <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span> for ephemeral-ephemeral Diffie-Hellman key exchange.<a href="#section-1-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-3.2">Section 4. Authentication with static Diffie-Hellman keys identified by short key identifiers labelling CWT Claim Sets (CCSs) <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>. The endpoints use NIST P-256 (FIPS PUB 186-4) for both ephemeral-ephemeral and static-ephemeral Diffie-Hellman key exchange. This trace also illustrates the cipher suite negotiation, and provides an example of low protocol overhead, with messages sizes of (39, 45, 19) bytes.<a href="#section-1-3.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-1-4">The traces in this draft are valid for versions -11 and -12 of <span>[<a href="#I-D.ietf-lake-edhoc" class="xref">I-D.ietf-lake-edhoc</a>]</span>, with the additional modification in https://github.com/lake-wg/edhoc/pull/205.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">A more extensive test vector suite and related code that was used to generate trace 1 can be found at: https://github.com/lake-wg/edhoc/tree/master/test-vectors-11.
+The test vector for trace 2 can be found at: https://github.com/lake-wg/edhoc/tree/master/test-vectors-11/p256.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="setup">
@@ -2419,7 +2426,7 @@ OSCORE Master Salt after KeyUpdate (Raw Value) (8 bytes)
 </div>
 </section>
 </div>
-<div id="certificates">
+<div id="certs">
 <section id="section-3.7">
         <h3 id="name-certificates">
 <a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-certificates" class="section-name selfRef">Certificates</a>
@@ -3764,6 +3771,18 @@ OSCORE Master Salt after KeyUpdate (Raw Value) (8 bytes)
 <dt id="I-D.ietf-lake-edhoc">[I-D.ietf-lake-edhoc]</dt>
       <dd>
 <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, and <span class="refAuthor">F. Palombini</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-lake-edhoc-12</span>, <time datetime="2021-10-20" class="refDate">20 October 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-lake-edhoc-12.txt">https://www.ietf.org/archive/id/draft-ietf-lake-edhoc-12.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7748">[RFC7748]</dt>
+      <dd>
+<span class="refAuthor">Langley, A.</span>, <span class="refAuthor">Hamburg, M.</span>, and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"Elliptic Curves for Security"</span>, <span class="seriesInfo">RFC 7748</span>, <span class="seriesInfo">DOI 10.17487/RFC7748</span>, <time datetime="2016-01" class="refDate">January 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7748">https://www.rfc-editor.org/info/rfc7748</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8032">[RFC8032]</dt>
+      <dd>
+<span class="refAuthor">Josefsson, S.</span> and <span class="refAuthor">I. Liusvaara</span>, <span class="refTitle">"Edwards-Curve Digital Signature Algorithm (EdDSA)"</span>, <span class="seriesInfo">RFC 8032</span>, <span class="seriesInfo">DOI 10.17487/RFC8032</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8032">https://www.rfc-editor.org/info/rfc8032</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8392">[RFC8392]</dt>
+      <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8392">https://www.rfc-editor.org/info/rfc8392</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8949">[RFC8949]</dt>
     <dd>
