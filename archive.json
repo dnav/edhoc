@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-15T01:23:00.920708+00:00",
+  "timestamp": "2022-03-17T01:22:50.014239+00:00",
   "repo": "lake-wg/edhoc",
   "labels": [
     {
@@ -5719,7 +5719,7 @@
       "id": "MDU6SXNzdWU5NjE1MTU2NjY=",
       "title": "EAD is underspecified",
       "url": "https://github.com/lake-wg/edhoc/issues/149",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -5731,8 +5731,8 @@
       ],
       "body": "```\r\nead = (\r\n  type : int,\r\n  1* ext_authz_data : any,\r\n)\r\n```\r\n\r\nWhat is type? Is that the the external security application or the content, i.e., the sequence of ext_authz_data?\r\n\r\nIf type is the external security application, is the same type supposed to be used in message_1, 2, 3, and 4?\r\n\r\nIf type referes to the ext_authz_data, would it be better with:\r\n\r\n`\r\nead = + ( type : int, ext_authz_data : any )\r\n`",
       "createdAt": "2021-08-05T07:08:40Z",
-      "updatedAt": "2022-02-25T16:42:57Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:50:43Z",
+      "closedAt": "2022-03-15T14:50:43Z",
       "comments": [
         {
           "author": "gselander",
@@ -6409,10 +6409,12 @@
       "assignees": [
         "gselander"
       ],
-      "labels": [],
+      "labels": [
+        "PR exists"
+      ],
       "body": "Currently a mixture of:\r\nThe registration procedure is \"Expert Review\".\r\nThe registration procedure is \"Specification Required\". \r\n",
       "createdAt": "2021-09-10T12:55:40Z",
-      "updatedAt": "2022-01-26T16:44:29Z",
+      "updatedAt": "2022-03-16T10:49:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -6484,6 +6486,20 @@
           "body": "Maybe Description should be separated into Initiator Authentication Key, Responder Authentication Key,",
           "createdAt": "2022-01-26T16:44:29Z",
           "updatedAt": "2022-01-26T16:44:29Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The comments above about section 9.4 refers to 9.3 [EDHOC Method Type Registry] in the current master branch.",
+          "createdAt": "2022-03-16T09:18:57Z",
+          "updatedAt": "2022-03-16T09:18:57Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "An attempt to address all comments in PR #260.\r\n\r\nI kept the column for References for the registries where a specification is required, method (9.3) and EAD (9.5).\r\n",
+          "createdAt": "2022-03-16T10:16:33Z",
+          "updatedAt": "2022-03-16T10:16:33Z"
         }
       ]
     },
@@ -7894,7 +7910,7 @@
       "id": "I_kwDOEItXAM4_0tic",
       "title": "Error messages",
       "url": "https://github.com/lake-wg/edhoc/issues/208",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -7905,8 +7921,8 @@
       ],
       "body": "From Marco's review:\r\n\r\n[Section 5.2.3]\r\n\r\n* \"If an error message is sent, the session MUST be discontinued.\"\r\n\r\n    Is this sentence actually required? Regardless sending an error \r\nmessage or not, the session is discontinued if any processing step \r\nfails, which is the reason for possibly sending an error message. Or are \r\nthere situations where an error message is sent even if no processing \r\nstep fails?\r\n\r\n",
       "createdAt": "2021-12-03T16:56:56Z",
-      "updatedAt": "2022-02-23T13:33:43Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:51:09Z",
+      "closedAt": "2022-03-15T14:51:09Z",
       "comments": [
         {
           "author": "gselander",
@@ -8076,7 +8092,7 @@
       "id": "I_kwDOEItXAM4_-Idy",
       "title": "Add appendix about the use of EAD",
       "url": "https://github.com/lake-wg/edhoc/issues/210",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -8088,8 +8104,8 @@
       ],
       "body": "Provide examples to simplify understanding of intended use",
       "createdAt": "2021-12-07T11:40:15Z",
-      "updatedAt": "2022-02-23T13:22:41Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:51:27Z",
+      "closedAt": "2022-03-15T14:51:27Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8126,7 +8142,7 @@
       "id": "I_kwDOEItXAM5ACdNt",
       "title": "Shorten 3.5",
       "url": "https://github.com/lake-wg/edhoc/issues/212",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -8138,8 +8154,8 @@
       ],
       "body": "This issue is extracted from Stephen's review #202:\r\n\r\n3.5.1, 3.5.2 and 3.5.3: this might be some text to\r\n   shorten a lot - how much is it really needed? Could it be\r\ncut down to the stuff with 2119 terms and a bit more? (I'd\r\nkeep the examples though.)\r\n",
       "createdAt": "2021-12-08T13:00:32Z",
-      "updatedAt": "2022-02-23T13:26:58Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:51:43Z",
+      "closedAt": "2022-03-15T14:51:43Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8248,7 +8264,7 @@
       "id": "I_kwDOEItXAM5AOgeO",
       "title": "Verification of identities in X.509 and CWT",
       "url": "https://github.com/lake-wg/edhoc/issues/215",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -8260,8 +8276,8 @@
       ],
       "body": "From John's comment to changes following Marco's review:\r\n\r\n\"identities to verify the 'sub' (subject) claim of the CWT.\"\r\n\r\n Should use the same text for X509 and CWT.\r\n\r\nMoreover,  \"sub\" claim is just an example. CWT might add e.g. AltSub in the future.\r\n",
       "createdAt": "2021-12-11T13:57:31Z",
-      "updatedAt": "2022-02-23T13:32:13Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:52:05Z",
+      "closedAt": "2022-03-15T14:52:05Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8403,7 +8419,7 @@
       "id": "I_kwDOEItXAM5Bb3S9",
       "title": "Changes needed in 3.5 (identity, credential, trust achor)",
       "url": "https://github.com/lake-wg/edhoc/issues/223",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "emanjon",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -8413,8 +8429,8 @@
       ],
       "body": "While trying to add TOFU I noticed that 3.5 require quite big changes. The section 3.5 is not clear at all what is the responsibility of the Application and what is the responsibility of EDHOC. EDHOC provides proof-of-possession and transfers the credentials, but that is it. \r\n\r\n- Authentication is purely outside of a normal EDHOC implementation. This need to be made clear. Identity handling, credentials, and trust anchors are purely the resposibility of the application. An EDHOC implementation could potentially implement authentication for a specific application. As some TLS implementation do for HTTPS, but this would be outside of the EDHOC specification. I think quite much text should be moved to an appendix.\r\n\r\n- Interface between EDHOC and Application is not even mention. While the API should not be specified in detailed, it should likely be a requirement to be able to do mutual authentication. A simple interface for this is that EDHOC gives the credential to the application and the application can say YES or NO. An EDHOC implementation could also allow the implementation to give input to EDHOC, but this would be VERY application specific.\r\n\r\n",
       "createdAt": "2022-01-10T12:11:10Z",
-      "updatedAt": "2022-02-23T13:30:09Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:52:34Z",
+      "closedAt": "2022-03-15T14:52:34Z",
       "comments": [
         {
           "author": "gselander",
@@ -8721,7 +8737,7 @@
       "id": "I_kwDOEItXAM5CxouS",
       "title": "Errors in EAD processing",
       "url": "https://github.com/lake-wg/edhoc/issues/242",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -8733,8 +8749,8 @@
       ],
       "body": "From follow up of Sean's review:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/lake/rC3OwLdD0fO6EEx8Lnh3k1zXUV8/\r\n\r\n> > s3.8 (comment): Wow .. so you can send in the CSR in EAD, if it works then you can use the cert in the later messages (e.g., kind of like EAP)? Sure hope there\u2019s no kind of CSR-related error. And, you know that the CA gets to decide the name right. Sorry just trying to digest it all.\r\n> > \r\n> > [GS: We discussed this in the LAKE interim where you participated, but just for the record: Yes, the intent is to be able to send CSR in EAD. This is expected to be detailed in an accompanying specification. One example would be the enrolment of an \"operational\" certificate as an add-on to initial authentication, the authentication of which could be performed using a manufacturer certificate included in the device from factory.\r\n> > ]\r\n>\r\n> Yeah I remember I was there. As long as your consider what to do when you get an enrollment error this will be fine to do.\r\n \r\nHow to handle errors in EAD processing should be included in the new EAD appendix.",
       "createdAt": "2022-02-01T07:07:44Z",
-      "updatedAt": "2022-02-23T13:20:15Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:53:21Z",
+      "closedAt": "2022-03-15T14:53:21Z",
       "comments": [
         {
           "author": "gselander",
@@ -8851,7 +8867,7 @@
       "id": "I_kwDOEItXAM5DLTbq",
       "title": "Update acknowledgements",
       "url": "https://github.com/lake-wg/edhoc/issues/246",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -8860,8 +8876,8 @@
       ],
       "body": "Stephen, Sean, Kathleen, ...",
       "createdAt": "2022-02-08T10:03:33Z",
-      "updatedAt": "2022-02-22T08:00:33Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:53:36Z",
+      "closedAt": "2022-03-15T14:53:36Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8877,7 +8893,7 @@
       "id": "I_kwDOEItXAM5DPuC6",
       "title": "Illustrate message_4 in CoAP transport",
       "url": "https://github.com/lake-wg/edhoc/issues/247",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -8886,8 +8902,8 @@
       ],
       "body": "Include message_4 in Figure 10 (and perhaps not in Fig 11, since it is optional)",
       "createdAt": "2022-02-09T08:17:37Z",
-      "updatedAt": "2022-02-23T09:09:23Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:54:03Z",
+      "closedAt": "2022-03-15T14:54:03Z",
       "comments": []
     },
     {
@@ -8895,7 +8911,7 @@
       "id": "I_kwDOEItXAM5DW8rV",
       "title": "Type of connection identifiers",
       "url": "https://github.com/lake-wg/edhoc/issues/249",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -8906,8 +8922,8 @@
       ],
       "body": "Proxying question from Stefan: \r\n\r\n> Is there a strong reason to define the encoding as bstr/int. Is it not enough to have just int? From my perspective to allow one of both bstr or int depending on the user makes not only the the implementation more complex but as well the EDHOC API more user unfriendly. \r\n\r\nThis would reduce the number of identifiers of a given size. Perhaps this could be a constraint in the applicability template / application profile.",
       "createdAt": "2022-02-10T13:32:35Z",
-      "updatedAt": "2022-02-25T19:03:52Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:54:46Z",
+      "closedAt": "2022-03-15T14:54:45Z",
       "comments": [
         {
           "author": "emanjon",
@@ -8958,7 +8974,7 @@
       "id": "I_kwDOEItXAM5DYPFl",
       "title": "applicability template -> application profile",
       "url": "https://github.com/lake-wg/edhoc/issues/250",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gselander",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -8967,8 +8983,8 @@
       ],
       "body": "The first term was \"applicability statement\" but since we did not intend the meaning of RFC 2026 was changed to \"applicability template\" which seems to be confusing because implies something needs to be filled in. New proposal:  \"application profile\".\r\n",
       "createdAt": "2022-02-10T16:32:26Z",
-      "updatedAt": "2022-02-23T09:01:12Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-15T14:55:12Z",
+      "closedAt": "2022-03-15T14:55:12Z",
       "comments": [
         {
           "author": "emanjon",
@@ -9070,10 +9086,12 @@
       "author": "StefanHri",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "PR exists"
+      ],
       "body": "Hi,\r\n\r\nI don't understand this very good: \r\n> \"For the default case when the\r\n   server is Responder, the prepended connection identifier is C_R, and\r\n   C_I if the server is Initiator.  If message_1 is sent to the server,\r\n   the CBOR simple value \"true\" (0xf5) is sent in its place (given that\r\n   the server has not selected C_R yet).\"\r\n\r\nIn the case where:\r\n* the initiator is a client and\r\n* the responder is a server\r\nDo we need to replace C_I with 0xf5 in message_1??? \r\n\r\n@AleksanderDemianowski",
       "createdAt": "2022-03-05T21:50:42Z",
-      "updatedAt": "2022-03-14T07:24:14Z",
+      "updatedAt": "2022-03-16T07:20:30Z",
       "closedAt": null,
       "comments": [
         {
@@ -9089,6 +9107,20 @@
           "body": "@StefanHri just for clarifiaction, @gselander please correct me if needed. Assuming the responder is a server, the first send data it's a message from client to server. This message is a concatenation of 1B (true - 0xf5) and EDHOC message_1. EDHOC message_1 includes C_I inside and this is not changing (is not repclaced). \r\nIn this case always client (initiator) sends data like: (**0xf5**) || (METHOD, SUITES_I, G_X, **C_I**, EAD_1 ), where || is a symbol of concatenation.\r\nThis is what we can see as the first message on [Figure 10 in A.3. chapter.](https://tools.ietf.org/id/draft-ietf-lake-edhoc-12.html#fig-coap1)",
           "createdAt": "2022-03-14T07:20:20Z",
           "updatedAt": "2022-03-14T07:24:14Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@AleksanderDemianowski Yes that is correct. \r\n\r\nHere is some new text replacing the existing description in an attempt to clarify further:\r\n\r\nOLD\r\n> In order to correlate a message received from a client to a message previously sent by the server, messages sent by the client are prepended with the CBOR serialization of the connection identifier which the server has chosen.  For the default case when the server is Responder, the prepended connection identifier is C_R, and C_I if the server is Initiator. If message_1 is sent to the server, the CBOR simple value \"true\" (0xf5) is sent in its place (given that the server has not selected C_R yet).\r\n\r\n\r\nNEW\r\n> In order to correlate a message received from a client to a message previously sent by the server in the same EDHOC session over CoAP, messages sent by the client are prepended with the CBOR serialization of the connection identifier which the server has chosen. This applies independently of if the CoAP server is Responder or Initiator. \r\n\r\n> * For the default case when the server is Responder, message_3 sent from the client is prepended with the identifier C_R. In this case message_1 is also sent by the client, and to indicate that this is a new EDHOC session it is prepended with a dummy identifier, the CBOR simple value \"true\" (0xf5), since the server has not selected C_R yet. See Figure 10.\r\n\r\n> * In the case when the server is Initiator, message_2 sent from the client is prepended with the identifier C_I. See Figure 11.\r\n\r\n> Note the prepended identifiers are only used to keep track of messages in an EDHOC session, and this does not impact the value of the connection identifiers within the EDHOC messages.\r\n\r\n@StefanHri Is this more clear?\r\n",
+          "createdAt": "2022-03-15T08:51:39Z",
+          "updatedAt": "2022-03-15T08:51:39Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Some adaptations of the proposal above in PR #259.",
+          "createdAt": "2022-03-16T07:20:06Z",
+          "updatedAt": "2022-03-16T07:20:06Z"
         }
       ]
     },
@@ -9106,7 +9138,7 @@
       ],
       "body": "@marco-tiloca-sics  pointed out that if we switch cipher suite between traces 1 and 2 then we don't have to use deterministic ECDSA to get reproducible traces (because there is no ECDSA signature):\r\n\r\nMethod 0, cipher suite 0  ->  EdDSA signatures \r\nMethod 3, cipher suite 2  ->  P-256 with static DH \r\n\r\nWhat do people think about that?\r\n",
       "createdAt": "2022-03-10T20:26:31Z",
-      "updatedAt": "2022-03-14T23:29:04Z",
+      "updatedAt": "2022-03-16T10:49:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -9136,6 +9168,90 @@
           "body": "I will try tomorrow to do both. Will post updates back here. \r\nAlso on EdDSA there is a need to change labels right?",
           "createdAt": "2022-03-14T23:29:03Z",
           "updatedAt": "2022-03-14T23:29:03Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@stoprocent Thanks! Yes, the labels too. ",
+          "createdAt": "2022-03-15T09:25:49Z",
+          "updatedAt": "2022-03-15T09:25:49Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@stoprocent just to let you know that I am eagerly waiting for a complete STAT-STAT trace over P256  :)",
+          "createdAt": "2022-03-15T14:33:00Z",
+          "updatedAt": "2022-03-15T14:33:00Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@malishav have a look on version from pull request https://github.com/lake-wg/edhoc/pull/256",
+          "createdAt": "2022-03-15T22:14:14Z",
+          "updatedAt": "2022-03-15T22:14:55Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@stoprocent Thanks for the new second trace! I wait for verification from someone before putting it into -traces. \r\n\r\nSince LAKE WG meeting is on Monday and I would need to send in slides describing the results well in advance any further progress on traces right now is much appreciated. :-)\r\n",
+          "createdAt": "2022-03-16T06:45:41Z",
+          "updatedAt": "2022-03-16T06:46:14Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Ok I got the EdDSA to compile on Mac OS so now I can generate the other ones too. \r\nWhich ones should we generate?\r\n\r\n```\r\n    // The four methods with COSE header parameters kid and x5t\r\n    test_vectors( sdh, cred_uccs, kid, sdh, cred_uccs, kid, 0, 34400 ); // Table 1, column 1\r\n    test_vectors( sdh, cred_uccs, kid, sig, cred_x509, x5t, 0, 27400 );\r\n    test_vectors( sig, cred_x509, x5t, sdh, cred_uccs, kid, 0, 44400 );\r\n    test_vectors( sig, cred_x509, x5t, sig, cred_x509, x5t, 0, 37400 ); // Table 1, column 4\r\n\r\n    // Other COSE header parameters\r\n    test_vectors( sdh, cred_x509, x5u, sdh, cred_x509, x5u, 0, 68500 );\r\n    test_vectors( sdh, cred_x509, x5chain, sig, cred_x509, x5bag, 0, 56200 );\r\n    test_vectors( sdh, cred_uccs, uccs, sig, cred_cwt, cwt, 0, 67200 ); // cwt not implemented\r\n\r\n    // Cipher suite 1\r\n    test_vectors( sdh, cred_uccs, kid, sdh, cred_uccs, kid, 1, 34410 );\r\n    test_vectors( sig, cred_x509, x5t, sig, cred_x509, x5t, 1, 37410 );\r\n\r\n    // More complex, long ids, EAD\r\n    test_vectors( sdh, cred_uccs, kid, sdh, cred_uccs, kid, 0, 34401, true );\r\n    test_vectors( sig, cred_x509, x5t, sig, cred_x509, x5t, 0, 37401, true );\r\n\r\n    // signature keys in UCCS and static DH keys in X.509, // Table 1, columns 2 and 3\r\n    test_vectors( sdh, cred_x509, x5t, sdh, cred_x509, x5t, 0, 2716057 );\r\n    test_vectors( sig, cred_uccs, kid, sig, cred_uccs, kid, 0, 3370318, false, false ); // No comma in JSON\r\n```",
+          "createdAt": "2022-03-16T07:12:52Z",
+          "updatedAt": "2022-03-16T07:12:52Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good question. \r\n\r\nAccording to the new plan, trace 1 should be method 0, cipher suite 0, i.e. EdDSA signatures, in which case it makes most sense showing real X.509 certificates identified by x5t. Do we have any real X.509 certificates with Curve25519 public keys?\r\n\r\nEdit: That is test vector 4, the last or the initial four test vectors. If we don't have real certs available soon, we'll make a plan B.\r\n\r\nEdit 2: I think plan B would be to use the dummy certs, i.e. test vector 4 as is. Other proposal?",
+          "createdAt": "2022-03-16T07:48:05Z",
+          "updatedAt": "2022-03-16T08:20:07Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Assuming we will use X.509 certificates for trace 1, we may for variety in the document want to use CWT Claims Sets and `kid`s in trace 2. \r\n\r\nIf we stick with X.509 certificates in trace 2, we may want to make other changes, for  example setting the Key Usage extension of the certificates to Key Agreement.\r\n\r\nOpinions?\r\n",
+          "createdAt": "2022-03-16T08:28:20Z",
+          "updatedAt": "2022-03-16T08:36:04Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I propose we keep trace 2 dead simple and instantiate it for the most constrained setting. I believe that refers to the usage of `kid`.",
+          "createdAt": "2022-03-16T08:32:24Z",
+          "updatedAt": "2022-03-16T08:32:24Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@stoprocent Then you would get even more work :-/   Let us know if you need help.\r\n\r\n@malishav Perhaps you want to help out generating the CWT Claims Sets with the same public keys as in the current X.509 certs for trace 2, which would then replace them as credentials?",
+          "createdAt": "2022-03-16T08:44:03Z",
+          "updatedAt": "2022-03-16T08:44:03Z"
+        },
+        {
+          "author": "malishav",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@gselander I'd love to help but I am not quite sure how to generate CCS? Is there soem library that you used? In my implementation code, I really only jump to the public key to grab it for crypto operations.",
+          "createdAt": "2022-03-16T08:59:16Z",
+          "updatedAt": "2022-03-16T08:59:16Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@malishav I would start with Figure 5, Section 3.5.2, and replace relevant fields. \r\n\r\nPerhaps someone else has a better way? @marco-tiloca-sics @stefanhri",
+          "createdAt": "2022-03-16T10:25:21Z",
+          "updatedAt": "2022-03-16T10:25:21Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "It should be ok to simply reuse that figure with updated values.\r\n\r\nI have a method that, upon client/server startup, builds the same kind of minimalistic CCS in the figure. It takes as input a public key (with all public coordinates), the subject string and the kid to use in 'kid' within 'cnf'. While values of course differ, the output structure is just as in the quoted figure.\r\n \r\nBefore having that, I just manually built the CCS on https://cbor.me/",
+          "createdAt": "2022-03-16T10:49:47Z",
+          "updatedAt": "2022-03-16T10:49:47Z"
         }
       ]
     }
@@ -12358,21 +12474,21 @@
       "id": "PR_kwDOEItXAM4z6ZDB",
       "title": "Updated test vectors to include G_X and G_Y compact representable keys.",
       "url": "https://github.com/lake-wg/edhoc/pull/256",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "stoprocent",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "- Updated test vectors to include G_X and G_Y compact representable keys.\r\n- Added uncompressed p256 G_X and G_Y public keys in vectors",
       "createdAt": "2022-03-03T19:29:24Z",
-      "updatedAt": "2022-03-11T06:22:28Z",
+      "updatedAt": "2022-03-16T15:08:21Z",
       "baseRepository": "lake-wg/edhoc",
       "baseRefName": "master",
       "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
       "headRepository": "stoprocent/edhoc",
       "headRefName": "test-vectors-rfc-p256",
-      "headRefOid": "5ab48b3825d73c7cb0ad4fd37d8fa8e00975eb7a",
-      "closedAt": null,
+      "headRefOid": "e3222d1ad924c3beba475956e88193cf9d81f05a",
+      "closedAt": "2022-03-16T15:08:20Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -12495,9 +12611,193 @@
           "body": "Looks good to me. \r\n\r\nPlease all have a look at #258. Once we decided on that I think we are ready to update -traces.",
           "createdAt": "2022-03-11T06:22:28Z",
           "updatedAt": "2022-03-11T06:22:28Z"
+        },
+        {
+          "author": "franziskuskiefer",
+          "authorAssociation": "NONE",
+          "body": "> Have a look in latest commit\r\n\r\nlgtm \ud83d\udc4d\ud83c\udffb ",
+          "createdAt": "2022-03-16T09:02:22Z",
+          "updatedAt": "2022-03-16T09:02:22Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I have just successfully validated the P-256 \"Test Vector 1\" from @stoprocent at https://github.com/stoprocent/edhoc/blob/test-vectors-rfc-p256/test-vectors-11/p256/vectors.txt\r\n\r\nAs a suggestion, it would be good to use the uncompressed notation also for the public authentication keys, specifying the 'x' and 'y' coordinates separately. That is:\r\n```\r\n\r\nG_R (Raw Value) (Responder's public authentication key, 'x'-coordinate) (32 bytes)\r\nbb c3 49 60 52 6e a4 d3 2e 94 0c ad 2a 23 41 48 dd c2 17 91 a1 2a fb cb ac 93 62 20 46 dd 44 f0\r\n\r\nG_R (Raw Value) (Responder's public authentication key, 'y'-coordinate) (32 bytes)\r\n45 19 e2 57 23 6b 2a 0c e2 02 3f 09 31 f1 f3 86 ca 7a fd a6 4f cd e0 10 8c 22 4c 51 ea bf 60 72\r\n\r\nG_I (Raw Value) (Initiator's public authentication key, 'x'-coordinate) (32 bytes)\r\n8a 93 ca 7e 1b c8 46 47 d7 e7 eb 4c 61 07 c4 dc 4e 53 df 81 df d1 98 1c 7f 82 4a 7c 1b 61 a6 fc\r\n\r\nG_I (Raw Value) (Initiator's public authentication key, 'y'-coordinate) (32 bytes)\r\n91 36 28 13 c2 5d b6 af 93 be 22 c3 50 ce b2 51 89 5b 9f 3a 8d 85 a3 58 23 a2 22 2b 9d e2 c8 c8\r\n```",
+          "createdAt": "2022-03-16T10:03:15Z",
+          "updatedAt": "2022-03-16T10:03:15Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@marco-tiloca-sics Per your comment above I assume you mean the following headings for the 'y'-coordinates?\r\n\r\n```\r\nG_R (Raw Value) (Responder's public authentication key, 'x'-coordinate) (32 bytes)\r\nbb c3 49 60 52 6e a4 d3 2e 94 0c ad 2a 23 41 48 dd c2 17 91 a1 2a fb cb ac 93 62 20 46 dd 44 f0\r\n\r\nResponder's public authentication key, 'y'-coordinate (32 bytes)\r\n45 19 e2 57 23 6b 2a 0c e2 02 3f 09 31 f1 f3 86 ca 7a fd a6 4f cd e0 10 8c 22 4c 51 ea bf 60 72\r\n\r\nG_I (Raw Value) (Initiator's public authentication key, 'x'-coordinate) (32 bytes)\r\n8a 93 ca 7e 1b c8 46 47 d7 e7 eb 4c 61 07 c4 dc 4e 53 df 81 df d1 98 1c 7f 82 4a 7c 1b 61 a6 fc\r\n\r\nInitiator's public authentication key, 'y'-coordinate (32 bytes)\r\n91 36 28 13 c2 5d b6 af 93 be 22 c3 50 ce b2 51 89 5b 9f 3a 8d 85 a3 58 23 a2 22 2b 9d e2 c8 c8\r\n```",
+          "createdAt": "2022-03-16T10:13:54Z",
+          "updatedAt": "2022-03-16T10:13:54Z"
+        },
+        {
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Right, that's consistent with the notation used for the ephemeral keys. I was too fast when copy-pasting :-)",
+          "createdAt": "2022-03-16T10:16:23Z",
+          "updatedAt": "2022-03-16T10:16:23Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Replaced by #261 ",
+          "createdAt": "2022-03-16T15:08:20Z",
+          "updatedAt": "2022-03-16T15:08:20Z"
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 259,
+      "id": "PR_kwDOEItXAM40g0uO",
+      "title": "Clarification of prepended identifiers, issue #257",
+      "url": "https://github.com/lake-wg/edhoc/pull/259",
+      "state": "OPEN",
+      "author": "gselander",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-16T07:19:22Z",
+      "updatedAt": "2022-03-16T07:19:23Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
+      "headRepository": "lake-wg/edhoc",
+      "headRefName": "A.3-clarifications",
+      "headRefOid": "3a651140f100c9f2978bdc5a5ed8495ea50328b1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 260,
+      "id": "PR_kwDOEItXAM40hP84",
+      "title": "Update to IANA registration, issue #167",
+      "url": "https://github.com/lake-wg/edhoc/pull/260",
+      "state": "OPEN",
+      "author": "gselander",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-16T09:37:24Z",
+      "updatedAt": "2022-03-16T11:10:20Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "5c06c04ab29a4bb8ea2e72b9382cb669b06f9323",
+      "headRepository": "lake-wg/edhoc",
+      "headRefName": "IANA-reg-updates",
+      "headRefOid": "ebf32d1aab06ac44c096be8d5ce56fd30b530c95",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I am against adding a stupid reference column.",
+          "createdAt": "2022-03-16T11:05:45Z",
+          "updatedAt": "2022-03-16T11:05:45Z"
+        },
+        {
+          "author": "gselander",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@emanjon Noted. Is the rest OK?",
+          "createdAt": "2022-03-16T11:10:20Z",
+          "updatedAt": "2022-03-16T11:10:20Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 261,
+      "id": "PR_kwDOEItXAM40iinw",
+      "title": "Update Test Vectors for RFC",
+      "url": "https://github.com/lake-wg/edhoc/pull/261",
+      "state": "OPEN",
+      "author": "stoprocent",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR replaces https://github.com/lake-wg/edhoc/pull/256 and is addressing this https://github.com/lake-wg/edhoc/issues/258",
+      "createdAt": "2022-03-16T15:07:31Z",
+      "updatedAt": "2022-03-16T20:34:23Z",
+      "baseRepository": "lake-wg/edhoc",
+      "baseRefName": "master",
+      "baseRefOid": "4b9fa966fa7b99e814ce630ead847f417571bd6c",
+      "headRepository": "stoprocent/edhoc",
+      "headRefName": "test-vectors-rfc",
+      "headRefOid": "6194e8f186e966336ec0ffc0f8a96872431688b0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Code available here:\r\nEd25519 - https://github.com/stoprocent/edhoc/tree/feature/ed25519/test-vectors-11\r\nP256 - https://github.com/stoprocent/edhoc/tree/feature/mbedtls/test-vectors-11",
+          "createdAt": "2022-03-16T15:10:21Z",
+          "updatedAt": "2022-03-16T15:10:21Z"
+        },
+        {
+          "author": "stoprocent",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Both are now fixed",
+          "createdAt": "2022-03-16T20:34:23Z",
+          "updatedAt": "2022-03-16T20:34:23Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOEItXAM42XjUF",
+          "commit": {
+            "abbreviatedOid": "e48bdfb"
+          },
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-16T19:15:32Z",
+          "updatedAt": "2022-03-16T19:15:33Z",
+          "comments": [
+            {
+              "originalPosition": 158,
+              "body": "This is:\r\n\r\n```\r\n{\r\n 2: \"example.edu\",\r\n 8: {\r\n      1: {\r\n            1: 1,\r\n            2: -19,\r\n           -1: 1,\r\n           -2: h'04BBC34960526EA4D32E940CAD2A234148DDC21791A12AFBCBAC93622046DD44F04519E257236B2A0CE2023F0931F1F386CA7AFDA64FCDE0108C224C51EABF6072'\r\n         }\r\n    }\r\n}\r\n\r\n```\r\n\r\nHowever, the value of the 'x' (-2) parameter should be only the 'x' coordinate of the public key, not the whole public key in compressed notation.\r\n\r\nAlso consistently with the explicit mentioning of both the 'x' and 'y' coordinate, the CCS should include also the 'y' coordinate and be as follows.\r\n\r\n\r\n\r\n```\r\nCRED_R (CBOR Data Item) (94 bytes)\r\nA2 02 6B 65 78 61 6D 70 6C 65 2E 65 64 75 08 A1 01 A5 01 01 02 32 20\r\n01 21 58 20 BB C3 49 60 52 6E A4 D3 2E 94 0C AD 2A 23 41 48 DD C2 17\r\n91 A1 2A FB CB AC 93 62 20 46 DD 44 F0 22 58 20 45 19 E2 57 23 6B 2A\r\n0C E2 02 3F 09 31 F1 F3 86 CA 7A FD A6 4F CD E0 10 8C 22 4C 51 EA BF\r\n60 72\r\n```\r\n\r\nThat is:\r\n\r\n```\r\n{\r\n 2: \"example.edu\",\r\n 8: {\r\n      1: {\r\n            1: 1,\r\n            2: -19,\r\n           -1: 1,\r\n           -2: h'bbc34960526ea4d32e940cad2a234148ddc21791a12afbcbac93622046dd44f0',\r\n           -3: h'4519e257236b2a0ce2023f0931f1f386ca7afda64fcde0108c224c51eabf6072'\r\n         }\r\n    }\r\n}\r\n```",
+              "createdAt": "2022-03-16T19:15:33Z",
+              "updatedAt": "2022-03-16T19:15:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOEItXAM42Xjs-",
+          "commit": {
+            "abbreviatedOid": "e48bdfb"
+          },
+          "author": "marco-tiloca-sics",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-16T19:16:59Z",
+          "updatedAt": "2022-03-16T19:17:00Z",
+          "comments": [
+            {
+              "originalPosition": 244,
+              "body": "See the comment above about CRED_R. The same applies here to CRED_I.",
+              "createdAt": "2022-03-16T19:17:00Z",
+              "updatedAt": "2022-03-16T19:17:00Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
